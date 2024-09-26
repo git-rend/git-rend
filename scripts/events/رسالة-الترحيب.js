@@ -12,7 +12,7 @@ module.exports = { config: {
 	langs: { ar: { session1: "صباح الخيـࢪ",
 		       session2: "مسـاء الخيـࢪ",
                        session3: "ليلـة سعيـدة",
-		       welcomeMessage: "Thank you for inviting me to the group!\nBot prefix: %1\nTo view the list of commands, please enter: %1help",
+		       welcomeMessage: "مسـاء الخيـࢪ لڪل الأعضاء 👋\n   ا⊱━━━━⊰✾⊱━━━━⊰ا\nمعڪم الحب أڪاني 🫶، أتمنى\nتسـتمـتـعـوا بـوجـودي مـعـڪم.\n   ا⊱━━━━⊰✾⊱━━━━⊰ا\nأنا بـوت ڪما تعلمـون، والبـادئـة\nالخاصـة بـي هي: [ %1 ] استعـملـها\nقبـل ڪـل أمـࢪ، مثـل: [%2أكاني].\n   ا⊱━━━━⊰✾⊱━━━━⊰ا\nلمعـࢪفـة الأوامـࢪ أكتب: [%2الاوامر]",
 		       multiple1: "you",
 		       multiple2: "you guys",
 		       defaultWelcomeMessage: `Hello {userName}.\nWelcome {multiple} to the chat group: {boxName}\nHave a nice {session} 😊`
