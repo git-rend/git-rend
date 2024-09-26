@@ -24,29 +24,20 @@ function isURL(str) {
 	}
 }
 
-module.exports = {
-	config: {
-		name: "cmd",
-		version: "1.17",
-		author: "NTKhang",
-		countDown: 5,
-		role: 2,
-		description: {
-			vi: "Quản lý các tệp lệnh của bạn",
-			en: "Manage your command files"
-		},
-		category: "owner",
-		guide: {
-			vi: "   {pn} load <tên file lệnh>"
-				+ "\n   {pn} loadAll"
-				+ "\n   {pn} install <url> <tên file lệnh>: Tải xuống và cài đặt một tệp lệnh từ một url, url là đường dẫn đến tệp lệnh (raw)"
-				+ "\n   {pn} install <tên file lệnh> <code>: Tải xuống và cài đặt một tệp lệnh từ một code, code là mã của lệnh",
-			en: "   {pn} load <command file name>"
-				+ "\n   {pn} loadAll"
-				+ "\n   {pn} install <url> <command file name>: Download and install a command file from a url, url is the path to the file (raw)"
-				+ "\n   {pn} install <command file name> <code>: Download and install a command file from a code, code is the code of the command"
-		}
-	},
+module.exports = { config: {
+		      name: "امر",
+	              aliases: ["جديد"],
+		      version: "1.17",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 2,
+		      description: { ar: "إدارة ملفات الأوامر الخاصة بك"},
+		      category: "owner",
+		      guide: { ar: " {pn} load <command file name>\n"
+				 + " {pn} loadAll\n"
+				 + " {pn} install <url> <command file name>: Download and install a command file from a url, url is the path to the file (raw)\n"
+				 + " {pn} install <command file name> <code>: Download and install a command file from a code, code is the code of the command"
+		           } },
 
 	langs: {
 		vi: {
