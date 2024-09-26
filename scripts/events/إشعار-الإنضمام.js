@@ -1,7 +1,7 @@
 const { getTime, drive } = global.utils;
 
 module.exports = { config: {
-		      name: "مغادرة-الأعضاء",
+		      name: "إشعار-الإنضمام",
 		      version: "1.4",
 		      author: "NTKhang",// تعريب:محمد تانجيرو \\
 		      category: "events"
