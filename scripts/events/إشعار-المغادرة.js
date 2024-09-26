@@ -3,7 +3,7 @@ if (!global.temp.welcomeEvent)
 	global.temp.welcomeEvent = {};
 
 module.exports = { config: {
-		      name: "رسالة-الترحيب",
+		      name: "إشعار-المغادرة",
 		      version: "1.7",
 		      author: "NTKhang", // تعريب: محمد تانجيرو \\
 		      category: "events"
