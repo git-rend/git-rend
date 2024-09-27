@@ -9,15 +9,14 @@ module.exports = { config: {
 		      role: 0,
 		      description: { ar: "إرسال تقرير (حول الأخطاء أو أفكار جديدة أو كيفية استخدام أمر) للمطور"},
 		      category: "contacts admin",
-		      guide: { ar: "{pn} [محتوى الرسالة]"
-		}
-	},
+		      guide: { ar: "{pn} [محتوى الرسالة]"}
+                           },
 
 	langs: { ar: { missingMessage: "🌹 أدخل الࢪسالة التي تࢪيد\nإࢪسالها للمطوࢪ بعد الأمࢪ ✅\n",
-		       sendByGroup: "- Sent from group: %1\n- Thread ID: %2",
-		       sendByUser: "\n- Sent from user",
-		       content: "\n\nContent:\n─────────────────\n%1\n─────────────────\nReply this message to send message to user",
-		       success: "Sent your message to %1 admin successfully!\n%2",
+		       sendByGroup: "    • اسم وآيدي المجموعة:\n%1\nا[ %2 ]ا\n\n",
+		       sendByUser: "• تم إࢪسال التقࢪيࢪ من الخاص\n\n",
+		       content: "༺<|[ محتوى الࢪسالة ]| >༻\nا⊱━━━━⊰  🌹  ⊱━━━━⊰ا\n\n%1\n\nا⊱━━━━⊰  🌹  ⊱━━━━⊰ا\n  🌹 ࢪد عـلـى هـذه الـࢪسـالـة\n لإࢪسال ࢪدڪ إلى المࢪسل ✅",
+		       success: "✅ تـم إࢪسـال تقـࢪيـࢪڪ إلـى:\n%2",
 		       failed: "An error occurred while sending your message to %1 admin\n%2\nCheck console for more details",
 		       reply: "📍 Reply from admin %1:\n─────────────────\n%2\n─────────────────\nReply this message to continue send message to admin",
 		       replySuccess: "Sent your reply to admin successfully!",
@@ -34,9 +33,8 @@ module.exports = { config: {
 		if (config.adminBot.length == 0)
 			return message.reply(getLang("noAdmin"));
 		const senderName = await usersData.getName(senderID);
-		const msg = "==📨️ CALL ADMIN 📨️=="
-			+ `\n- User Name: ${senderName}`
-			+ `\n- User ID: ${senderID}`
+		const msg = "༺<✅|[  تـقࢪيــࢪ  ]| ✅>༻\n"
+			+ `      • اسم وآيدي المرسل:\n${senderName}\nا[ ${senderID} ]ا`
 			+ (isGroup ? getLang("sendByGroup", (await threadsData.get(threadID)).threadName, threadID) : getLang("sendByUser"));
 
 		const formMessage = {
@@ -81,7 +79,7 @@ module.exports = { config: {
 		let msg2 = "";
 		if (successIDs.length > 0)
 			msg2 += getLang("success", successIDs.length,
-				adminNames.filter(item => successIDs.includes(item.id)).map(item => ` <@${item.id}> (${item.name})`).join("\n")
+				adminNames.filter(item => successIDs.includes(item.id)).map(item => `المطوࢪ: ${item.name}\nآيدي: ${item.id}`).join("\n")
 			);
 		if (failedIDs.length > 0) {
 			msg2 += getLang("failed", failedIDs.length,
