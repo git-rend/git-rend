@@ -22,7 +22,7 @@ module.exports = { config: {
 		       replySuccess: "Sent your reply to admin successfully!",
 		       feedback: "📝 Feedback from user %1:\n- User ID: %2%3\n\nContent:\n─────────────────\n%4\n─────────────────\nReply this message to send message to user",
 		       replyUserSuccess: "Sent your reply to user successfully!",
-		       noAdmin: "Bot has no admin at the moment"
+		       noAdmin: "🌹 البوت لا يمتلڪ أي مطوࢪ\n حاليـا، ڪيـف لا تسـألنـي 🤷‍♀️"
 	      }      },
 
 	onStart: async function ({ args, message, event, usersData, threadsData, api, commandName, getLang }) {
@@ -34,7 +34,7 @@ module.exports = { config: {
 			return message.reply(getLang("noAdmin"));
 		const senderName = await usersData.getName(senderID);
 		const msg = "༺<✅|[  تـقࢪيــࢪ  ]| ✅>༻\n"
-			+ `      • اسم وآيدي المرسل:\n${senderName}\nا[ ${senderID} ]ا`
+			+ `      • اسم وآيدي المرسل:\n${senderName}\nا[ ${senderID} ]ا\n`
 			+ (isGroup ? getLang("sendByGroup", (await threadsData.get(threadID)).threadName, threadID) : getLang("sendByUser"));
 
 		const formMessage = {
