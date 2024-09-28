@@ -9,73 +9,42 @@ module.exports = { config: {
 		      role: 0,
 		      description: { ar: "تحذير الأعضاء في المجموعة، إذا كان لديهم 3 تحذيرات، سيتم حظرهم"},
 		      category: "box chat",
-		      guide: { ar: " {pn} [@تاغ] [السبب]: warn member"
-				 + " {pn} [القائمة]: view list of warned members"
-				 + " {pn} [المحظورين]: view list of banned members"
-				 + " {pn} [معلومات | المعلومات] [@تاغ | الآيدي | رد | فارغة]: view warning information of tagged person or uid or yourself"
-				 + " {pn} [الغاءحظر] [@تاغ | الآيدي | رد | فارغة]: unban member, at the same time remove all warnings of that member"
-				 + " {pn} [الغاءتحذير] [@تاغ | الآيدي | رد | فارغة] [الرقم | فارغة]: remove warning of member by uid and number of warning, if leave blank will remove the last warning"
-				 + " {pn} reset: reset all warn data"
-				 + "⚠️ You need to set admin for bot to auto kick banned members"
-		}
-	},
+		      guide: { ar: " {pn} [@تاغ] [السبب]: تحذير العضو"
+				 + " {pn} [القائمة]: عرض قائمة الأعضاء الي عندهم إنذار"
+				 + " {pn} [المحظورين]: عرض قائمة الأعضاء المحظورين"
+				 + " {pn} [معلومات | المعلومات] [@تاغ | الآيدي | رد | فارغة]: عرض معلومات التحذير الخاصة بك أو بالشخص الي تعمل له تاغ او ترد عليه أو تحط آيديه"
+				 + " {pn} [الغاءحظر] [@تاغ | الآيدي | رد | فارغة]: قم بإلغاء حظر العضو، وفي نفس الوقت قم بإزالة كافة التحذيرات الخاصة بهذا العضو"
+				 + " {pn} [الغاءتحذير] [@تاغ | الآيدي | رد | فارغة] [الرقم | فارغة]: إزالة تحذير العضو بواسطة الآيدي وعدد التحذيرات، إذا ترك فارغًا فسيتم إزالة التحذير الأخير"
+				 + " {pn} [مسح]: مسح جميع بيانات التحذير"
+				 + "⚠️ تحتاج إلى تعيين البوت مسؤولا لطرد الأعضاء المحظورين تلقائيًا"
+		           } },
 
-	langs: {
-		vi: {
-			list: "Danh sách những thành viên bị cảnh cáo:\n%1\n\nĐể xem chi tiết những lần cảnh cáo hãy dùng lệnh \"%2warn info  [@tag | <uid> | để trống]\": để xem thông tin cảnh cáo của người được tag hoặc uid hoặc bản thân",
-			listBan: "Danh sách những thành viên bị cảnh cáo đủ 3 lần và ban khỏi box:\n%1",
-			listEmpty: "Nhóm bạn chưa có thành viên nào bị cảnh cáo",
-			listBanEmpty: "Nhóm bạn chưa có thành viên nào bị ban khỏi box",
-			invalidUid: "Vui lòng nhập uid hợp lệ của người bạn muốn xem thông tin",
-			noData: "Không có dữ liệu nào",
-			noPermission: "❌ Chỉ quản trị viên nhóm mới có thể unban thành viên bị ban khỏi box",
-			invalidUid2: "⚠️ Vui lòng nhập uid hợp lệ của người muốn gỡ ban",
-			notBanned: "⚠️ Người dùng mang id %1 chưa bị ban khỏi box của bạn",
-			unbanSuccess: "✅ Đã gỡ ban thành viên [%1 | %2], hiện tại người này có thể tham gia box chat của bạn",
-			noPermission2: "❌ Chỉ quản trị viên nhóm mới có thể gỡ cảnh cáo của thành viên trong nhóm",
-			invalidUid3: "⚠️ Vui lòng nhập uid hoặc tag người muốn gỡ cảnh cáo",
-			noData2: "⚠️ Người dùng mang id %1 chưa có dữ liệu cảnh cáo",
-			notEnoughWarn: "❌ Người dùng %1 chỉ có %2 lần cảnh cáo",
-			unwarnSuccess: "✅ Đã gỡ lần cảnh cáo thứ %1 của thành viên [%2 | %3] thành công",
-			noPermission3: "❌ Chỉ quản trị viên nhóm mới có thể reset dữ liệu cảnh cáo",
-			resetWarnSuccess: "✅ Đã reset dữ liệu cảnh cáo thành công",
-			noPermission4: "❌ Chỉ quản trị viên nhóm mới có thể cảnh cáo thành viên trong nhóm",
-			invalidUid4: "⚠️ Bạn cần phải tag hoặc phản hồi tin nhắn của người muốn cảnh cáo",
-			warnSuccess: "⚠️ Đã cảnh cáo thành viên %1 lần %2\n- Uid: %3\n- Lý do: %4\n- Date Time: %5\nThành viên này đã bị cảnh cáo đủ 3 lần và bị ban khỏi box, để gỡ ban hãy sử dụng lệnh \"%6warn unban <uid>\" (với uid là uid của người muốn gỡ ban)",
-			noPermission5: "⚠️ Bot cần quyền quản trị viên để kick thành viên bị ban",
-			warnSuccess2: "⚠️ Đã cảnh cáo thành viên %1 lần %2\n- Uid: %3\n- Lý do: %4\n- Date Time: %5\nNếu vi phạm %6 lần nữa người này sẽ bị ban khỏi box",
-			hasBanned: "⚠️ Thành viên sau đã bị cảnh cáo đủ 3 lần trước đó và bị ban khỏi box:\n%1",
-			failedKick: "⚠️ Đã xảy ra lỗi khi kick những thành viên sau:\n%1",
-			userNotInGroup: "⚠️ Người dùng \"%1\" hiện tại không có trong nhóm của bạn"
-		},
-		en: {
-			list: "List of members who have been warned:\n%1\n\nTo view the details of the warnings, use the \"%2warn info [@tag | <uid> | leave blank]\" command: to view the warning information of the tagged person or uid or yourself",
-			listBan: "List of members who have been warned 3 times and banned from the box:\n%1",
-			listEmpty: "Your group has no members who have been warned",
-			listBanEmpty: "Your group has no members banned from the box",
-			invalidUid: "Please enter a valid uid of the person you want to view information",
-			noData: "No data",
-			noPermission: "❌ Only group administrators can unban members banned from the box",
-			invalidUid2: "⚠️ Please enter a valid uid of the person you want to unban",
-			notBanned: "⚠️ The user with id %1 has not been banned from your box",
-			unbanSuccess: "✅ Successfully unbanned member [%1 | %2], currently this person can join your chat box",
-			noPermission2: "❌ Only group administrators can remove warnings from members in the group",
-			invalidUid3: "⚠️ Please enter a uid or tag the person you want to remove the warning",
-			noData2: "⚠️ The user with id %1 has no warning data",
-			notEnoughWarn: "❌ The user %1 only has %2 warnings",
-			unwarnSuccess: "✅ Successfully removed the %1 warning of member [%2 | %3]",
-			noPermission3: "❌ Only group administrators can reset warning data",
-			resetWarnSuccess: "✅ Successfully reset warning data",
-			noPermission4: "❌ Only group administrators can warn members in the group",
-			invalidUid4: "⚠️ You need to tag or reply to the message of the person you want to warn",
-			warnSuccess: "⚠️ Warned member %1 times %2\n- Uid: %3\n- Reason: %4\n- Date Time: %5\nThis member has been warned 3 times and banned from the box, to unban use the command \"%6warn unban <uid>\" (with uid is the uid of the person you want to unban)",
-			noPermission5: "⚠️ Bot needs administrator permissions to kick banned members",
-			warnSuccess2: "⚠️ Warned member %1 %2 times\n- Uid: %3\n- Reason: %4\n- Date Time: %5\nIf this person violates %6 more times, they will be banned from the box",
-			hasBanned: "⚠️ The following members have been warned 3 times before and banned from the box:\n%1",
-			failedKick: "⚠️ An error occurred when kicking the following members:\n%1",
-			userNotInGroup: "⚠️ The user \"%1\" is currently not in your group"
-		}
-	},
+	langs: { ar: { list: "قائمة الأعضاء الذين تم تحذيرهم:\n%1\n\nلعرض تفاصيل التحذيرات، استخدم \"%2 .انذار معلومات [@تاغ | الآيدي | فلاغة]\" لعرض معلومات التحذير الخاصة بالشخص الذي تم وضع علامة عليه أو الرمز التعريفي الآيدي أو بنفسك",
+		       listBan: "قائمة الأعضاء الذين تم تحذيرهم 3 مرات وتم حظرهم من المجموعة:\n%1",
+		       listEmpty: "مجموعتك لا تحتوي على أعضاء تم تحذيرهم",
+		       listBanEmpty: "مجموعتك لا تحتوي على أعضاء محظورين",
+		       invalidUid: "الرجاء إدخال آيدي صالح للشخص الذي تريد عرض معلوماته",
+		       noData: "لا توجد بيانات",
+		       noPermission: "❌ يمكن لمسؤولي المجموعة فقط رفع الحظر عن الأعضاء المحظورين من المجموعة",
+		       invalidUid2: "⚠️ الرجاء إدخال آيدي صالح للشخص الذي تريد إلغاء الحظر عنه",
+		       notBanned: "⚠️ لم يتم حظر المستخدم صاحب الآيدي: %1 من المجموعة",
+		       unbanSuccess: "✅ تم فك حظر العضو بنجاح [%1 | %2]، حاليًا يمكن لهذا الشخص الانضمام إلى المجموعة الخاص بك",
+		       noPermission2: "❌ يمكن لمسؤولي المجموعة فقط إزالة التحذيرات من الأعضاء في المجموعة",
+		       invalidUid3: "⚠️ الرجاء إدخال الآيدي أو وضع علامة على الشخص الذي تريد إزالة التحذير منه",
+		       noData2: "⚠️ المستخدم صاحب الآيدي: %1 ليس لديه أي بيانات تحذيرية",
+		       notEnoughWarn: "❌ لدى المستخدم %1 تحذيرات %2",
+		       unwarnSuccess: "✅ تمت إزالة تحذير %1 الخاص بالعضو بنجاح [%2 | %3]",
+		       noPermission3: "❌ يمكن لمسؤولي المجموعة فقط إعادة تعيين بيانات التحذير",
+		       resetWarnSuccess: "✅ تم مسح بيانات التحذير بنجاح",
+		       noPermission4: "❌ يمكن لمسؤولي المجموعة فقط تحذير الأعضاء في المجموعة",
+		       invalidUid4: "⚠️ يتعين عليك عمل تاغ أو رد على رسالة الشخص الذي تريد",
+		       warnSuccess: "⚠️ تم تحذير العضو %1 مرة %2\nالآيدي: %3\nالسبب: %4\n- التاريخ: %5 \nتم تحذير هذا العضو 3 مرات وتم حظره من المجموعة لإلغاء الحظر عنه استخدام الأمر \n%6انذار العاءحظر الآيدي",
+		       noPermission5: "⚠️يحتاج الروبوت إلى أذونات المسؤول لطرد الأعضاء المحظورين",
+		       warnSuccess2: "⚠️ تم تحذير العضو %1 %2 مرة\nالآيدي: %3\nالسبب: %4\nالتاريخ: %5\nإذا قام هذا الشخص بانتهاك %6 مرات أخرى، فسيتم حظره من المجموعة",
+		       hasBanned: "⚠️ تم تحذير الأعضاء التاليين 3 مرات من قبل وتم حظرهم من المجموعة:\n%1",
+		       failedKick: "⚠️ حدث خطأ عند طرد الأعضاء التاليين:\n%1",
+   	               userNotInGroup: "⚠️ العضو \"%1\" حاليا ليس في مجموعتك"
+	       }     },
 
 	onStart: async function ({ message, api, event, args, threadsData, usersData, prefix, role, getLang }) {
 		if (!args[0])
