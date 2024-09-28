@@ -5,28 +5,24 @@ module.exports = {
 	config: {
 		name: "اضيفي",
 		version: "1.5",
-		author: "NTKhang",
+		author: "NTKhang", 
 		countDown: 5,
 		role: 1,
-		description: {
-			ar: "Add user to box chat of you"
-		},
+		description: { ar: "إضافة عضو إلى المجموعة"},
 		category: "box chat",
-		guide: {
-			ar: "   {pn} [link profile | uid]"
-		}
+		guide: { ar: "   {pn} [رابط الحساب | الآيدي]"}
 	},
 
 	langs: {
 		ar: {
-			alreadyInGroup: "Already in group",
-			successAdd: "- Successfully added %1 members to the group",
-			failedAdd: "- Failed to add %1 members to the group",
-			approve: "- Added %1 members to the approval list",
-			invalidLink: "Please enter a valid facebook link",
-			cannotGetUid: "Cannot get uid of this user",
-			linkNotExist: "This profile url does not exist",
-			cannotAddUser: "Bot is blocked or this user blocked strangers from adding to the group"
+			alreadyInGroup: "هذا العضو موجود في المجموعة",
+			successAdd: "تمت إضافة %1 عضو إلى المجموعة بنجاح",
+			failedAdd: "فشلت إضافة %1 عضو إلى المجموعة",
+			approve: "تمت إضافة %1 عضو إلى قائمة الموافقة",
+			invalidLink: "الرجاء إدخال رابط فيسبوك صالح",
+			cannotGetUid: "لا يمكن الحصول على آيدي المستخدم",
+			linkNotExist: "رابط هذا الحساب غير موجود",
+			cannotAddUser: "تم حظر البوت أو قام هذا المستخدم بمنع غير الأصدقاء من الإضافة إلى المجموعة"
 		}
 	},
 
