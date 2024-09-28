@@ -1,34 +1,22 @@
 const { getTime } = global.utils;
 
-module.exports = {
-	config: {
-		name: "warn",
-		version: "1.8",
-		author: "NTKhang",
-		countDown: 5,
-		role: 0,
-		description: {
-			vi: "cảnh cáo thành viên trong nhóm, đủ 3 lần ban khỏi box",
-			en: "warn member in group, if they have 3 warns, they will be banned"
-		},
-		category: "box chat",
-		guide: {
-			vi: "   {pn} @tag <lý do>: dùng cảnh cáo thành viên"
-				+ "\n   {pn} list: xem danh sách những thành viên đã bị cảnh cáo"
-				+ "\n   {pn} listban: xem danh sách những thành viên đã bị cảnh cáo đủ 3 lần và bị ban khỏi box"
-				+ "\n   {pn} info [@tag | <uid> | reply | để trống]: xem thông tin cảnh cáo của người được tag hoặc uid hoặc bản thân"
-				+ "\n   {pn} unban [@tag | <uid> | reply | để trống]: gỡ ban thành viên, đồng thời gỡ tất cả cảnh cáo của thành viên đó"
-				+ "\n   {pn} unwarn [@tag | <uid> | reply | để trống] [<số thứ tự> | để trống]: gỡ cảnh cáo thành viên bằng uid và số thứ tự cảnh cáo, nếu để trống sẽ gỡ cảnh cáo cuối cùng"
-				+ "\n   {pn} reset: reset tất cả dữ liệu cảnh cáo"
-				+ "\n⚠️ Cần set quản trị viên cho bot để bot tự kick thành viên bị ban",
-			en: "   {pn} @tag <reason>: warn member"
-				+ "\n   {pn} list: view list of warned members"
-				+ "\n   {pn} listban: view list of banned members"
-				+ "\n   {pn} info [@tag | <uid> | reply | leave blank]: view warning information of tagged person or uid or yourself"
-				+ "\n   {pn} unban [@tag | <uid> | reply | leave blank]: unban member, at the same time remove all warnings of that member"
-				+ "\n   {pn} unwarn [@tag | <uid> | reply | leave blank] [<number> | leave blank]: remove warning of member by uid and number of warning, if leave blank will remove the last warning"
-				+ "\n   {pn} reset: reset all warn data"
-				+ "\n⚠️ You need to set admin for bot to auto kick banned members"
+module.exports = { config: {
+		      name: "انذار",
+		      aliases: ["تحذير","إنذار"],
+		      version: "1.8",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 0,
+		      description: { ar: "تحذير الأعضاء في المجموعة، إذا كان لديهم 3 تحذيرات، سيتم حظرهم"},
+		      category: "box chat",
+		      guide: { ar: " {pn} [@تاغ] [السبب]: warn member"
+				 + " {pn} [القائمة]: view list of warned members"
+				 + " {pn} [المحظورين]: view list of banned members"
+				 + " {pn} [معلومات | المعلومات] [@تاغ | الآيدي | رد | فارغة]: view warning information of tagged person or uid or yourself"
+				 + " {pn} [الغاءحظر] [@تاغ | الآيدي | رد | فارغة]: unban member, at the same time remove all warnings of that member"
+				 + " {pn} [الغاءتحذير] [@تاغ | الآيدي | رد | فارغة] [الرقم | فارغة]: remove warning of member by uid and number of warning, if leave blank will remove the last warning"
+				 + " {pn} reset: reset all warn data"
+				 + "⚠️ You need to set admin for bot to auto kick banned members"
 		}
 	},
 
