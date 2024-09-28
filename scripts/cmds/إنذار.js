@@ -53,7 +53,7 @@ module.exports = { config: {
 		const warnList = await threadsData.get(threadID, "data.warn", []);
 
 		switch (args[0]) {
-			case "list": {
+			case "القائمة": {
 				const msg = await Promise.all(warnList.map(async user => {
 					const { uid, list } = user;
 					const name = await usersData.getName(uid);
@@ -62,7 +62,7 @@ module.exports = { config: {
 				message.reply(msg.length ? getLang("list", msg.join("\n"), prefix) : getLang("listEmpty"));
 				break;
 			}
-			case "listban": {
+			case "المحظورين": {
 				const result = (await Promise.all(warnList.map(async user => {
 					const { uid, list } = user;
 					if (list.length >= 3) {
@@ -73,8 +73,7 @@ module.exports = { config: {
 				message.reply(result.length ? getLang("listBan", result.join("\n")) : getLang("listBanEmpty"));
 				break;
 			}
-			case "check":
-			case "info": {
+			case "معلومات": {
 				let uids, msg = "";
 				if (Object.keys(event.mentions).length)
 					uids = Object.keys(event.mentions);
@@ -108,7 +107,7 @@ module.exports = { config: {
 				message.reply(msg);
 				break;
 			}
-			case "unban": {
+			case "الغاءحظر": {
 				if (role < 1)
 					return message.reply(getLang("noPermission"));
 				let uidUnban;
@@ -134,7 +133,7 @@ module.exports = { config: {
 				message.reply(getLang("unbanSuccess", uidUnban, userName));
 				break;
 			}
-			case "unwarn": {
+			case "الغاءتحذير": {
 				if (role < 1)
 					return message.reply(getLang("noPermission2"));
 				let uid, num;
@@ -172,7 +171,7 @@ module.exports = { config: {
 				message.reply(getLang("unwarnSuccess", num + 1, uid, userName));
 				break;
 			}
-			case "reset": {
+			case "مسح": {
 				if (role < 1)
 					return message.reply(getLang("noPermission3"));
 				await threadsData.set(threadID, [], "data.warn");
