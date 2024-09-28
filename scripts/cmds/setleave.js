@@ -1,56 +1,29 @@
 const { drive, getStreamFromURL, getExtFromUrl, getTime } = global.utils;
 
-module.exports = {
-	config: {
-		name: "setleave",
-		aliases: ["setl"],
-		version: "1.7",
-		author: "NTKhang",
-		countDown: 5,
-		role: 0,
-		description: {
-			vi: "Chỉnh sửa nội dung/bật/tắt tin nhắn tạm biệt thành viên rời khỏi nhóm chat của bạn",
-			en: "Edit content/turn on/off leave message when member leave your group chat"
-		},
-		category: "custom",
-		guide: {
-			vi: {
-				body: "   {pn} on: Bật tin nhắn tạm biệt"
-					+ "\n   {pn} off: Tắt tin nhắn tạm biệt"
-					+ "\n   {pn} text [<nội dung> | reset]: chỉnh sửa nội dung văn bản hoặc reset về mặc định, những shortcut có sẵn:"
-					+ "\n  + {userName}: tên của thành viên rời khỏi nhóm"
-					+ "\n  + {userNameTag}: tên của thành viên rời khỏi nhóm (tag)"
-					+ "\n  + {boxName}:  tên của nhóm chat"
-					+ "\n  + {type}: tự rời/bị qtv xóa khỏi nhóm"
-					+ "\n  + {session}:  buổi trong ngày"
-					+ "\n\n   Ví dụ:"
-					+ "\n    {pn} text {userName} đã {type} khỏi nhóm, see you again 🤧"
-					+ "\n"
-					+ "\n   Reply (phản hồi) hoặc gửi kèm một tin nhắn có file với nội dung {pn} file: để thêm tệp đính kèm vào tin nhắn rời khỏi nhóm (ảnh, video, audio)"
-					+ "\n\nVí dụ:"
-					+ "\n   {pn} file reset: xóa gửi file",
-				attachment: {
-					[`${__dirname}/assets/guide/setleave/setleave_vi_1.png`]: "https://i.ibb.co/2FKJHJr/guide1.png"
-				}
-			},
-			en: {
-				body: "   {pn} on: Turn on leave message"
-					+ "\n   {pn} off: Turn off leave message"
-					+ "\n   {pn} text [<content> | reset]: edit text content or reset to default, available shortcuts:"
-					+ "\n  + {userName}: name of member who leave group"
-					+ "\n  + {userNameTag}: name of member who leave group (tag)"
-					+ "\n  + {boxName}: name of group chat"
-					+ "\n  + {type}: leave/kicked by admin"
-					+ "\n  + {session}: session in day"
-					+ "\n\n   Example:"
-					+ "\n    {pn} text {userName} has {type} group, see you again 🤧"
-					+ "\n"
-					+ "\n   Reply or send a message with file with content {pn} file: to add attachment file to leave message (image, video, audio)"
-					+ "\n\nExample:"
-					+ "\n   {pn} file reset: reset file",
-				attachment: {
-					[`${__dirname}/assets/guide/setleave/setleave_en_1.png`]: "https://i.ibb.co/2FKJHJr/guide1.png"
-				}
+module.exports = { config: {
+		      name: "ضبط-المغادرة",
+		      aliases: ["ضبط4"],
+		      version: "1.7",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 0,
+		      description: { ar: "تحرير المحتوى/تشغيل/إيقاف تشغيل ترك رسالة عندما يغادر العضو الدردشة الجماعية"},
+		      category: "custom",
+		      guide: {
+			vi: { ar: { body: " {pn} on: قم بتشغيل رسالة المغادرة\n"
+					+ " {pn} off: قم بإيقاف تشغيل رسالة المغادرة\n"
+					+ " {pn} [نص] [محتوى النص | مسح]: تحرير محتوى النص أو إعادة التعيين إلى الاختصارات الافتراضية المتاحة:\n"
+					+ " {userName}: name of member who leave group\n"
+					+ " {userNameTag}: name of member who leave group (tag)\n"
+					+ " {boxName}: name of group chat\n"
+					+ " {type}: leave/kicked by admin\n"
+					+ " {session}: session in day\n"
+					+ " مثال:\n"
+					+ " {pn} text {userName} has {type} group, see you again 🤧\n"
+					+ " Reply or send a message with file with content {pn} file: to add attachment file to leave message (image, video, audio)\n"
+					+ "مثال:\n"
+					+ " {pn} file reset: reset file",
+				attachment: { [`${__dirname}/assets/guide/setleave/setleave_en_1.png`]: "https://i.ibb.co/2FKJHJr/guide1.png"}
 			}
 		}
 	},
