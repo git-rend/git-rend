@@ -8,7 +8,7 @@ module.exports = { config: {
 		      author: "NTKhang",
 		      countDown: 5,
 		      role: 0,
-		      description: { ar: "Search app on appstore" },
+		      description: { ar: "ابحث عن التطبيق في متجر التطبيقات" },
 		      category: "software",
 		      guide: { ar: "{pn} [كلمة البحث]"},
 		      envConfig: { limitResult: 3 }
