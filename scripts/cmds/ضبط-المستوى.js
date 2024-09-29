@@ -3,7 +3,7 @@ const checkUrlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[
 
 module.exports = { config: {
 		      name: "ضبط-المستوى",
-	              aliases: ["ضبط_المستوى"],
+	              aliases: ["ضبط_المستوى","ضبط6"],
 		      version: "1.2",
 		      author: "NTKhang", // تعريب: محمد تانجيرو \\
 		      countDown: 0,
