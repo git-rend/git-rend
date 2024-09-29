@@ -28,7 +28,7 @@ module.exports = { config: {
 		if (langCode == "default" || langCode == "reset")
 			langCode = null;
 
-		if (["-g", "-global", "all"].includes(args[1]?.toLowerCase())) {
+		if (["الكل"].includes(args[1]?.toLowerCase())) {
 			if (role < 2)
 				return message.reply(getLang("noPermission"));
 			const pathLanguageFile = `${process.cwd()}/languages/${langCode}.lang`;
