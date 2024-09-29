@@ -325,7 +325,7 @@ async function getVideoInfo(id) {
 	});
 	const json = JSON.parse(html.match(/var ytInitialPlayerResponse = (.*?});/)[1]);
 	const json2 = JSON.parse(html.match(/var ytInitialData = (.*?});/)[1]);
-	const { title, lengthSeconds, viewCount, videoId, thumbnail, author } = json.videoDetails;
+	const { lengthSeconds, viewCount, videoId, thumbnail, author } = json.videoDetails;
 	let getChapters;
 	try {
 		getChapters = json2.playerOverlays.playerOverlayRenderer.decoratedPlayerBarRenderer.decoratedPlayerBarRenderer.playerBar.multiMarkersPlayerBarRenderer.markersMap.find(x => x.key == "DESCRIPTION_CHAPTERS" && x.value.chapters).value.chapters;
