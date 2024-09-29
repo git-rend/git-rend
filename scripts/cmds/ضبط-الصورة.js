@@ -9,16 +9,16 @@ module.exports = { config: {
 		      role: 2,
 		      description: { ar: "تغيير صورة البوت"},
 		      category: "owner",
-		      guide: { ar: "   {pn} [<image url> | <phản hồi tin nhắn có ảnh>] [<caption> | để trống] [<expirationAfter (seconds)> | để trống]"
-				 + "\nPhản hồi 1 tin nhắn có chứa ảnh với nội dung: {pn}"
-				 + "\nGửi kèm 1 tin nhắn có chứa ảnh với nội dung: {pn}"
-				 + "\n\nGhi chú:"
-				 + "\n  + caption: caption sẽ đăng kèm khi đổi avatar"
-				 + "\n  + expirationAfter: đặt chế độ ảnh đại diện tạm thời (hết hạn sau expirationAfter(seconds))"
-				 + "\nVí dụ:"
-				 + "\n   {pn} https://example.com/image.jpg: (đổi ảnh đại diện không caption, không hết hạn)"
-				 + "\n   {pn} https://example.com/image.jpg Hello: (đổi ảnh đại diện với caption là \"Hello\", không hết hạn)"
-				 + "\n   {pn} https://example.com/image.jpg Hello 3600: (đổi ảnh đại diện với caption là \"Hello\", đặt tạm thời 1h)"
+		      guide: { ar: " {pn} [رابط الصورة | الرد على صورة] [التسمية التوضيحية | فارغ] [انتهاء الصلاحية بعد (بالثواني)> | فارغ]\n"
+				 + " الرد على رسالة تحتوي على صورة ومحتوى: {pn}\n"
+				 + " أرسل رسالة تحتوي على صورة ومحتوى: {pn}\n"
+				 + " ملاحظة:\n"
+				 + " التسمية التوضيحية: سيتم نشر التسمية التوضيحية عند تغيير الصورة\n"
+				 + " انتهاء الصلاحية بعد: ضبط وضع الصورة المؤقتة (تنتهي صلاحيتها بعد انتهاء الوقت الذي أدخلته\n"
+				 + "مثال:\n"
+				 + " {pn} https://example.com/image.jpg: (تغيير صورة الملف الشخصي بدون تسمية توضيحية، وبدون انتهاء الصلاحية)"
+				 + " {pn} https://example.com/image.jpg أهلا: (قم بتغيير صورة ملفك الشخصي باستخدام التسمية التوضيحية \"أهلا\" بدون انتهاء صلاحيتها)"
+				 + " {pn} https://example.com/image.jpg أهلا 3600: (قم بتغيير صورة ملفك الشخصي مع التسمية التوضيحية \"مرحبًا\"، وقم بتعيينها مؤقتًا لمدة ساعة واحدة)"
 		           } },
 
 	langs: { ar: { cannotGetImage: "❌ | حدث خطأ أثناء الاستعلام عن رابط للصورة",
