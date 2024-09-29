@@ -1,15 +1,15 @@
 const fs = require("fs-extra");
 
 module.exports = { config: {
-		      name: "ضبط-اللغة",
+                      name: "ضبط-اللغة",
 	              aliases: ["ضبط5"],
-		      version: "1.5",
-		      author: "NTKhang", // تعريب: محمد تانجيرو \\
-		      countDown: 5,
-		      role: 0,
-		      description: { ar: "قم بتعيين اللغة الافتراضية للبوت في المجموعة الحالية أو في جميع المجموعات"},
-		      category: "owner",
-		      guide: { ar: " {pn} [رمز اللغة ISO 639-1]\n"
+                      version: "1.5",
+                      author: "NTKhang", // تعريب: محمد تانج
+	              countDown: 5,
+                      role: 0,
+                      description: { ar: "قم بتعيين اللغة الافتراضية للبوت في المجموعة الحالية أو في جميع المجموعات"},
+                      category: "owner",
+                      guide: { ar: " {pn} [رمز اللغة ISO 639-1]\n"
 				 + " Example:\n"
 				 + " {pn} en\n"
 				 + " {pn} ar\n"
