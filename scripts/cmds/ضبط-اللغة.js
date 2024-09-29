@@ -4,7 +4,7 @@ module.exports = { config: {
                       name: "ضبط-اللغة",
 	              aliases: ["ضبط5"],
                       version: "1.5",
-                      author: "NTKhang", // تعريب: محمد تانج
+                      author: "NTKhang", // تعريب: محمد تانجيرو \\
 	              countDown: 5,
                       role: 0,
                       description: { ar: "قم بتعيين اللغة الافتراضية للبوت في المجموعة الحالية أو في جميع المجموعات"},
