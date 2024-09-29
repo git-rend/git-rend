@@ -1,31 +1,17 @@
 const fs = require("fs-extra");
 
-module.exports = {
-	config: {
-		name: "restart",
-		version: "1.1",
-		author: "NTKhang",
-		countDown: 5,
-		role: 2,
-		description: {
-			vi: "Khởi động lại bot",
-			en: "Restart bot"
-		},
-		category: "Owner",
-		guide: {
-			vi: "   {pn}: Khởi động lại bot",
-			en: "   {pn}: Restart bot"
-		}
-	},
+module.exports = { config: {
+		      name: "رستارت",
+		      version: "1.1",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 2,
+		      description: { ar: "إعادة تشغيل البوت"},
+		      category: "Owner",
+		      guide: { ar: "{pn}"}
+	                   },
 
-	langs: {
-		vi: {
-			restartting: "🔄 | Đang khởi động lại bot..."
-		},
-		en: {
-			restartting: "🔄 | Restarting bot..."
-		}
-	},
+	langs: { ar: { restartting: "🔄 | جاري إعادة تشغيل البوت ..."}},
 
 	onLoad: function ({ api }) {
 		const pathFile = `${__dirname}/tmp/restart.txt`;
