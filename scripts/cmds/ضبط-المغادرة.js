@@ -9,49 +9,32 @@ module.exports = { config: {
 		      role: 0,
 		      description: { ar: "تحرير المحتوى/تشغيل/إيقاف تشغيل ترك رسالة عندما يغادر العضو الدردشة الجماعية"},
 		      category: "custom",
-		      guide: {
-			vi: { ar: { body: " {pn} on: قم بتشغيل رسالة المغادرة\n"
-					+ " {pn} off: قم بإيقاف تشغيل رسالة المغادرة\n"
-					+ " {pn} [نص] [محتوى النص | مسح]: تحرير محتوى النص أو إعادة التعيين إلى الاختصارات الافتراضية المتاحة:\n"
-					+ " {userName}: name of member who leave group\n"
-					+ " {userNameTag}: name of member who leave group (tag)\n"
-					+ " {boxName}: name of group chat\n"
-					+ " {type}: leave/kicked by admin\n"
-					+ " {session}: session in day\n"
-					+ " مثال:\n"
-					+ " {pn} text {userName} has {type} group, see you again 🤧\n"
-					+ " Reply or send a message with file with content {pn} file: to add attachment file to leave message (image, video, audio)\n"
-					+ "مثال:\n"
-					+ " {pn} file reset: reset file",
+		      guide: { ar: { body: " {pn} on: قم بتشغيل رسالة المغادرة\n"
+					 + " {pn} off: قم بإيقاف تشغيل رسالة المغادرة\n"
+					 + " {pn} [نص] [محتوى النص | مسح]: تحرير محتوى النص أو إعادة التعيين إلى الاختصارات الافتراضية المتاحة:\n"
+					 + " {userName}: اسم العضو الذي غادر المجموعة\n"
+					 + " {userNameTag}: اسم العضو الذي غادر المجموعة (تاغ)\n"
+					 + " {boxName}: اسم المجموعة\n"
+					 + " {type}: غادر / تم طرده من قبل المشرف\n"
+					 + " {session}: وصف الوقت (صباح | مساء)\n"
+					 + " مثال:\n"
+					 + " {pn} نص {userName} {type} المجموعة, نراك لاحقا 🤧\n"
+					 + " قم بالرد أو أرسل رسالة تحتوي على الملف والنص: {pn} ملف: لإضافة ملف مرفق مع رسالة المعادرة (صورة، فيديو، صوت)\n"
+					 + "مثال:\n"
+					 + " {pn} ملف مسح: لحذف الملف المرفق",
 				attachment: { [`${__dirname}/assets/guide/setleave/setleave_en_1.png`]: "https://i.ibb.co/2FKJHJr/guide1.png"}
-			}
-		}
-	},
+			   } }     },
 
-	langs: {
-		vi: {
-			turnedOn: "Bật tin nhắn tạm biệt thành công",
-			turnedOff: "Tắt tin nhắn tạm biệt thành công",
-			missingContent: "Vui lùng nhập nội dung tin nhắn",
-			edited: "Đã chỉnh sửa nội dung tin nhắn tạm biệt của nhóm bạn thành:\n%1",
-			reseted: "Đã reset nội dung tin nhắn tạm biệt",
-			noFile: "Không có tệp đính kèm tin nhắn tạm biệt nào để xóa",
-			resetedFile: "Đã reset tệp đính kèm thành công",
-			missingFile: "Hãy phản hồi tin nhắn này kèm file ảnh/video/audio",
-			addedFile: "Đã thêm %1 tệp đính kèm vào tin nhắn tạm biệt của nhóm bạn"
-		},
-		en: {
-			turnedOn: "Turned on leave message successfully",
-			turnedOff: "Turned off leave message successfully",
-			missingContent: "Please enter content",
-			edited: "Edited leave message content of your group to:\n%1",
-			reseted: "Reseted leave message content",
-			noFile: "No leave message attachment file to reset",
-			resetedFile: "Reseted leave message attachment file successfully",
-			missingFile: "Please reply this message with image/video/audio file",
-			addedFile: "Added %1 attachment file to your leave message"
-		}
-	},
+	langs: { ar: { turnedOn: "تم تفعيل رسالة المغادرة بنجاح",
+		       turnedOff: "تم إيقاف رسالة المغادرة بنجاح",
+		       missingContent: "الرجاء إدخال المحتوى",
+		       edited: "تم تعديل محتوى رسالة المغادرة لمجموعتك إلى:\n%1",
+		       reseted: "تمت إعادة ضبط محتوى رسالة المغادرة",
+		       noFile: "لا يوجد ملف مرفق مع رسالة المغادرة لحذفه",
+		       resetedFile: "تم حذف الملف المرفق لرسالة المغادرة بنجاح",
+		       missingFile: "يرجى الرد على هذه الرسالة بـ: صورة / فيديو / صوت",
+		       addedFile: "تمت إضافة %1 ملف مرفق إلى رسالة المغادرة الخاصة بك"
+	       }     },
 
 	onStart: async function ({ args, threadsData, message, event, commandName, getLang }) {
 		const { threadID, senderID, body } = event;
