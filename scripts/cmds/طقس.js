@@ -16,44 +16,27 @@ function convertFtoC(F) {
 	return Math.floor((F - 32) / 1.8);
 }
 function formatHours(hours) {
-	return moment(hours).tz("Asia/Ho_Chi_Minh").format("HH[h]mm[p]");
+	return moment(hours).tz("Africa/Algiers").format("HH[h]mm[p]");
 }
 
-module.exports = {
-	config: {
-		name: "weather",
-		version: "1.2",
-		author: "NTKhang",
-		countDown: 5,
-		role: 0,
-		description: {
-			vi: "xem dự báo thời tiết hiện tại và 5 ngày sau",
-			en: "view the current and next 5 days weather forecast"
-		},
-		category: "other",
-		guide: {
-			vi: "{pn} <địa điểm>",
-			en: "{pn} <location>"
-		},
-		envGlobal: {
-			weatherApiKey: "d7e795ae6a0d44aaa8abb1a0a7ac19e4"
-		}
-	},
+module.exports = { config: {
+		      name: "طقس",
+	              aliases: ["احوال-طقس","الاحوال-الجوية"],
+		      version: "1.2",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 0,
+		      description: { ar: "عرض توقعات الطقس الحالية والمقبلة لمدة 5 أيام"},
+		      category: "other",
+		      guide: { ar: "{pn} [اسم المدينة]"},
+		      envGlobal: { weatherApiKey: "d7e795ae6a0d44aaa8abb1a0a7ac19e4"}
+	                   },
 
-	langs: {
-		vi: {
-			syntaxError: "Vui lòng nhập địa điểm",
-			notFound: "Không thể tìm thấy địa điểm: %1",
-			error: "Đã xảy ra lỗi: %1",
-			today: "Thời tiết hôm nay: %1\n%2\n🌡 Nhiệt độ thấp nhất - cao nhất %3°C - %4°C\n🌡 Nhiệt độ cảm nhận được %5°C - %6°C\n🌅 Mặt trời mọc %7\n🌄 Mặt trời lặn %8\n🌃 Mặt trăng mọc %9\n🏙️ Mặt trăng lặn %10\n🌞 Ban ngày: %11\n🌙 Ban đêm: %12"
-		},
-		en: {
-			syntaxError: "Please enter a location",
-			notFound: "Location not found: %1",
-			error: "An error has occurred: %1",
-			today: "Today's weather: %1\n%2\n🌡 Low - high temperature %3°C - %4°C\n🌡 Feels like %5°C - %6°C\n🌅 Sunrise %7\n🌄 Sunset %8\n🌃 Moonrise %9\n🏙️ Moonset %10\n🌞 Day: %11\n🌙 Night: %12"
-		}
-	},
+	langs: { ar: { syntaxError: "الرجاء إدخال الموقع الجغرافي (اسم المدينة)",
+		       notFound: "الموقع: %1 غير موجود",
+		       error: "لقد حدث خطأ: %1", 
+		       today: "Today's weather: %1\n%2\n🌡 Low - high temperature %3°C - %4°C\n🌡 Feels like %5°C - %6°C\n🌅 Sunrise %7\n🌄 Sunset %8\n🌃 Moonrise %9\n🏙️ Moonset %10\n🌞 Day: %11\n🌙 Night: %12"
+	       }     },
 
 	onStart: async function ({ args, message, envGlobal, getLang }) {
 		const apikey = envGlobal.weatherApiKey;
