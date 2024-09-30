@@ -9,33 +9,21 @@ if (!fs.existsSync(__dirname + '/assets/hubble'))
 
 let hubbleData;
 
-module.exports = {
-	config: {
-		name: "hubble",
-		version: "1.3",
-		author: "NTKhang",
-		countDown: 5,
-		role: 0,
-		description: {
-			vi: "Xem ảnh từ Hubble",
-			en: "View Hubble images"
-		},
-		category: "owner",
-		guide: {
-			en: "{pn} <date (mm-dd)>"
-		}
-	},
+module.exports = { config: {
+		      name: "هابل",
+		      aliases: ["نازا"],
+	              version: "1.3",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 0,
+		      description: { ar: "عرض صور هابل"},
+		      category: "owner",
+		      guide: { ar: "{pn} [التاريخ باليوم والشهر mm-dd]"} //+ "مثال: {pn} 1-1" 
+	                   },
 
-	langs: {
-		vi: {
-			invalidDate: "Ngày tháng bạn nhập vào không hợp lệ, vui lòng nhập lại theo định dạng mm-dd",
-			noImage: "Không có ảnh nào được tìm thấy trong ngày này"
-		},
-		en: {
-			invalidDate: "The date you entered is invalid, please enter again in the mm-dd format",
-			noImage: "No images were found on this day"
-		}
-	},
+	langs: { ar: { invalidDate: "التاريخ الذي أدخلته غير صالح، يرجى إدخاله مرة أخرى بتنسيق mm-dd",
+		       noImage: "لم يتم العثور على صور في هذا اليوم"
+	       }     },
 
 	onLoad: async function () {
 		if (!fs.existsSync(pathData)) {
