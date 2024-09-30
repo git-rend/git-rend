@@ -9,78 +9,46 @@ function getDomain(url) {
 	return match ? match[1] : null;
 }
 
-module.exports = {
-	config: {
-		name: "event",
-		version: "1.9",
-		author: "NTKhang",
-		countDown: 5,
-		role: 2,
-		description: {
-			vi: "Quản lý các tệp lệnh event của bạn",
-			en: "Manage your event command files"
-		},
-		category: "owner",
-		guide: {
-			vi: "{pn} load <tên file lệnh>"
-				+ "\n{pn} loadAll"
-				+ "\n{pn} install <url> <tên file lệnh>: Tải về và load command event, url là đường dẫn tới file lệnh (raw)"
-				+ "\n{pn} install <code> <tên file lệnh>: Tải về và load command event, code là mã của file lệnh (raw)",
-			en: "{pn} load <command file name>"
-				+ "\n{pn} loadAll"
-				+ "\n{pn} install <url> <command file name>: Download and load event command, url is the path to the command file (raw)"
-				+ "\n{pn} install <code> <command file name>: Download and load event command, code is the code of the command file (raw)"
-		}
-	},
+module.exports = { config: {
+		      name: "حدث",
+		      aliases: ["ايفنت"],
+	              version: "1.9",
+		      author: "NTKhang", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 2,
+		      description: { ar: "إدارة ملفات أوامر الأحداث الخاصة بالبوت"},
+		      category: "owner",
+		      guide: { ar: " {pn} [تحميل] [اسم الايفنت]\n"
+				 + " {pn} [تحميل-الكل]\n"
+				 + " {pn} [تثبيت] [الرابط] [اسم الحذث]: تنزيل وتحميل الايفنت (الحدث)، الرابط هو المسار إلى الملف (raw)\n"
+				 + " {pn} [تثبيت] [الكود] [اسم الحذث]: تنزيل وتحميل الايفنت (الحدث)، الكود هو كود الملف (raw)"
+		           } },
 
-	langs: {
-		vi: {
-			missingFileName: "⚠️ | Vui lòng nhập vào tên lệnh bạn muốn reload",
-			loaded: "✅ | Đã load event command \"%1\" thành công",
-			loadedError: "❌ | Load event command \"%1\" thất bại với lỗi\n%2: %3",
-			loadedSuccess: "✅ | Đã load thành công \"%1\" event command",
-			loadedFail: "❌ | Load thất bại event command \"%1\"\n%2",
-			missingCommandNameUnload: "⚠️ | Vui lòng nhập vào tên lệnh bạn muốn unload",
-			unloaded: "✅ | Đã unload event command \"%1\" thành công",
-			unloadedError: "❌ | Unload event command \"%1\" thất bại với lỗi\n%2: %3",
-			missingUrlCodeOrFileName: "⚠️ | Vui lòng nhập vào url hoặc code và tên file lệnh bạn muốn cài đặt",
-			missingUrlOrCode: "⚠️ | Vui lòng nhập vào url hoặc code của tệp lệnh bạn muốn cài đặt",
-			missingFileNameInstall: "⚠️ | Vui lòng nhập vào tên file để lưu lệnh (đuôi .js)",
-			invalidUrlOrCode: "⚠️ | Không thể lấy được mã lệnh",
-			alreadExist: "⚠️ | File lệnh đã tồn tại, bạn có chắc chắn muốn ghi đè lên file lệnh cũ không?\nThả cảm xúc bất kì vào tin nhắn này để tiếp tục",
-			installed: "✅ | Đã cài đặt event command \"%1\" thành công, file lệnh được lưu tại %2",
-			installedError: "❌ | Cài đặt event command \"%1\" thất bại với lỗi\n%2: %3",
-			missingFile: "⚠️ | Không tìm thấy tệp lệnh \"%1\"",
-			invalidFileName: "⚠️ | Tên tệp lệnh không hợp lệ",
-			unloadedFile: "✅ | Đã unload lệnh \"%1\""
-		},
-		en: {
-			missingFileName: "⚠️ | Please enter the command name you want to reload",
-			loaded: "✅ | Loaded event command \"%1\" successfully",
-			loadedError: "❌ | Loaded event command \"%1\" failed with error\n%2: %3",
-			loadedSuccess: "✅ | Loaded \"%1\" event command successfully",
-			loadedFail: "❌ | Loaded event command \"%1\" failed\n%2",
-			missingCommandNameUnload: "⚠️ | Please enter the command name you want to unload",
-			unloaded: "✅ | Unloaded event command \"%1\" successfully",
-			unloadedError: "❌ | Unloaded event command \"%1\" failed with error\n%2: %3",
-			missingUrlCodeOrFileName: "⚠️ | Please enter the url or code and command file name you want to install",
-			missingUrlOrCode: "⚠️ | Please enter the url or code of the command file you want to install",
-			missingFileNameInstall: "⚠️ | Please enter the file name to save the command (with .js extension)",
-			invalidUrlOrCode: "⚠️ | Unable to get command code",
-			alreadExist: "⚠️ | The command file already exists, are you sure you want to overwrite the old command file?\nReact to this message to continue",
-			installed: "✅ | Installed event command \"%1\" successfully, the command file is saved at %2",
-			installedError: "❌ | Installed event command \"%1\" failed with error\n%2: %3",
-			missingFile: "⚠️ | File \"%1\" not found",
-			invalidFileName: "⚠️ | Invalid file name",
-			unloadedFile: "✅ | Unloaded command \"%1\""
-		}
-	},
+	langs: { ar: { missingFileName: "⚠️ | الرجاء إدخال اسم الايفنت (الحدث) الذي تريد إعادة تحميله",
+		       loaded: "✅ | تم تحميل الايفنت (الحدث) \"%1\" بنجاح",
+		       loadedError: "❌ | فشل تحميل الايفنت (الحدث) %1\nالخطأ: %2: %3",
+		       loadedSuccess: "✅ | تم تحميل الايفنت (الحدث) \"%1\" بنجاح",
+		       loadedFail: "❌ | فشل تحميل الايفنت (الحدث)\n%2",
+		       missingCommandNameUnload: "⚠️ | الرجاء إدخال اسم الايفنت (الحدث) الذي تريد إلغاء تحميله",
+		       unloaded: "✅ | تم إلغاء تحميل الايفنت (الحدث) \"%1\" بنجاح",
+	               unloadedError: "❌ | فشل الغاء تحميل الايفنت (الحدث) \"%1\"\n الخطأ\n%2: %3",
+		       missingUrlCodeOrFileName: "⚠️ | الرجاء إدخال الرابط أو الكود واسم ملف الايفنت (الحدث) الذي تريد تثبيته",
+		       missingUrlOrCode: "⚠️ | الرجاء إدخال الرابط أو كود ملف الايفنت (الحدث) الذي تريد تثبيته",
+		       missingFileNameInstall: "⚠️ | الرجاء إدخال اسم الملف لحفظ الايفنت (الحدث) (يجب أن ينتهي بـ: .js)",
+		       invalidUrlOrCode: "⚠️ | غير قادر على الحصول على رمز الايفنت (الحدث)",
+		       alreadExist: "⚠️ | اسم الايفنت (الحدث) موجود بالفعل، هل أنت متأكد من أنك تريد الكتابة فوق الملف القديم؟\nتفاعل مع هذه الرسالة للتأكيد والمتابعة",
+		       installed: "✅ | تم تثبيت الايفنت (الحدث) \"%1\" بنجاح، وتم حفظ الايفنت (الحدث) في %2",
+		       installedError: "❌ | فشل تثبيت الايفنت (الحدث) \"%1\"\nالخطأ\n%2: %3",
+		       missingFile: "⚠️ | لم يتم حفظ الملف \"%1\"",
+		       invalidFileName: "⚠️ | اسم الملف غير صالح",
+		       unloadedFile: "✅ | تم تفريغ الملف \"%1\" بنجاح"
+	       }     },
 
 	onStart: async ({ args, message, api, threadModel, userModel, dashBoardModel, globalModel, threadsData, usersData, dashBoardData, globalData, commandName, event, getLang }) => {
 		const { configCommands } = global.GoatBot;
 		const { log, loadScripts } = global.utils;
 
-		if (args[0] == "load" && args.length == 2) {
+		if (args[0] == "تحميل" && args.length == 2) {
 			if (!args[1])
 				return message.reply(getLang("missingFileName"));
 			const infoLoad = loadScripts("events", args[1], log, configCommands, api, threadModel, userModel, dashBoardModel, globalModel, threadsData, usersData, dashBoardData, globalData, getLang);
@@ -88,7 +56,7 @@ module.exports = {
 				message.reply(getLang("loaded", infoLoad.name)) :
 				message.reply(getLang("loadedError", infoLoad.name, infoLoad.error, infoLoad.message));
 		}
-		else if ((args[0] || "").toLowerCase() == "loadall" || (args[0] == "load" && args.length > 2)) {
+		else if ((args[0] || "").toLowerCase() == "تحميل-الكل" || (args[0] == "load" && args.length > 2)) {
 			const allFile = args[0].toLowerCase() == "loadall" ?
 				fs.readdirSync(path.join(__dirname, "..", "events"))
 					.filter(file =>
@@ -114,7 +82,7 @@ module.exports = {
 				msg += (msg ? '\n' : '') + getLang("loadedFail", arrayFail.length, "❗" + arrayFail.join("\n❗ "));
 			message.reply(msg);
 		}
-		else if (args[0] == "unload") {
+		else if (args[0] == "تفريغ") {
 			if (!args[1])
 				return message.reply(getLang("missingCommandNameUnload"));
 			const infoUnload = global.utils.unloadScripts("events", args[1], configCommands, getLang);
@@ -122,7 +90,7 @@ module.exports = {
 				message.reply(getLang("unloaded", infoUnload.name)) :
 				message.reply(getLang("unloadedError", infoUnload.name, infoUnload.error.name, infoUnload.error.message));
 		}
-		else if (args[0] == "install") {
+		else if (args[0] == "تثبيت") {
 			let url = args[1];
 			let fileName = args[2];
 			let rawCode;
