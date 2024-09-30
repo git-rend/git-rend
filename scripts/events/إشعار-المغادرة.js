@@ -16,6 +16,8 @@ module.exports = { config: {
 	       }     },
 
 	onStart: async ({ threadsData, message, event, api, usersData, getLang }) => {
+		const { leftParticipantFbId } = event.logMessageData;
+		const userName = await usersData.getName(leftParticipantFbId);
 		if (event.logMessageType == "log:unsubscribe")
 			return async function () {
 				const { threadID } = event;
