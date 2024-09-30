@@ -12,7 +12,7 @@ module.exports = { config: {
 		       session3: "ليلـة سعيـدة",
 		       leaveType1: "👋 غادࢪ، وتࢪك باقي الأعضاء في\nسعـادة 🤣، وڪأنهم ࢪاح يحزنـوا\nعلى قࢪد مثلك 🙎‍♀️، انقـلع ولا تعد\n    ا⊱━━━━⊰✾⊱━━━━⊰ا",
 		       leaveType2: "👋 تم طࢪده من المجموعة، وتࢪك\nبـاقـي الأعـضـاء فـي سـعـادة 🤣،\nوڪـأنـهم ࢪاح يحـزنـوا علـى قـࢪد\nمثلـه 🙎‍♀، انقـلـع ولا تـࢪجـع ثانـي\n    ا⊱━━━━⊰✾⊱━━━━⊰ا",
-		       defaultLeaveMessage: `🌹 الغبي: {userNameTag}\n{type}\n{session} لباقـي الأعضـاء 👋`
+		       defaultLeaveMessage: `🌹 الغبي: {userName}\n{type}\n{session} لباقـي الأعضـاء 👋`
 	       }     },
 
 	onStart: async ({ threadsData, message, event, api, usersData, getLang }) => {
@@ -28,7 +28,7 @@ module.exports = { config: {
 				const hours = getTime("HH");
 
 				const threadName = threadData.threadName;
-				const userName = await usersData.getName(leftParticipantFbId);
+				const userName = await usersData.getName(event.author);
 
 				// {userName}   : name of the user who left the group
 				// {type}       : type of the message (leave)
