@@ -10,7 +10,7 @@ module.exports.config = {
                   guide: { ar: "لا تحتاج استخدام الأمر"}
                          };
 
-module.exports.onStart = function({ api, event, client, __GLOBAL }) {}
+module.exports.onStart = function({ api, event, client, __GLOBAL }) {};
 module.exports.onChat = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	let react = event.body;
