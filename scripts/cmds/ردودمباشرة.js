@@ -1,14 +1,14 @@
 const fs = require("fs");
 module.exports.config = {
-                name: "ردودمباشرة",
-            		version: "1.3",
-            		author: "محمد تانجيرو",
-            		countDown: 5,
-            		role: 0,
-            		description: { ar: "ردود البوت على بعض الرسائل دون الحاجة إلى بادئة" },
-            		category: "no prefix",
-            		guide: { ar: "لا تحتاج للبادئة (.)" }
-                         };
+                  name: "ردودمباشرة",
+            		  version: "1.3",
+            		  author: "محمد تانجيرو",
+            		  countDown: 5,
+            		  role: 0,
+            		  description: { ar: "ردود البوت على بعض الرسائل دون الحاجة إلى بادئة" },
+            		  category: "no prefix",
+            		  guide: { ar: "لا تحتاج للبادئة (.)" }
+                        };
 module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) { }
 module.exports.onChat = async function({ message, api, event, client, envGlobal, __GLOBAL }) {
   var { threadID, messageID, reason } = event;
@@ -65,4 +65,9 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   if (mhmd.includes("كم عمر") || mhmd.includes ("شحال عمر") || mhmd.includes ("شحال في عمر") || mhmd.includes ("اديش عمر")) {
     return api.sendMessage("عمري صار 20 🤭، وأنت 🙄",
   event.threadID,event.messageID)};
+
+  if (mhmd.toString() == "🙂" || mhmd.toString() == "😀" || mhmd.toString() == "😁" || mhmd.toString() == "😃" || mhmd.toString() == "😄" || mhmd.toString() == "😊" || mhmd.toString() == "🙃" || mhmd.toString() == "😸" || mhmd.toString() == "😺") {
+    return api.sendMessage("الحياة حلوة وابتسامتك أحلى 🤭",
+  event.threadID,event.messageID)};
+
 };
