@@ -4,7 +4,7 @@ module.exports.config = {
 	                version: "1.0.1",
 	                author: "محمد تانجيرو",
                   countDown: 5,
-                  role: 1,
+                  role: 0,
                   description: { ar: "تخليها تتكلم بأي شيء تكتبه"},
                   category: "Entertainment",
                   guide: { ar: "{pn} [النص]"}
