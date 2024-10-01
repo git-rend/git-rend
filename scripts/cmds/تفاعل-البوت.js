@@ -1,12 +1,13 @@
 const fs = require("fs");
 module.exports.config = {
-	                name: "تفاعل-البوت",
+	          name: "تفاعل-البوت",
                   aliases: ["التفاعلات"],
                   version: "2.1.1",
                   author: "محمد تانجيرو", 
-	                countdown: "5",
+	          countdown: "5",
+	          role: 0,
                   description: { ar: "تفاعلات البوت مع الرسائل"},
-	                category: "no prefix",
+	          category: "no prefix",
                   guide: { ar: "لا تحتاج استخدام الأمر"}
                          };
 
@@ -14,7 +15,7 @@ module.exports.onStart = function({ api, event, client, __GLOBAL }) {};
 module.exports.onChat = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	let react = event.body;
-	if(react.includes("تعطي") || react.includes("زب") || react.includes("طيز") || react.includes("بزول") ||  react.includes("بزاز") || react.includes("بزازل") || react.includes("🖕") || react.includes("🤢") || react.includes("بغل") || react.includes("خنزير") || react.includes("حمار") || react.includes("حيوان") || react.includes("نعال") || react.includes("زمال") || react.includes("كسمج") || react.includes(" كس") || react.includes("كسمك") || react.includes("كواد") || react.includes("فرخ") || react.includes("كحبة") || react.includes("قحبة") || react.includes("كحبه") || react.includes("قحبه") || react.includes("كلب") || react.includes("نيك")) {
+	if(react.includes("تعطي") || react.includes("زب") || react.includes("طيز") || react.includes("بزول") ||  react.includes("بزاز") || react.includes("سوة") || react.includes("🖕") || react.includes("🤢") || react.includes("بغل") || react.includes("خنزير") || react.includes("حمار") || react.includes("حيوان") || react.includes("نعال") || react.includes("زمال") || react.includes("كسمج") || react.includes(" كس") || react.includes("كسمك") || react.includes("كواد") || react.includes("فرخ") || react.includes("كحبة") || react.includes("قحبة") || react.includes("كحبه") || react.includes("قحبه") || react.includes("كلب") || react.includes("نيك")) {
 		var msg = {
 				body: ""
 			}
