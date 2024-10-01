@@ -16,15 +16,15 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   
   if (mhmd.startsWith ("جعت ") || mhmd.endsWith(" جعت") || mhmd.includes(" جعت ") || mhmd.toString() == "جعت") {
   return api.sendMessage("إذا جعت كل 🙄",
-event.threadID,event.messageID)};
+  event.threadID,event.messageID)};
 
- if (mhmd.startsWith ("احبك ") || mhmd.endsWith(" احبك") || mhmd.includes(" احبك ") || mhmd.toString() == "احبك") {
+  if (mhmd.startsWith ("احبك ") || mhmd.endsWith(" احبك") || mhmd.includes(" احبك ") || mhmd.toString() == "احبك") {
     return api.sendMessage("أمممم ... الأمر محرج 🤭\nدعني أفكر في الأمر 🙄",
-event.threadID,event.messageID)}; 
+  event.threadID,event.messageID)}; 
 
   if (mhmd.includes ("سلام عليكم")) {
     return api.sendMessage("وعليكم السلام ورحمة الله وبركاته 😊",
-event.threadID,event.messageID)};
+  event.threadID,event.messageID)};
 
   if (mhmd.includes ("صباح الخي") || mhmd.includes ("صباحو")) {
     return api.sendMessage("صباح النور عزيزي 👋\nلتحظى بيوم جيد 😊",
