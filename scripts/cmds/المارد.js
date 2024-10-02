@@ -22,7 +22,7 @@ module.exports = {
     }
   },
 
-  onMessage: async function ({ api, event, args, message }) {
+  onChat: async function ({ api, event, args, message }) {
     const userInput = message.body.toLowerCase();
 
     if (userInput === "!aki") {
