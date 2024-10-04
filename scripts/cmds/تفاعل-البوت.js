@@ -22,7 +22,7 @@ module.exports.onChat = function({ api, event, client, __GLOBAL }) {
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("❌", event.messageID, (err) => {}, true)
           };
-    if(react.includes("حب") || react.includes("بوت") || react.includes("سلام عليكم") || react.includes("غوجو") || react.includes("مطور") || react.includes("محمد") || react.includes("صباح") || react.includes("تصبح") ||  react.includes("ثباح") || react.includes("صباحو") || react.includes("هلا") || react.includes("هلاوات") || react.includes("شلونكم") || react.includes("حمد") || react.includes("روع") || react.includes("قلب")) {
+    if(react.includes("حب") || react.includes("بوت") || react.includes("سلام عليكم") || react.includes("غوجو") || react.includes("مطور") || react.includes("الله") || react.includes("صباح") || react.includes("تصبح") ||  react.includes("ثباح") || react.includes("صباحو") || react.includes("هلا") || react.includes("هلاوات") || react.includes("شلونكم") || react.includes("حمد") || react.includes("روع") || react.includes("قلب")) {
       var heart = {
 				body: ""
 			}
