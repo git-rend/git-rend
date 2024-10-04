@@ -49,9 +49,10 @@ module.exports.onChat = async function({event: e, api: a, client: t, Users: s, t
 		                              off: "تم ايقاف",
 		                              successText: "اعادة ارسال الرسائل المحذوفة"
 	}},
-  module.exports.onStart = async function({api: e, event: a, Threads: t, getLang: s}) {
+  module.exports.onStart = async function({api: e, event: a, threadsData: t, getLang: s}) {
 	const { threadID: n, messageID: o } = a;
-	let d = (await t.getData(n)).data;
+	let d = (await t.get(n));
+	  
 	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.setData(n, {
 		data: d}), 
     global.data.threadData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
