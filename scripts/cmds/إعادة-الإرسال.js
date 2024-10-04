@@ -1,4 +1,4 @@
-module.exports.config= {
+module.exports.config = {
 		      name: "إعادة-الإرسال",
 		      version: "1.5",
 		      author: "محمد تانجيرو",
@@ -43,16 +43,15 @@ module.exports.onChat = async function({event: e, api: a, client: t, Users: s, t
 				d(p, Buffer.from(y, "utf-8")), s.attachment.push(r(p))
 			}
 			a.sendMessage(s, u)
-		}
-	}
-}, module.exports.langs = { ar: { on: "تم تشغيل",
-		                              off: "تم ايقاف",
-		                              successText: "اعادة ارسال الرسائل المحذوفة"
+		}}},
+module.exports.langs = { ar: { on: "تم تشغيل",
+		               off: "تم ايقاف",
+		               successText: "اعادة ارسال الرسائل المحذوفة"
 	}},
-  module.exports.onStart = async function({api: e, event: a, threadsData: t, getLang: s}) {
+module.exports.onStart = async function({api: e, event: a, threadsData: t, getLang: s}) {
 	const { threadID: n, messageID: o } = a;
 	let d = (await t.get(n));
 	  
 	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.set(n, { data: d}), 
-    global.data.threadData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
+    global.data.threadsData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
 };
