@@ -1,6 +1,6 @@
 module.exports = { config: {
 		      name: "ترتيبي",
-	              aliases: ["أحسبي","عدد-الرسائل","العداد"],
+	              aliases: ["أحسبي","عدد-الرسائل","ترتيب"],
 		      version: "1.3",
 		      author: "NTKhang", // تعريب وتعديل: محمد تانجيرو \\
 		      countDown: 5,
