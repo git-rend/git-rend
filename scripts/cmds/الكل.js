@@ -4,7 +4,7 @@ module.exports = {
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
-		role: 1,
+		role: 0,
 		description: {
 			ar: "تعمل تاغ للكل"
 		},
