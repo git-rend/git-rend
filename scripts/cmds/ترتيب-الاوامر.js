@@ -1,6 +1,6 @@
 module.exports = { config: {
 		      name: "ترتيب-الاوامر",
-                      aliases: ["ترتيب-القائمة","ترتيب"],
+                      aliases: ["ترتيب-القائمة","تنظيم"],
 		      version: "1.2",
 		      author: "NTKhang", // تعريب: محمد تانجيرو \\
 		      countDown: 5,
