@@ -53,7 +53,6 @@ module.exports.onChat = async function({event: e, api: a, client: t, Users: s, t
 	const { threadID: n, messageID: o } = a;
 	let d = (await t.get(n));
 	  
-	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.setData(n, {
-		data: d}), 
+	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.set(n, { data: d}), 
     global.data.threadData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
 };
