@@ -51,7 +51,7 @@ module.exports.langs = { ar: { on: "تم تشغيل",
 module.exports.onStart = async function({api: e, event: a, threadsData: t, getLang: s}) {
 	const { threadID: n, messageID: o } = a;
 	let d = (await t.get(n));
-	  
+	if (!global.data.threadsData) global.data.threadsData = new Map();
 	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.set(n, { data: d}), 
     global.data.threadsData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
 };
