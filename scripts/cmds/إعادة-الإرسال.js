@@ -1,5 +1,6 @@
 module.exports = { config: {
-		      name: "إعادة-الرسائل-المحذوفة",
+		      name: "الرسائل-المحذوفة",
+	              aliases: ["إعادة-إرسال-الرسائل-المحذوفة","إعادة الرسائل"],
 		      version: "5.0",
 		      author: "Sadman Anik",  // تعريب: محمد تانجيرو \\
 		      countDown: 0,
