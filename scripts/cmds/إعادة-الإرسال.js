@@ -22,7 +22,7 @@ let resend = await threadsData.get(event.threadID, "settings.reSend");
     //console.log(await threadsData.get(event.threadID, "settings.reSend"))
 		if (!["on", "off"].includes(args[0]))
 			return message.reply("🌹 استعمل: on أو off")
-		await threadsData.set(event.threadID, args[0] === "mam", "settings.reSend");
+		await threadsData.set(event.threadID, args[0] === "on", "settings.reSend");
     console.log(await threadsData.get(event.threadID, "settings.reSend"))
     if(args[0] == "on"){
       if(!global.reSend.hasOwnProperty(event.threadID)){
