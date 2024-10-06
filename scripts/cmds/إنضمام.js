@@ -69,21 +69,21 @@ module.exports = { config: {
 			// Check if the user is already in the group
 			const memberList = await api.getThreadInfo(groupID);
 			if (memberList.participantIDs.includes(event.senderID)) {
-				api.sendMessage(`Can't add you, you are already in the group chat: \n${selectedGroup.threadName}`, event.threadID, event.messageID);
+				api.sendMessage(`غࢪوب: ${selectedGroup.threadName}\n🌹 أنت عضو في المجموعة فعلا`, event.threadID, event.messageID);
 				return;
 			}
 
 			// Check if group is full
 			if (memberList.participantIDs.length >= 250) {
-				api.sendMessage(`Can't add you, the group chat is full: \n${selectedGroup.threadName}`, event.threadID, event.messageID);
+				api.sendMessage(`غروب: ${selectedGroup.threadName}\n🌹 المجموعة بلغت الحد الأقصى\nلعدد الأعضاء، لذا لا يمكن إضافتك`, event.threadID, event.messageID);
 				return;
 			}
 
 			await api.addUserToGroup(event.senderID, groupID);
-			api.sendMessage(`You have joined the group chat: ${selectedGroup.threadName}`, event.threadID, event.messageID);
+			api.sendMessage(`تمت إضافتڪ إلى المجموعة\nبنجـاح ، يمڪنڪ التأڪد ✅\nغروب: ${selectedGroup.threadName}`, event.threadID, event.messageID);
 		} catch (error) {
 			console.error("Error joining group chat", error);
-			api.sendMessage('An error occurred while joining the group chat.\nPlease try again later.', event.threadID, event.messageID);
+			api.sendMessage('🌹 حدث خـطأ أثنـاء إضافتڪ\nيࢪجى المحاولة مرة أخࢪى لاحقًا', event.threadID, event.messageID);
 		} finally {
 			global.GoatBot.onReply.delete(event.messageID);
 		}
