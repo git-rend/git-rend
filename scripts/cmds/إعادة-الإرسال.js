@@ -1,56 +1,51 @@
-module.exports.config = {
-		      name: "إعادة-الإرسال",
-		      version: "1.5",
-		      author: "محمد تانجيرو",
-		      countDown: 5,
-		      role: 0,
-		      description: {ar: "إعادة إرسال الرسائل المحذوفة"},
-		      category: "owner",
-		      guide: { ar: ""}
-                        },
+module.exports = { config: {
+		      name: "إعادة-الرسائل-المحذوفة",
+		      version: "5.0",
+		      author: "Sadman Anik",  // تعريب: محمد تانجيرو \\
+		      countDown: 0,
+		      role: 2,
+		      description: { ar: "إعادة إرسال الرسائل المحذوفة"},
+		      category: "Admins",
+		      guide: { ar :"{pn} [on | off]"},
+	              envConfig: { deltaNext: 5 }
+	                   },
+  
 
-                  
-module.exports.onChat = async function({event: e, api: a, client: t, Users: s, threadsData}) {
-	const n = reauire("request"),
-		o = reauire("axios"),
-		{ writeFileSync: d, createReadStream: r } = reauire("fs-extra");
-	let { messageID: g, senderID: l, threadID: u, body: c } = e;
-	global.logMessage || (global.logMessage = new Map), global.data.botID || (global.data.botID = a.getCurrentUserID());
-	const i = await threadsData.get(u) || {};
-	if ((void 0 === i.resend || 0 != i.resend) && l != global.data.botID && ("message_unsend" != e.type && global.logMessage.set(g, {
-			msgBody: c,
-			attachment: e.attachments}),
-"message_unsend" == e.type)) {
-		var m = global.logMessage.get(g);
-		if (!m) return;
-		let e = await s.getNameUser(l);
-		if (null == m.attachment[0]) return a.sendMessage(`✨ فضيحة، تعالوا شوفوا ${e} ماذا حذف 🤣:\n ${m.msgBody}`, u); {
-			let t = 0,
-				s = {
-					body: `✨ فضيحة، تعالوا شوفوا ${e} ماذا حذف 🤣: ${""!=m.msgBody?`\n\n: ${m.msgBody}`:""}`,
-					attachment: [],
-					mentions: {
-						tag: e,
-						id: l
-					}
-				};
-			for (var f of m.attachment) {
-				t += 1;
-				var h = (await n.get(f.url)).uri.pathname,
-					b = h.substring(h.lastIndexOf(".") + 1),
-					p = __dirname + `/cache/${t}.png`,
-					y = (await o.get(f.url, {responseType: "arraybuffer"})).data;
-				d(p, Buffer.from(y, "utf-8")), s.attachment.push(r(p))
-			}
-			a.sendMessage(s, u)
-		}}},
-module.exports.langs = { ar: { on: "تم تشغيل",
-		               off: "تم ايقاف",
-		               successText: "اعادة ارسال الرسائل المحذوفة"
-	}},
-module.exports.onStart = async function({api: e, event: a, threadsData: t, getLang: s}) {
-	const { threadID: n, messageID: o } = a;
-	let d = (await t.get(n));
-	return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.set(n, { data: d}), 
-    await t.set(n,d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
-};
+	onStart: async function ({ api, message, event, threadsData, args }) {
+let resend = await threadsData.get(event.threadID, "settings.reSend");
+		
+			//console.log(resend)
+    if(resend === undefined){
+      await threadsData.set(event.threadID, true, "settings.reSend");
+    }
+    //console.log(await threadsData.get(event.threadID, "settings.reSend"))
+		if (!["on", "off"].includes(args[0]))
+			return message.reply("🌹 استعمل: on أو off")
+		await threadsData.set(event.threadID, args[0] === "mam", "settings.reSend");
+    console.log(await threadsData.get(event.threadID, "settings.reSend"))
+    if(args[0] == "on"){
+      if(!global.reSend.hasOwnProperty(event.threadID)){
+    global.reSend[event.threadID] = []
+    }
+    global.reSend[event.threadID] = await api.getThreadHistory(event.threadID, 100, undefined)
+}
+		return message.reply(`🌹 لقد قمت بـ: ${args[0] === "on" ? "تشغيل" : "إيقاف"} إعادة إرسال الرسائل المحذوفة بنجاح ✅`);
+	},
+
+onChat: async function ({ api, threadsData, usersData, event, message }) {
+  if(event.type !== "message_unsend"){
+		let resend = await threadsData.get(event.threadID, "settings.reSend");
+		if (!resend)
+			return;
+  
+		if(!global.reSend.hasOwnProperty(event.threadID)){
+    global.reSend[event.threadID] = []
+    }
+    global.reSend[event.threadID].push(event)
+
+  if(global.reSend.length >50){
+    global.reSend.shift()
+      }
+    }
+  }
+	}
