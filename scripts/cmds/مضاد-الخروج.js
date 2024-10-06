@@ -1,15 +1,14 @@
-module.exports = {
-  config: {
-    name: "مضاد-الخروج",
-    version: "1.0",
-    author: "AceGun",
-    countDown: 5,
-    role: 0,
-    description: { ar: "Enable or disable antiout"},
-    category: "boxchat",
-    guide: { ar: "{pn} [on | off]"},
-    envConfig: {deltaNext: 5}
-  },
+module.exports = { config: {
+                      name: "مضاد-الخروج",
+                      version: "1.0",
+                      author: "AceGun", // تعريب: محمد تانجيرو \\
+                      countDown: 5,
+                      role: 1,
+                      description: { ar: "تشغيل وإيقاف وضع منع الخروج، إذا خرج عضو يرجعه البوت"},
+                      category: "boxchat",
+                      guide: { ar: "{pn} [on | off]"},
+                      envConfig: {deltaNext: 5}
+                           },
   onStart: async function({ message, event, threadsData, args }) {
     let antiout = await threadsData.get(event.threadID, "settings.antiout");
     if (antiout === undefined) {
@@ -17,10 +16,10 @@ module.exports = {
       antiout = true;
     }
     if (!["on", "off"].includes(args[0])) {
-      return message.reply("Please use 'on' or 'off' as an argument");
+      return message.reply("استعمل on للتشغيل ✅\nاستعمل off للإيقاف ❌");
     }
     await threadsData.set(event.threadID, args[0] === "on", "settings.antiout");
-    return message.reply(`Antiout has been ${args[0] === "on" ? "enabled" : "disabled"}.`);
+    return message.reply(`✨💙 لقد قمت بـ: ${args[0] === "on" ? "تشغيل" : "إيقاف"} وضع منع الخروج 💙✨`);
   },
   onEvent: async function({ api, event, threadsData }) {
     const antiout = await threadsData.get(event.threadID, "settings.antiout");
