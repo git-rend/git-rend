@@ -8,7 +8,7 @@ module.exports = { config: {
 		      version: "2.0",
 		      author: "Kshitiz", // تعريب: محمد تانجيرو \\
 		      countDown: 5,
-		      role: 0,
+		      role: 2,
 		      description: { ar: "Join the group that bot is in"},
 		      category: "owner",
 		      guide: { ar: "{pn}"},
