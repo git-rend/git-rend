@@ -3,16 +3,16 @@ const fs = require("fs-extra");
 const request = require("request");
 
 module.exports = { config: {
-		                  name: "انضمام",
+		      name: "انضمام",
                       aliases: ["إنضمام","ضيفيني"],
-		                  version: "2.0",
-		                  author: "Kshitiz", // تعريب: محمد تانجيرو \\
-		                  countDown: 5,
-		                  role: 0,
-		                  description: { ar: "Join the group that bot is in"},
-		                  category: "owner",
-		                  guide: { ar: "{pn}"},
-	                         },
+		      version: "2.0",
+		      author: "Kshitiz", // تعريب: محمد تانجيرو \\
+		      countDown: 5,
+		      role: 0,
+		      description: { ar: "Join the group that bot is in"},
+		      category: "owner",
+		      guide: { ar: "{pn}"},
+	                   },
 
 	onStart: async function ({ api, event }) {
 		try {
