@@ -22,7 +22,7 @@ module.exports.onStart = async function({ api, event, usersData }) {
         var data = await usersData.get(senderID);
         var money = data.money
 	
-        if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال ${pre}كهف - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
+        if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
         
