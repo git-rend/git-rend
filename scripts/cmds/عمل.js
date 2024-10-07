@@ -2,7 +2,7 @@ module.exports.config = {
                 name: "عمل",
 		version: "1.3",
 		author: "محمد تانجيرو",
-		countDown: 60,
+		countDown: 600,
 		role: 0,
 		description: { ar: "تاخذ رصيد مقابل العمل" },
 		category: "events",
