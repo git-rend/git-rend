@@ -13,7 +13,7 @@ module.exports = { config: {
 				 wrongnumber: "✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠",
 	                         cooldown: "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙",
 		       }       }, 
-/*module.exports.*/onReply: async ({ event, api, message, Reply, usersData, getlang }) => {
+/*module.exports.*/onReply: async ({ event, api, message, Reply, usersData, getLang }) => {
     const { threadID, messageID, senderID } = event;
     const userData = await usersData.get(senderID) || {};
 if (Reply.author != event.senderID) 
