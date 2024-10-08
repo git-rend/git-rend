@@ -17,7 +17,7 @@ module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
     const userData = await usersData.get(senderID) || {};
 if (Reply.author != event.senderID) 
-return api.sendMessage(getLang("antitheft", event.threadID, event.messageID))
+return api.sendMessage(getLang("antitheft"), event.threadID, event.messageID)
 
 var coinsmhmd1 = Math.floor(Math.random() * 33000) + 8000;
 var coinsmhmd2 = Math.floor(Math.random() * 6000) + 2000;
@@ -76,8 +76,8 @@ var msg = "";
                 default: break;
             };
             const choose = parseInt(event.body);
-            if (isNaN(event.body)) return api.sendMessage(getLang("isnan", event.threadID, event.messageID));
-            if (choose > 10 || choose < 1) return api.sendMessage(getLang("wrongnumber", event.threadID, event.messageID));
+            if (isNaN(event.body)) return api.sendMessage(getLang("isnan"), event.threadID, event.messageID);
+            if (choose > 10 || choose < 1) return api.sendMessage(getLang("wrongnumber"), event.threadID, event.messageID);
             api.unsendMessage(Reply.messageID);
             if (msg == "⚡️Chưa update...") {
                 msg = "⚡️التحديث قريبا...";
