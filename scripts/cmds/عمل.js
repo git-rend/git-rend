@@ -1,4 +1,4 @@
-module.exports.config = {
+module.exports = { config: {
                 name: "عمل",
 		version: "1.3",
 		author: "محمد تانجيرو",
@@ -8,12 +8,12 @@ module.exports.config = {
 		category: "events",
 		guide: { ar: "{pn}" }
 			   };
-module.exports.langs = { "ar": { antitheft: "لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب",
+/*module.exports.*/langs: { "ar": { antitheft: "لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب",
 				 isnan: "✨ أدخل رقم من 1 لـ 10 🙄",
 				 wrongnumber: "✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠",
 	                         cooldown: "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙",
 		       }       };
-module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
+/*module.exports.*/onReply: async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
     const userData = await usersData.get(senderID) || {};
 if (Reply.author != event.senderID) 
@@ -89,8 +89,8 @@ var msg = "";
 
     };
 }
-}
-module.exports.onStart = async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
+};
+/*module.exports.*/onStart : async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
     const { threadID, messageID, senderID } = event;
     const cooldown = 1800000;
     let data = (await usersData.get(senderID)) || {};
@@ -112,3 +112,4 @@ module.exports.onStart = async ({ args, commandName, event, api, usersData, glob
         })
     }
 }
+} 
