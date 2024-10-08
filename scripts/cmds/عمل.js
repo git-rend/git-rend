@@ -7,12 +7,12 @@ module.exports = { config: {
 		description: { ar: "تاخذ رصيد مقابل العمل" },
 		category: "events",
 		guide: { ar: "{pn}" }
-			   };
+			   }, 
 /*module.exports.*/langs: { "ar": { antitheft: "لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب",
 				 isnan: "✨ أدخل رقم من 1 لـ 10 🙄",
 				 wrongnumber: "✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠",
 	                         cooldown: "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙",
-		       }       };
+		       }       }, 
 /*module.exports.*/onReply: async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
     const userData = await usersData.get(senderID) || {};
@@ -89,7 +89,7 @@ var msg = "";
 
     };
 }
-};
+}, 
 /*module.exports.*/onStart : async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
     const { threadID, messageID, senderID } = event;
     const cooldown = 1800000;
