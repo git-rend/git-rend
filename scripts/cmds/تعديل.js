@@ -11,10 +11,10 @@ module.exports = { config: {
 	},
 
 	onStart: async function ({ api, event, args }) {
-		const replyMessage = event.messageReply.body;
+		const replyMessage = event.messageReply.senderID;
 
 		if (!replyMessage || !args || args.length === 0) {
-			api.sendMessage("Invalid input. Please reply to a bot message to edit.", event.threadID, event.messageID);
+			api.sendMessage("🌹 ࢪد على ࢪسالة البوت، واكتب\nمحتـوى التعديل لتعديل الࢪسالـة", event.threadID, event.messageID);
 			return;
 		}
 
@@ -24,7 +24,7 @@ module.exports = { config: {
 			await api.editMessage(`${editedMessage}`, event.messageReply.messageID);
 		} catch (error) {
 			console.error("Error editing message", error);
-			api.sendMessage("An error occurred while editing the message. Please try again later.", event.threadID);
+			api.sendMessage("🌹 تعذࢪ تعديل الࢪسالة", event.threadID);
 		}
 	},
 };
