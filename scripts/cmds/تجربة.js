@@ -29,8 +29,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         var tile = Math.floor(Math.random() * 101);
 	const threadData = await threadsData.get(event.threadID);
 	const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	const Boys = valuesMember.filter(item => item.gender == "MALE").participantIDs/*length*/;
-        //var sex = await data[id].gender;
+	const Boy = valuesMember.filter(item => item.gender == "MALE").length;
+        const Boys = boy.participantIDs//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
