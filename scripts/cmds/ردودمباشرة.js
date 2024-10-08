@@ -65,6 +65,10 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   if (mhmd.includes("كم عمر") || mhmd.includes ("شحال عمر") || mhmd.includes ("شحال في عمر") || mhmd.includes ("اديش عمر")) {
     return api.sendMessage("عمري صار 20 🤭، وأنت 🙄",
   event.threadID,event.messageID)};
+  
+  if (mhmd.includes("كيف اسم") || mhmd.includes ("ما اسم") || mhmd.includes (" اسم")) {
+    return api.sendMessage("🌹 اسمي أڪاني 🤭، تشࢪفت\nبمعرفتڪ، وأنت ڪيف اسمڪ",
+  event.threadID,event.messageID)};
 
   if (mhmd.toString() == "🙂" || mhmd.toString() == "😀" || mhmd.toString() == "😁" || mhmd.toString() == "😃" || mhmd.toString() == "😄" || mhmd.toString() == "😊" || mhmd.toString() == "🙃" || mhmd.toString() == "😸" || mhmd.toString() == "😺") {
     return api.sendMessage("الحياة حلوة وابتسامتك أحلى 🤭",
