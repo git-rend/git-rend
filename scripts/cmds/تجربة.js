@@ -30,7 +30,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	const threadData = await threadsData.get(event.threadID);
 	const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
 	const Boy = valuesMember.filter(item => item.gender == "MALE").length;
-        const Boys = boy.participantIDs//var sex = await data[id].gender;
+        const Boys = Boy.participantIDs//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
