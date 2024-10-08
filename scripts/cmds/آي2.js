@@ -57,9 +57,9 @@ aliases: [],
 version: 1.6,
 author: "Jun",
 role: 0,
- description: "An AI that can do various tasks",
+ description: { ar: "An AI that can do various tasks"},
  guide: "{pn} <query>",
- category: "AI"
+ category: { ar: "AI"}
  },
  onStart: function() {},
  onChat: ai
