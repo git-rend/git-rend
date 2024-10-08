@@ -13,7 +13,7 @@ module.exports.config = {
 		}
 	},
 
-module.exports.onStart = async function({ api, args, event, usersData }) {
+module.exports.onStart = async function({ api, args, event, usersData, threadsData }) {
         const axios = require("axios");
         const fs = require("fs-extra");
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
