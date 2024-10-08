@@ -6,7 +6,7 @@ module.exports = {
 		name: "آي4",
 		author: "Cliff", // api by bungdas
 		version: "2.0",
-		cooldowns: 0,
+		countDown: 0,
 		role: 0,
 		description: { ar: "Talk with besh"},
 		category: "Talk",
