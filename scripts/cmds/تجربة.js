@@ -27,8 +27,9 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
         if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
-        var sex = await data[id].gender;
-        var boys = sex == 1 /*event.participantIDs*/;
+	const Boys = valuesMember.filter(item => item.gender == "MALE")/*.length*/;
+        //var sex = await data[id].gender;
+        //var boys = sex == 1 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
         var namee = (await usersData.get(event.senderID)).name;
