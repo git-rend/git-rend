@@ -1,6 +1,6 @@
 module.exports = { config: {
 		      name: "فريق",
-		      aliases: ["تاغ-مجموعة","تاغات"],
+		      aliases: ["تاغ"],
 		      version: "1.5",
 		      author: "NTKhang", // تعريب: محمد تانجيرو \\
 		      countDown: 5,
