@@ -1,13 +1,13 @@
 module.exports.config = {
-		name: "زواج",
-		version: "1.4",
-		author: "محمد تانجيرو",
-		countDown: 5,
-		role: 0,
-		description: { ar:" زواج اثنين من الغروب بشكل عشوائي"},
-		category: "box chat",
-		guide: { ar: "{pn}"}
-	},
+		  name: "زواج",
+		  version: "1.4",
+		  author: "محمد تانجيرو",
+		  countDown: 5,
+		  role: 0,
+		  description: { ar:" زواج اثنين من الغروب بشكل عشوائي"},
+		  category: "box chat",
+		  guide: { ar: "{pn}"}
+	                },
 
 module.exports.onStart = async function({ api, event, usersData }) {
         const axios = require("axios");
@@ -25,20 +25,21 @@ module.exports.onStart = async function({ api, event, usersData }) {
 
         //let loz = await api.getThreadInfo(event.threadID);
         var ids = event.participantIDs;
-        var id = ids[Math.floor(Math.random() * ids.length)];
+        var id1 = ids[Math.floor(Math.random() * ids.length)];
+	var id2 = ids[Math.floor(Math.random() * ids.length)];
 
-        var name1 = (await usersData.get(id)).name;
-        var name2 = (await usersData.get(id)).name;
+        var name1 = (await usersData.get(id1)).name;
+        var name2 = (await usersData.get(id2)).name;
 
         var arraytag = [];
-        arraytag.push({id: id, tag: name1});
-        arraytag.push({id: id, tag: name2});
+        arraytag.push({id: id1, tag: name1});
+        arraytag.push({id: id2, tag: name2});
       
         usersData.set(event.senderID, options = {money: money - 200, data: data.data})
   
-        let Avatar1 = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+        let Avatar1 = (await axios.get( `https://graph.facebook.com/${id1}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar1, "utf-8") );
-        let Avatar2 = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+        let Avatar2 = (await axios.get( `https://graph.facebook.com/${id2}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
             fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
         var imglove = [];
               imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
