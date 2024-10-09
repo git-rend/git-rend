@@ -61,7 +61,8 @@ module.exports.onStart = async function ({ event, api, args }) {
     const fs = require ("fs-extra");
     const { threadID, messageID, senderID } = event;
     var mention = Object.keys(event.mentions)[0]
-    let tag = event.mentions[mention].replace("@", " ");
+    for (const uid in mentions)
+		tag = event.mentions[uid].replace("@", "");
     if (!mention) return api.sendMessage("تاغ 😑", threadID, messageID);
     else {
         var one = senderID, two = mention;
