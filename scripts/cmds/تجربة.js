@@ -17,7 +17,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         const axios = require("axios");
         const fs = require("fs-extra");
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
-	const { senderID } = event;
+	const { senderID, threadID } = event;
 	const pre = global.GoatBot.config.prefix;
         var data = await usersData.get(senderID);
         var money = data.money
@@ -27,7 +27,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
-	const threadData = await threadsData.get(event.threadID);
+	const threadData = await threadsData.get(threadID);
 	const listboys = await threadsData.get(threadID, "data.listboys", []);
 		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
 	const Boy = listboys.filter(item => item.gender == "MALE").length;
