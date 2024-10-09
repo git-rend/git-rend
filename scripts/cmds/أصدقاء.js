@@ -1,13 +1,13 @@
 module.exports.config = {
                   name: "اصدقاء",
-		          aliases: ["أرقام","صداقة"],
-		          version: "1.1",
-		          author: "محمد تانجيرو",
-		          countDown: 5,
-		          role: 0,
-		          description: { ar: "تاغ لأعز صديق" },
-		          category: "games",
-		          guide: { ar: "{pn} [@تاغ]"},
+		  aliases: ["أرقام","صداقة"],
+		  version: "1.1",
+		  author: "محمد تانجيرو",
+		  countDown: 5,
+		  role: 0,
+		  description: { ar: "تاغ لأعز صديق" },
+		  category: "games",
+		  guide: { ar: "{pn} [@تاغ]"},
                         };
 
 module.exports.onLoad = async() => {
