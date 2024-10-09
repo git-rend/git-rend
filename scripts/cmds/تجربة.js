@@ -21,11 +21,12 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	const pre = global.GoatBot.config.prefix;
         var data = await usersData.get(senderID);
         var money = data.money
+	if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID)
 	  switch (args[0]) {
 			case "ولد":
 			case "بولد": {
-        if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
-        else {
+         //thay số tiền cần trừ vào 0, xóa money = 0
+        //else {
         var tile = Math.floor(Math.random() * 101);
 	const threadData = await threadsData.get(threadID);
 	const listboys = await threadsData.get(threadID, "data.listboys", []);
@@ -55,7 +56,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         return api.sendMessage(msg, event.threadID, event.messageID);
         //fs.unlinkSync(__dirname + '/cache/1.png');
         //fs.unlinkSync(__dirname + '/cache/2.png');
-      }; break;
+       break;
       }
       case "بنت":
 			case "ببنت": {
