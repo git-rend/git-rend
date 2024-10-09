@@ -27,7 +27,7 @@ async function makeImage({ one, two }) {
     const jimp = require ("jimp");
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let batgiam_img = (await jimp.read(__root + "/seophi.png"));
+    let batgiam_img = (await jimp (__root + "/seophi.png"));
     let pathImg = __root + `/batman${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
