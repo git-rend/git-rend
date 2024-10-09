@@ -1,23 +1,18 @@
 module.exports.config = {
-    name: "اصدقاء",
-    version: "2.0.2",
-    hasPermssion: 0,
-    credits: "محمد تانجيرو",
-    description: "تاغ لأعز صديق",
-    commandCategory: "𝔾𝔸𝕄𝔼𝕊",
-    usages: "[تاغ]",
-    cooldowns: 5,
-    dependencies: {
-        "axios": "",
-        "fs-extra": "",
-        "path": "",
-        "jimp": ""
-    }
-};
+                  name: "اصدقاء",
+		          aliases: ["أرقام","صداقة"],
+		          version: "1.1",
+		          author: "محمد تانجيرو",
+		          countDown: 5,
+		          role: 0,
+		          description: { ar: "تاغ لأعز صديق" },
+		          category: "games",
+		          guide: { ar: "{pn} [@تاغ]"},
+                        };
 
 module.exports.onLoad = async() => {
-    const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { resolve } = require ("path");
+    const { existsSync, mkdirSync } = require ("fs-extra");
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'seophi.png');
@@ -26,10 +21,10 @@ module.exports.onLoad = async() => {
 }
 
 async function makeImage({ one, two }) {
-    const fs = global.nodemodule["fs-extra"];
-    const path = global.nodemodule["path"];
-    const axios = global.nodemodule["axios"]; 
-    const jimp = global.nodemodule["jimp"];
+    const fs = require ("fs-extra");
+    const path = require ("path");
+    const axios = require ("axios"); 
+    const jimp = require ("jimp");
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let batgiam_img = await jimp.read(__root + "/seophi.png");
@@ -62,8 +57,8 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args }) {
-    const fs = global.nodemodule["fs-extra"];
+module.exports.onStart = async function ({ event, api, args }) {
+    const fs = require ("fs-extra");
     const { threadID, messageID, senderID } = event;
     var mention = Object.keys(event.mentions)[0]
     let tag = event.mentions[mention].replace("", "");
