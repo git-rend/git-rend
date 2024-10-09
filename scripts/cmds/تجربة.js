@@ -34,7 +34,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	const boy = listboys.find(item => item.gender == "MALE");
         //const Boys = Boy.participantIDs;//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
-        var id = boy[Math.floor(Math.random() * boy.length)];
+        var id = boy[Math.floor(Math.random()/* * boy.length*/)];
 
         var namee = (await usersData.get(event.senderID)).name;
         var name = (await usersData.get(id)).name;
