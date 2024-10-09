@@ -1,6 +1,6 @@
 module.exports.config = {
                   name: "اصدقاء",
-		  aliases: ["أرقام","صداقة"],
+		  aliases: ["أصدقاء","صداقة"],
 		  version: "1.1",
 		  author: "محمد تانجيرو",
 		  countDown: 5,
