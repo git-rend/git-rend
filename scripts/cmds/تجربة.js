@@ -30,10 +30,10 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	const threadData = await threadsData.get(threadID);
 	const listboys = await threadsData.get(threadID, "data.listboys", []);
 		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	const Boy = listboys.filter(item => item.gender == "MALE").length;
-        const Boys = Boy.participantIDs//var sex = await data[id].gender;
+	const Boy = listboys.filter(item => item.gender == "MALE").IDs;
+        //const Boys = Boy.participantIDs;//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
-        var id = boys[Math.floor(Math.random() * boys.length)];
+        var id = boy[Math.floor(Math.random() * boy.length)];
 
         var namee = (await usersData.get(event.senderID)).name;
         var name = (await usersData.get(id)).name;
