@@ -1,16 +1,15 @@
 const axios = require('axios');
 
-module.exports = {
-	config: {
-		name: "أكي",
-    aliases: ["اكي","آكي"],
-		author: "cliff",
-		version: "1.5",
-		countDown: 5,
-		role: 0,
-		category: "GPT4",
-		description: { ar: "gpt4 Architecture "},
-    guide: { ar: "{pn} [محتوى السؤال]"} 
+module.exports = { config: {
+		      name: "أكي",
+                      aliases: ["اكي","آكي"],
+		      author: "cliff",
+		      version: "1.5",
+		      countDown: 5,
+		      role: 0,
+		      category: "GPT4",
+		      description: { ar: "سؤال الذكاء الاصطناعي gpt4"},
+                      guide: { ar: "{pn} [محتوى السؤال]"} 
 	},
 
 	onStart: async function ({ api, event, args }) {
@@ -24,7 +23,7 @@ module.exports = {
 			}
 
 			if (!prompt) {
-				return api.sendMessage('Please provide a prompt to generate a text response.GPT4 {questions}\nExample: GPT4 What is the meaning of life?\n', event.threadID, messageID);
+				return api.sendMessage('🌹 أدخل استفساࢪك، وسأجيب\nعـن أي سـؤال تسألنـي عنـه ✅\nمثال: .أكي ماهي مكونات الأرض', event.threadID, messageID);
 			}
 
 			const gpt4_api = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${encodeURIComponent(prompt)}`;
@@ -36,11 +35,11 @@ module.exports = {
 				api.sendMessage({ body: generatedText, attachment: null }, event.threadID, messageID);
 			} else {
 				console.error('API response did not contain expected data:', response.data);
-				api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);
+				api.sendMessage(`🌹 حدث خطـأ أثنـاء إنشـاء الࢪد\nاستجابة لسؤالك، يࢪجى المحاولة\nمـࢪة أخـࢪى فـي وقـت لاحـق.`, event.threadID, messageID);
 			}
 		} catch (error) {
 			console.error('Error:', error);
-			api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Error details: ${error.message}`, event.threadID, event.messageID);
+			api.sendMessage(`🌹 حدث خطـأ أثنـاء إنشـاء الࢪد\nاستجابة لسؤالك، يࢪجى المحاولة\nمـࢪة أخـࢪى فـي وقـت لاحـق.`, event.threadID, event.messageID);
 		}
 	}
 };
