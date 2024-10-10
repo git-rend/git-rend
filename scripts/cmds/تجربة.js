@@ -91,9 +91,10 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //fs.unlinkSync(__dirname + '/cache/2.png');
       }; break;
       }
-         default: 
+         default: {
+		const threadData = await threadsData.get(threadID);
 		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	const boy = valuesMember.find(item => item.gender == "MALE").length;
-			  { return api.sendMessage(`${boy} زوجيني بنت أو زوجيني ولد`, event.threadID, event.messageID)}
+	        const boy = valuesMember.find(item => item.gender == "MALE").length;
+			 return api.sendMessage(`${boy} زوجيني بنت أو زوجيني ولد`, event.threadID, event.messageID)}
     }
 }
