@@ -91,6 +91,9 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //fs.unlinkSync(__dirname + '/cache/2.png');
       }; break;
       }
-         default: { return api.sendMessage("زوجيني بنت أو زوجيني ولد", event.threadID, event.messageID)}
+         default: 
+		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
+	const boy = valuesMember.find(item => item.gender == "MALE").length;
+			  { return api.sendMessage(`${boy} زوجيني بنت أو زوجيني ولد`, event.threadID, event.messageID)}
     }
 }
