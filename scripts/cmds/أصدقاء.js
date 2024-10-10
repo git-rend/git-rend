@@ -1,3 +1,4 @@
+const jimp = require ("jimp");
 module.exports.config = {
                   name: "اصدقاء",
 		  aliases: ["أصدقاء","صداقة"],
@@ -19,11 +20,11 @@ module.exports.onLoad = async() => {
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(path)) await downloadFile("https://i.imgur.com/hmKmmam.jpg", path);
 }
-
+async function makeImage({ one, two }) {
     const fs = require ("fs-extra");
     const path = require ("path");
     const axios = require ("axios"); 
-    const jimp = require ("jimp");
+    
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let batgiam_img = await jimp.read(__root + "/seophi.png");
@@ -31,7 +32,6 @@ module.exports.onLoad = async() => {
     let avatarOne = __root + `/avt_1.png`;
     let avatarTwo = __root + `/avt_2.png`;
 
-async function makeImage({ one, two }) {
     let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
     fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
     
