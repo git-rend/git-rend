@@ -63,6 +63,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
+	var gender= 2
         var sex = await data[id].gender;
         var boys = sex == 2 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
