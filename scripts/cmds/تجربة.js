@@ -64,8 +64,9 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         else {
         var tile = Math.floor(Math.random() * 101);
 	var gender= 2
-        var sex = await data[id].gender;
-        var boys = sex == 2 /*event.participantIDs*/;
+	var boys = gender.event.participantIDs
+       // var sex = await data[id].gender;
+      //  var boys = sex == 2 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
         var namee = (await usersData.get(event.senderID)).name;
