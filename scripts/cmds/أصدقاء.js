@@ -27,9 +27,9 @@ module.exports.onLoad = async() => {
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let batgiam_img = await jimp.read(__root + "/seophi.png");
-    let pathImg = __root + `/batman${one}_${two}.png`;
-    let avatarOne = __root + `/avt_${one}.png`;
-    let avatarTwo = __root + `/avt_${two}.png`;
+    let pathImg = __root + `/batman1-2.png`;
+    let avatarOne = __root + `/avt_1.png`;
+    let avatarTwo = __root + `/avt_2.png`;
 
 async function makeImage({ one, two }) {
     let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
