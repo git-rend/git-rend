@@ -6,8 +6,8 @@ module.exports = { config: {
 	                    version: "1.0.0",
                       countDown: 5,
 	                    role: 2,
-	                    author: "Jas",
-	                    description: { ar: "Turn on/off automatically seen when new messages are available"},
+	                    author: "Jas", // تعريب وتعديل: محمد تانجيرو \\
+	                    description: { ar: "تشغيل أو إيقاف وضع قراءة الرسائل بشكل تلقائي"},
 	                    category: "Admin",
 	                    guide: { ar: "{pn} [on | off]"},
                            },
@@ -24,12 +24,12 @@ onStart: async ({ api, event, args }) => {
 	 try {
 		 if (args[0] == 'on') {
 			 fs.writeFileSync(pathFile, 'true');
-			 api.sendMessage('The autoseen function is now enabled for new messages.', event.threadID, event.messageID);
+			 api.sendMessage('🌹 تـم تـشـغـيـل وضـع قـࢪاءة\nالـࢪسـائـل بشـڪل تـلقـائـي ✅', event.threadID, event.messageID);
 		 } else if (args[0] == 'off') {
 			 fs.writeFileSync(pathFile, 'false');
-			 api.sendMessage('The autoseen function has been disabled for new messages.', event.threadID, event.messageID);
+			 api.sendMessage('🌹 تم إيقاف تشغيل وضع قࢪاءة\nالـࢪسـائـل بشـڪل تـلقـائـي ✅', event.threadID, event.messageID);
 		 } else {
-			 api.sendMessage('Incorrect syntax', event.threadID, event.messageID);
+			 api.sendMessage('🌹 أڪتب الأمࢪ وبعده on أو off', event.threadID, event.messageID);
 		 }
 	 }
 	 catch(e) {
