@@ -74,4 +74,8 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
     return api.sendMessage("الحياة حلوة وابتسامتك أحلى 🤭",
   event.threadID,event.messageID)};
 
+  if (mhmd.startsWith ("بوت ") || mhmd.endsWith(" بوت") || mhmd.includes(" بوت ") || mhmd.toString() == "بوت" || mhmd.startsWith ("البوت ") || mhmd.endsWith(" البوت") || mhmd.includes(" البوت ") || mhmd.toString() == "البوت") {
+  return api.sendMessage("🌹 اسمي أڪاني، لا تناديني بوت",
+  event.threadID,event.messageID)};
+  
 };
