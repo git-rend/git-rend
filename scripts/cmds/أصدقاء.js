@@ -7,7 +7,7 @@ module.exports.config = {
             	role: 2,
             	description: { ar: "وضع صورتك مع صورة صديقك مع بعض" },
 	  	category: "edit",
-	    	guide: { ar: "{pn} أو {pn} [@تاغ] {pn} [رد]" }
+	    	guide: { ar: "{pn} [@تاغ | رد على رسالة]" }
                          };
 
 const fs = require('fs');
