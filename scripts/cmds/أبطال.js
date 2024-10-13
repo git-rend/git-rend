@@ -1,14 +1,15 @@
 module.exports.config = {
-                name: "أبطال",
-                   aliases: ["ابطال"],
-		version: "1.3",
-		author: "محمد تانجيرو",
-		countDown: 60,
-		role: 0,
-		description: { ar: "تاخذ رصيد مقابل العمل" },
-		category: "money",
-		guide: { ar: "{pn}" }
-			   };
+                  name: "أبطال",
+                  aliases: ["ابطال"],
+		  version: "1.3",
+		  author: "محمد تانجيرو",
+		  countDown: 60,
+		  role: 0,
+		  description: { ar: "تاخذ رصيد مقابل العمل" },
+		  category: "money",
+		  guide: { ar: "{pn}" }
+			 };
+
 module.exports.langs = { "ar": { antitheft: "لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب",
 				 isnan: "✨ أدخل رقم من 1 لـ 10 🙄",
 				 wrongnumber: "✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠",
@@ -45,9 +46,9 @@ var msg = "";
     switch(Reply.type) {
         case "اختيار": {
             switch(event.body) {
-                  case "1": msg = `✨أنت البطل أبوكاليبس الآن🗿\n\n${work1}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd1} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd1, data: userData.data}); break;            
-                  case "2": msg = `✨أنت البطل آيس مان الآن❄\n\n${work2}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd2} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd2, data: userData.data}); break;
-                  case "3": msg = `✨أنت البطل ذا بيست الآن🦧\n\n${work3}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd3} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd3, data: userData.data}); break;
+                case "1": msg = `✨أنت البطل أبوكاليبس الآن🗿\n\n${work1}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd1} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd1, data: userData.data}); break;            
+                case "2": msg = `✨أنت البطل آيس مان الآن❄\n\n${work2}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd2} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd2, data: userData.data}); break;
+                case "3": msg = `✨أنت البطل ذا بيست الآن🦧\n\n${work3}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd3} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd3, data: userData.data}); break;
                 case "4": msg = `✨أنت البطل وولفرين الآن🎯\n\n${work4}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd4} $ ]ا`; await usersData.set(senderID, {money: userData.money + coinsmhmd4, data: userData.data}); break;
                 case "5": msg = `✨أنت البطل ستورم الآن🌀\n\n${work5}\n\nأجرك مقابل عملك البطولي هو:\n           ا[ ${coinsmhmd5} $ ]ا` ; await usersData.set(senderID, {money: userData.money + coinsmhmd5, data: userData.data}); break;
                 default: break;
@@ -78,7 +79,7 @@ module.exports.onStart = async ({ args, commandName, event, api, usersData, glob
         return api.sendMessage(getLang("cooldown", minutes, (seconds < 10 ? "0" + seconds : seconds)), threadID, messageID);
     }
     else {    
-    return api.sendMessage("🌸 تمثل دورا من أدوار الأبطال\nالخارقين من كرتون x-man:\n༺ا-🌹━━━♡━━━🌹-ا༻\n\n✨ 1 =≻ ⚔️ أبوكاليبس 🗿\n✨ 2 =≻ ⚔️ آيس مان ❄\n✨ 3 =≻ ⚔️ ذا بيست 🦧\n✨ 4 => ⚔️ وولفرين 🎯\n✨ 5 =≻ ⚔️ ستورم 🌀\n\n༺ا-🌹━━━♡━━━🌹-ا༻\n    🌸 رد على الرسالة برقم\n      البطل من 1 إلى 5 🌸", threadID, (error, info) => {
+    return api.sendMessage("🌸 تمثل دورا من أدوار الأبطال\nالخارقين من كرتون x-man:\n༺ا-🌹━━━♡━━━🌹-ا༻\n\n✨ 1 =≻ ⚔️ أبوكاليبس 🗿\n✨ 2 =≻ ⚔️ آيس مان ❄\n✨ 3 =≻ ⚔️ ذا بيست 🦧\n✨ 4 => ⚔️ وولفرين 🎯\n✨ 5 =≻ ⚔️ ستورم 🌀\n\n༺ا-🌹━━━♡━━━🌹-ا༻\n    🌸 رد على الرسالة برقم\n      البطل من 1 إلى 5 🌸", threadID, messageID, (error, info) => {
         data.data.heroes = Date.now();
         global.GoatBot.onReply.set(info.messageID, {
             type: "اختيار",
