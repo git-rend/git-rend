@@ -72,7 +72,7 @@ var msg = "";
                 case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd7, data: userData.data}); break;
                 case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd8, data: userData.data}); break; 
                 case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd9, data: userData.data}); break;
-               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd10, data: userData.data}); break;                break;
+               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd10, data: userData.data}); break;
                 default: break;
             };
             const choose = parseInt(event.body);
@@ -101,7 +101,7 @@ module.exports.onStart = async ({ args, commandName, event, api, usersData, glob
         return api.sendMessage(getLang("cooldown", minutes, (seconds < 10 ? "0" + seconds : seconds)), event.threadID, event.messageID);
     }
     else {    
-    return api.sendMessage("✨ مناصب الشغل المتوفرة ✨\n    💙ا—-—-—-—-—-—ا💙\n\n1 => وزارة الطاقة والمناجم🌋\n2 => وزارة الشؤون الدينية 🕌\n3 => وزارة المجاهدين ⚔️💣\n4 => وزارة الصناعة 🏭🏗\n5 => وزارة الرياضة ⛹️‍♂️⚽\n6 => وزارة التعليم 📚📒\n7 => وزارة الصحة 🩻🧬\n8 => وزارة الثقافة 💃🕺\n9 => وزارة الدفاع 💂‍♂️🪖\n10 => وزارة العدل ⚖️🔨\n\n  💙ا—-—-—-—-—-—-—ا💙\n✨ رد على الرسالة برقم الشغل\nالذي اخترته (من 1 إلى 10)", event.threadID, (error, info) => {
+    return api.sendMessage("✨ مناصب الشغل المتوفرة ✨\n    💙ا—-—-—-—-—-—ا💙\n\n1 => وزارة الطاقة والمناجم🌋\n2 => وزارة الشؤون الدينية 🕌\n3 => وزارة المجاهدين ⚔️💣\n4 => وزارة الصناعة 🏭🏗\n5 => وزارة الرياضة ⛹️‍♂️⚽\n6 => وزارة التعليم 📚📒\n7 => وزارة الصحة 🩻🧬\n8 => وزارة الثقافة 💃🕺\n9 => وزارة الدفاع 💂‍♂️🪖\n10 => وزارة العدل ⚖️🔨\n\n  💙ا—-—-—-—-—-—-—ا💙\n✨ رد على الرسالة برقم الشغل\nالذي اخترته (من 1 إلى 10)", threadID, messageID, (error, info) => {
         data.data.workTime = Date.now();
         global.GoatBot.onReply.set(info.messageID, {
             type: "اختيار",
