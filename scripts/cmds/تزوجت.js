@@ -34,7 +34,7 @@ module.exports = { config: {
 				const jimp = require ("jimp");
 				const __root = path.resolve(__dirname, "cache");
 
-				let batgiam_img = await jimp.read(__root + "/married.png");
+				//let batgiam_img = await jimp.read(__root + "/married.png");
 				let pathImg = __root + `/image${one}_${two}.png`;
 				let avatarOne = __root + `/avt_${one}.png`;
 				let avatarTwo = __root + `/avt_${two}.png`;
