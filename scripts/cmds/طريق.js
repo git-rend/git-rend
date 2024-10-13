@@ -1,34 +1,28 @@
 module.exports.config = {
-	name: "طريق",
-	version: "1.0.2",
-	role: 2,
-	credits: "محمد تانجيرو",
-	description: "أنا في الطريق",
-	commandCategory: "𝔾𝔸𝕄𝔼𝕊",
-	usages: "rank",
-	cooldowns: 3,
-	dependencies: {
-	  "fs-extra": "",
-	  "axios": "",
-	  "canvas" :"",
-	  "jimp": "",
-	  "node-superfetch": ""
-	}
-};
+                name: "طريق",
+	        aliases:[""], 
+         	version: "2.7.7",
+		author: "محمد تانجيرو",
+         	countDown: 5,
+            	role: 0,
+            	description: { ar: "وضع صورتك مع صورة صديقك مع بعض" },
+	  	category: "edit",
+	    	guide: { ar: "{pn} [@تاغ | رد على رسالة]" }
+                         };
 
 module.exports.circle = async (image) => {
-	  const jimp = global.nodemodule['jimp'];
+	const jimp = require ('jimp');
   	image = await jimp.read(image);
   	image.circle();
   	return await image.getBufferAsync("image/png");
 };
 
-module.exports.run = async ({ event, api, args, Users }) => {
+module.exports.onStart = async ({ event, api, args, Users }) => {
 try {
-  const Canvas = global.nodemodule['canvas'];
-  const request = global.nodemodule["node-superfetch"];
-  const jimp = global.nodemodule["jimp"];
-  const fs = global.nodemodule["fs-extra"];
+  const Canvas = require ('canvas');
+  const request = require ("node-superfetch");
+  const jimp = require ("jimp");
+  const fs = require ("fs-extra");
   var path_toilet = __dirname+'/cache/damma.jpg'; 
   var id = Object.keys(event.mentions)[0] || event.senderID;
   const canvas = Canvas.createCanvas(500, 670);
