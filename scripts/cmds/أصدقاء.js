@@ -35,8 +35,8 @@ module.exports.onStart = async function ({ api, event, args }) {
   let baseprof2 = await loadImage(pathprof2);
   let canvas = createCanvas(baseImage.width, baseImage.height);
   let ctx = canvas.getContext("2d");
-  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(baseprof1, 275, 275, 420, 0);
+  ctx.drawImage(baseImage, 0, 0,/*canvas.width*/1024,/*canvas.height)*/712);
+  ctx.drawImage(baseprof1, 275, 275, 335, 365);
   ctx.drawImage(baseprof2, 250, 250, 100, 100);
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
