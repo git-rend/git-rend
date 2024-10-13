@@ -19,21 +19,24 @@ module.exports.onStart = async function ({ api, event, args }) {
   let pathImg = __dirname + "/images/married.png";
   let /*pathAva*/pathprof1 = __dirname + "/images/profile1.png";
 /*1*/let pathprof2 = __dirname + "/images/profile2.png";
-  if (!args[0]) { var uid = senderID}
-  if(event.type == "message_reply") { uid = event.messageReply.senderID }
-  if (args.join().indexOf('@') !== -1){ var uid = Object.keys(event.mentions) } 
-  let Avatar = (
-    await axios.get( `https://graph.facebook.com/${uid}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
-  fs.writeFileSync(pathAva, Buffer.from(Avatar, "utf-8"));
-  let getWanted = (
-    await axios.get(`https://i.imgur.com/QrYoP8F.jpeg`, { responseType: "arraybuffer", })).data;
-  fs.writeFileSync(pathImg, Buffer.from(getWanted, "utf-8"));
+/*2*/var Member1 = senderID;
+  if (!args[0]) {/*var uid = senderID*/return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)};
+  if(event.type == "message_reply") { var Member2 = event.messageReply.senderID }
+  if (args.join().indexOf('@') !== -1){ var Member2 = Object.keys(event.mentions) } 
+  let Avatar1 = ( await axios.get( `https://graph.facebook.com/${Member1}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+  fs.writeFileSync(pathAva, Buffer.from(Avatar1, "utf-8"));
+  let Avatar2 = ( await axios.get( `https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+  fs.writeFileSync(pathAva, Buffer.from(Avatar2, "utf-8"));
+  let getimage = ( await axios.get(`https://i.imgur.com/QrYoP8F.jpeg`, { responseType: "arraybuffer", })).data;
+  fs.writeFileSync(pathImg, Buffer.from(getimage, "utf-8"));
   let baseImage = await loadImage(pathImg);
-  let baseAva = await loadImage(pathAva);
+  let baseprof1 = await loadImage(pathprof1);
+  let baseprof2 = await loadImage(pathprof2);
   let canvas = createCanvas(baseImage.width, baseImage.height);
   let ctx = canvas.getContext("2d");
   ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(baseAva, 144, 500, 1090, 920);
+  ctx.drawImage(baseprof1, 144, 500, 1090, 920);
+  ctx.drawImage(baseprof2, 144, 500, 1090, 920);
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
