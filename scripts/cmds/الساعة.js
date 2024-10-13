@@ -295,8 +295,9 @@ message: ['♡────ا •💜• ا────♡\n\nالساعة الآ
 timer: '11:00:00 PM',
 message: ['♡────ا •💜• ا────♡\n\nالساعة الآن بالجزائر: 23:00\nبتوقيت السعودية: 01:00 ⏳\n\n♡────ا •💜• ا────♡']
 }];
-module.exports.onLoad = o => setInterval(() => {
+module.exports.onLoad = o => setInterval((threadsData) => {
+const allThreadID = (await threadsData.getAll()).filter(t => t.isGroup && t.members.find(m => m.userID == api.getCurrentUserID())?.inGroup);
 const r = a => a[Math.floor(Math.random()*a.length)];
-if (á = nam.find(i => i.timer == new Date(Date.now()+3600000).toLocaleString().split(/,/).pop().trim())) global.data.allThreadID.forEach(i => o.api.sendMessage(r(á.message), i));
+if (á = nam.find(i => i.timer == new Date(Date.now()+3600000).toLocaleString().split(/,/).pop().trim()))/*global.data.allThreadID.forEach*/(i => o.api.sendMessage(r(á.message), i, allThreadID.length));
 }, 1000);
 module.exports.onStart = o => {};
