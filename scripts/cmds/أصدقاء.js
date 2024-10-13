@@ -32,8 +32,8 @@ module.exports.onStart = async function ({ api, event, args }) {
   let getimage = ( await axios.get(`https://i.imgur.com/hmKmmam.jpg`, { responseType: "arraybuffer", })).data;
   fs.writeFileSync(pathImg, Buffer.from(getimage, "utf-8"));
   let baseImage = await loadImage(pathImg);
-  let baseprof1 = await loadImage(pathprof1);
-  let baseprof2 = await loadImage(pathprof2);
+  let baseprof1 = await /*loadImage*/circle(pathprof1);
+  let baseprof2 = await /*loadImage*/circle(pathprof2);
   let canvas = createCanvas(baseImage.width, baseImage.height);
   let ctx = canvas.getContext("2d");
   ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
