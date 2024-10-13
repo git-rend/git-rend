@@ -23,7 +23,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   //if (!args[0]) {/*var uid = senderID*/return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)};
   if(event.type == "message_reply") { var Member2 = event.messageReply.senderID }
   if (args.join().indexOf('@') !== -1){ var Member2 = Object.keys(event.mentions) } 
-  if((event.type == "message_reply")! || (args.join().indexOf('@') !== -1)!) { return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)}
+  if(!(event.type == "message_reply") || !(args.join().indexOf('@') !== -1)) { return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)}
   let Avatar1 = ( await axios.get( `https://graph.facebook.com/${Member1}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathAva, Buffer.from(Avatar1, "utf-8"));
   let Avatar2 = ( await axios.get( `https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
