@@ -20,7 +20,7 @@ module.exports.circle = async (image) => {
 module.exports.onStart = async ({ event, api, args, Users }) => {
 try {
   const Canvas = require ('canvas');
-  const request = require ("node-superfetch");
+  //const request = require ("node-superfetch");
   const jimp = require ("jimp");
   const fs = require ("fs-extra");
   var path_toilet = __dirname+'/cache/damma.jpg'; 
@@ -29,7 +29,7 @@ try {
 	const ctx = canvas.getContext('2d');
 	const background = await Canvas.loadImage('https://i.imgur.com/pfhHYzo.png');
   
-	var avatar = await request.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`);
+	var avatar = await Canvas.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`);
 	avatar = await this.circle(avatar.body);
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 	ctx.drawImage(await Canvas.loadImage(avatar), 160, 300, 160, 160);
