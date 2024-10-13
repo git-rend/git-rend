@@ -1,14 +1,14 @@
 module.exports = { config: {
-				              name: "تزوجت",
-				              aliases: ["زوجتي"],
-				              version: "1.0",
-				              author: "kivv",
-				              countDown: 5,
-				              role: 0,
-				              description: "الحصول على زوجة من اختيارك",
-				              category: "married",
-				              guide: "{pn} [@تاغ]"
-		                       },
+		      name: "تزوجت",
+		      aliases: ["زوجتي"],
+		      version: "1.0",
+		      author: "kivv",
+		      countDown: 5,
+		      role: 0,
+		      description: "الحصول على زوجة من اختيارك",
+		      category: "married",
+		      guide: "{pn} [@تاغ]"
+	                   },
 		  
     onStart: async function ({ message, event, args }) {
         const mention = Object.keys(event.mentions);
