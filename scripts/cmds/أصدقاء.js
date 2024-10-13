@@ -14,7 +14,7 @@ const fs = require('fs');
 const axios = require('axios');
 const { loadImage, createCanvas } = require('canvas');
 
-module.exports.onStart = async function ({ api, event, args }) {
+module.exports.onStart = async function ({ api, event, args, circle }) {
   let { senderID, threadID, messageID } = event;
   let pathImg = __dirname + "/images/married.png";
   let /*pathAva*/pathprof1 = __dirname + "/images/profile1.png";
