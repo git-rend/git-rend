@@ -1,10 +1,10 @@
 module.exports.config = {
                 name: "اصدقاء",
 	        aliases:["أصدقاء"], 
-         	version: "1.3",
+         	version: "2.7.7",
 		author: "محمد تانجيرو",
          	countDown: 5,
-            	role: 2,
+            	role: 0,
             	description: { ar: "وضع صورتك مع صورة صديقك مع بعض" },
 	  	category: "edit",
 	    	guide: { ar: "{pn} [@تاغ | رد على رسالة]" }
@@ -41,8 +41,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage(
-    { attachment: fs.createReadStream(pathImg) },
+  return api.sendMessage( { attachment: fs.createReadStream(pathImg) },
     threadID,
     () => fs.unlinkSync(pathImg),
     messageID
