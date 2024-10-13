@@ -37,7 +37,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   let ctx = canvas.getContext("2d");
   ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(baseprof1, 275, 275, 420, 0);
-  ctx.drawImage(baseprof2, 250, 250, 335, 360);
+  ctx.drawImage(baseprof2, 250, 250, 100, 100);
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
