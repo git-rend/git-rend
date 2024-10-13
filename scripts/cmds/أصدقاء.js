@@ -27,7 +27,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   fs.writeFileSync(pathAva, Buffer.from(Avatar1, "utf-8"));
   let Avatar2 = ( await axios.get( `https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathAva, Buffer.from(Avatar2, "utf-8"));
-  let getimage = ( await axios.get(`https://i.imgur.com/QrYoP8F.jpeg`, { responseType: "arraybuffer", })).data;
+  let getimage = ( await axios.get(`https://i.imgur.com/hmKmmam.jpg`, { responseType: "arraybuffer", })).data;
   fs.writeFileSync(pathImg, Buffer.from(getimage, "utf-8"));
   let baseImage = await loadImage(pathImg);
   let baseprof1 = await loadImage(pathprof1);
@@ -35,8 +35,8 @@ module.exports.onStart = async function ({ api, event, args }) {
   let canvas = createCanvas(baseImage.width, baseImage.height);
   let ctx = canvas.getContext("2d");
   ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(baseprof1, 144, 500, 1090, 920);
-  ctx.drawImage(baseprof2, 144, 500, 1090, 920);
+  ctx.drawImage(baseprof1, 275, 275, 475, 70);
+  ctx.drawImage(baseprof2, 250, 250, 335, 360);
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
