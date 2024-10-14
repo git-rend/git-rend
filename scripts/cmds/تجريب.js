@@ -11,7 +11,7 @@ module.exports.config = {
       dependencies: { canvas: "", axios: "", "fs-extra": ""}
 };
 
-module.exports.circle = async (image) => {
+/*module.exports.*/circle = async (image) => {
     const jimp = require ("jimp");
   image = await jimp.read(image);
   image.circle();
