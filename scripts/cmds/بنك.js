@@ -7,15 +7,12 @@ module.exports.config = {
 		  role: 0,
 		  description: { ar: "تسجل بالبنك، وتودع به أموالك، أو تسحبها، أو تعرضها" },
 		  category: "money",
-		  guide: { ar: "{pn}" },
-dependencies: {
+		  guide: { ar: "{pn} [تسجيل | عرض | ايداع | سحب]" },
+/*dependencies: {
          "fs-extra": "",
       "request": "",
       "axios": ""
-  }, 
-envConfig: {
-      APIKEY: "chinhdz"
-}  
+  }, */
 };
 module.exports.onLoad = async () => {
 	const { existsSync, writeFileSync, mkdirSync } = require("fs-extra")
