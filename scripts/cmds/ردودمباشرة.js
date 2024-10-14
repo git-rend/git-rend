@@ -82,7 +82,7 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
     return api.sendMessage("• 🌹  محمـد تانجيـࢪو  🫶 •\nهـو أفضـل شخـص بالوجـود،\nالاسـم: محـمـد؛ مـن الجـزائـࢪ. \nهو مطوࢪي، إذا تحب تتواصل\nمعـه هذا هو حسابـه وشڪرا:\nhttps://www.facebook.com/profile.php?id=100084275868431",
   event.threadID,event.messageID)};
 
-if (mhmd.includes ("سلام عليكم") && senderID = 100084275868431) {
+if (mhmd.includes ("هلاوات") && senderID = 100084275868431) {
     return api.sendMessage("أحلى سلام من أحلى مطوࢪ 🤭\nنوࢪت الڪل محمد تانجيࢪو 👋",
   event.threadID,event.messageID)};
   
