@@ -4,7 +4,7 @@ module.exports.config = {
             		  version: "1.3",
             		  author: "محمد تانجيرو",
             		  countDown: 5,
-            		  role: 2,
+            		  role: 0,
             		  description: { ar: "ردود البوت على بعض الرسائل دون الحاجة إلى بادئة" },
             		  category: "no prefix",
             		  guide: { ar: "لا تحتاج للبادئة (.)" }
