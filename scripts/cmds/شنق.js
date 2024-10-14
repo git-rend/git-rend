@@ -4,7 +4,7 @@ module.exports.config = {
          	version: "2.7.7",
 		author: "محمد تانجيرو",
          	countDown: 5,
-            	role: 0,
+            	role: 2,
             	description: { ar: "تشنق نفسك أو الشخص الي تعمل له تاغ" },
 	  	category: "edit",
 	    	guide: { ar: "{pn} [@تاغ | فارغ]" }, 
