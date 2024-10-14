@@ -4,7 +4,7 @@ module.exports.config = {
             		  version: "1.3",
             		  author: "محمد تانجيرو",
             		  countDown: 5,
-            		  role: 0,
+            		  role: 2,
             		  description: { ar: "ردود البوت على بعض الرسائل دون الحاجة إلى بادئة" },
             		  category: "no prefix",
             		  guide: { ar: "لا تحتاج للبادئة (.)" }
@@ -15,7 +15,7 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   let mhmd = event.body;
 
 if (mhmd.includes ("هلاوات")) {
-    return api.sendMessage("أحلى سلام من أحلى مطوࢪ 🤭\nنوࢪت الڪل محمد تانجيࢪو 👋",
+    return api.sendMessage("هلاوات",
   event.threadID,event.messageID)};
   
 };
