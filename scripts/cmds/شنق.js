@@ -25,6 +25,7 @@ module.exports.circle = async (image) => {
 
 module.exports.onStart = async ({ event, api, args }) => {
 try {
+  const axios = require ('axios');
   const Canvas = require ('canvas');
   const jimp = require ("jimp");
   const fs = require ("fs-extra");
