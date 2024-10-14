@@ -11,7 +11,7 @@ module.exports.config = {
                         };
 module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) { }
 module.exports.onChat = async function({ message, api, event, client, envGlobal, __GLOBAL }) {
-  var { threadID, messageID, reason } = event;
+  var { threadID, messageID, reason, senderID } = event;
   let mhmd = event.body;
   
   if (mhmd.startsWith ("جعت ") || mhmd.endsWith(" جعت") || mhmd.includes(" جعت ") || mhmd.toString() == "جعت") {
@@ -79,7 +79,11 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   event.threadID,event.messageID)};
 
   if (mhmd.includes ("محمد تانجيرو")) {
-    return api.sendMessage("• 🌹  محمـد تانجيـࢪو  🫶 •\nهـو أفضـل شخـص بالوجـود،\nالاسـم: محـمـد؛ مـن الجـزائـࢪ. \nهو مطوࢪي، إذا تحب تتواصل\nمعـه هذا هو حسابـه وشڪرا:\n",
+    return api.sendMessage("• 🌹  محمـد تانجيـࢪو  🫶 •\nهـو أفضـل شخـص بالوجـود،\nالاسـم: محـمـد؛ مـن الجـزائـࢪ. \nهو مطوࢪي، إذا تحب تتواصل\nمعـه هذا هو حسابـه وشڪرا:\nhttps://www.facebook.com/profile.php?id=100084275868431",
+  event.threadID,event.messageID)};
+
+if (mhmd.includes ("سلام عليكم") && senderID = 100084275868431) {
+    return api.sendMessage("أحلى سلام من أحلى مطوࢪ 🤭\nنوࢪت الڪل محمد تانجيࢪو 👋",
   event.threadID,event.messageID)};
   
 };
