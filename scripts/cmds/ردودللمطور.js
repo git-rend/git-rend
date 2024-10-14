@@ -14,7 +14,7 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   var { threadID, messageID, reason, senderID } = event;
   let mhmd = event.body;
 
-if (mhmd.includes ("هلاوات")) {
+if (mhmd.includes ("سلام عليكم")) {
     return api.sendMessage("أحلى سلام من أحلى مطوࢪ 🤭\nنوࢪت الڪل محمد تانجيࢪو 👋",
   event.threadID,event.messageID)};
   
