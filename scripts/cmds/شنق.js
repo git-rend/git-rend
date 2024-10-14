@@ -12,8 +12,7 @@ module.exports.config = {
 	             "fs-extra": "",
 	             "axios": "",
 	             "canvas" :"",
-	             "jimp": "",
-	             "node-superfetch": ""
+	             "jimp": ""
 	                      }
 };
 
@@ -27,7 +26,6 @@ module.exports.circle = async (image) => {
 module.exports.onStart = async ({ event, api, args }) => {
 try {
   const Canvas = require ('canvas');
-  const request = require ("node-superfetch");
   const jimp = require ("jimp");
   const fs = require ("fs-extra");
   var path_toilet = __dirname+'/cache/damma.jpg'; 
