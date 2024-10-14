@@ -8,12 +8,12 @@ module.exports.config = {
             	description: { ar: "تشنق نفسك أو الشخص الي تعمل له تاغ" },
 	  	category: "edit",
 	    	guide: { ar: "{pn} [@تاغ | فارغ]" }, 
-	        dependencies: {
+	        /*dependencies: {
 	             "fs-extra": "",
 	             "axios": "",
 	             "canvas" :"",
 	             "jimp": ""
-	                      }
+	                      }*/
 };
 
 module.exports.circle = async (image) => {
