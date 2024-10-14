@@ -1,7 +1,7 @@
 module.exports.config = {
                 name: "اصدقاء",
 	        aliases:["أصدقاء"], 
-         	version: "2.7.7",
+         	version: "2.8.7",
 		author: "محمد تانجيرو",
          	countDown: 5,
             	role: 0,
@@ -16,17 +16,16 @@ const { loadImage, createCanvas } = require('canvas');
 
 module.exports.onStart = async function ({ api, event, args }) {
   let { senderID, threadID, messageID } = event;
-  let pathImg = __dirname + "/images/married.png";
+  let pathImg = __dirname + "/images/friends.png";
   let pathprof1 = __dirname + "/images/profile1.png";
   let pathprof2 = __dirname + "/images/profile2.png";
   var Member1 = senderID;
   if (event.type == "message_reply") { var Member2 = event.messageReply.senderID }
-  if (Object.keys(event.mentions)[0]) { var Member2 = Object.keys(event.mentions) } 
-// if (!args[0]) { return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)}
-  if(!Member2/*!event.type == "message_reply" && !Object.keys(event.mentions)[0]*/) { return api.sendMessage("تاغ لشخص أو رد على رسالته",threadID,messageID)}
-  let Avatar1 = ( await axios.get( `https://graph.facebook.com/${Member1}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+  if (Object.keys(event.mentions)[0]) { var Member2 = Object.keys(event.mentions) }
+  if (!Member2) { return api.sendMessage("تاغ لشخص أو رد على رسالته", threadID, messageID)}
+  let Avatar1 = ( await axios.get(`https://graph.facebook.com/${Member1}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathprof1, Buffer.from(Avatar1, "utf-8"));
-  let Avatar2 = ( await axios.get( `https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+  let Avatar2 = ( await axios.get(`https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathprof2, Buffer.from(Avatar2, "utf-8"));
   let getimage = ( await axios.get(`https://i.imgur.com/hmKmmam.jpg`, { responseType: "arraybuffer", })).data;
   fs.writeFileSync(pathImg, Buffer.from(getimage, "utf-8"));
@@ -41,7 +40,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage( { attachment: fs.createReadStream(pathImg) },
+  return api.sendMessage( { body: "🌹 أفضل أصدقاء بالوجود 💙", attachment: fs.createReadStream(pathImg) },
     threadID,
     () => fs.unlinkSync(pathImg),
     messageID
