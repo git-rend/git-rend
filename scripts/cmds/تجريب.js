@@ -11,13 +11,13 @@ module.exports.config = {
 //      dependencies: { canvas: "", axios: "", "fs-extra": ""}
 };
 
-/*module.exports.*/function circle /*= async*/ (image) => {
+/*module.exports.*/circle = async (image) => {
     const jimp = require ("jimp");
   image = await jimp.read(image);
   image.circle();
   return await image.getBufferAsync("image/png");
 }
-module.exports.onStart = async function ({ api, event, args, Users }) {
+module.exports.onStart = async function ({ api, event, args }) {
   let { senderID, threadID, messageID } = event;
   const { loadImage, createCanvas } = require("canvas");
   const request = require('request');
