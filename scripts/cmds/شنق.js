@@ -1,5 +1,5 @@
 module.exports.config = {
-                name: "شنش",
+                name: "شنق",
 	        aliases:["اشنقي","إشنقي"], 
          	version: "2.7.7",
 		author: "محمد تانجيرو",
@@ -8,13 +8,13 @@ module.exports.config = {
             	description: { ar: "تشنق نفسك أو الشخص الي تعمل له تاغ" },
 	  	category: "edit",
 	    	guide: { ar: "{pn} [@تاغ | فارغ]" }, 
-	/*dependencies: {
-	  "fs-extra": "",
-	  "axios": "",
-	  "canvas" :"",
-	  "jimp": "",
-	  "node-superfetch": ""
-	}*/
+	        dependencies: {
+	             "fs-extra": "",
+	             "axios": "",
+	             "canvas" :"",
+	             "jimp": "",
+	             "node-superfetch": ""
+	                      }
 };
 
 module.exports.circle = async (image) => {
