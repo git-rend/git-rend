@@ -79,7 +79,7 @@ module.exports.onChat = async function({ message, api, event, client, envGlobal,
   event.threadID,event.messageID)};
 
   if (mhmd.includes ("محمد تانجيرو")) {
-    return api.sendMessage("وعليكم السلام ورحمة الله وبركاته 😊",
+    return api.sendMessage("• 🌹  محمـد تانجيـࢪو  🫶 •\nهـو أفضـل شخـص بالوجـود،\nالاسـم: محـمـد؛ مـن الجـزائـࢪ. \nهو مطوࢪي، إذا تحب تتواصل\nمعـه هذا هو حسابـه وشڪرا:\n",
   event.threadID,event.messageID)};
   
 };
