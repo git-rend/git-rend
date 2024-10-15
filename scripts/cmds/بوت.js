@@ -9,5 +9,6 @@ module.exports.config = {
                   guide: { ar : "{pn}"}
                         };
 module.exports.onStart = async function ( api, event ) {
-return api.sendMessage ("بوت أكاني",event.threadID, event.messageID)
+const { threadID, messageID } = event
+  return api.sendMessage ("بوت أكاني",threadID, messageID)
   }
