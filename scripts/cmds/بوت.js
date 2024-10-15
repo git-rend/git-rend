@@ -9,6 +9,6 @@ module.exports.config = {
                   guide: { ar : "{pn}"}
                         };
 module.exports.onStart = async function ({ api, event }) {
-  return api.sendMessage ("💙 بوت أكاني 🫶", event.threadID, event.messageID)
+  return api.sendMessage ("💙 بوت أكاني 🫶", event.threadID, event.messageID);
   setTimeout(() => { api.sendMessage ({body: "أجمل وأكيت بوت 🤭" })}, 3000)
   }
