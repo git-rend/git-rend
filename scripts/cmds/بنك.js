@@ -52,12 +52,12 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
       return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nالمبلغ الذي أودعته بالبنك هو:\nا---✨ ${userData.money} $ ✨---ا`, threadID, messageID)
     }
   } 
-/*  if(args[0] == 'ايداع') {
+  if(args[0] == 'ايداع') {
   if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 يجب أن يكون المبلغ الذي تودعه رقما أكبر من 50 $ 💙", threadID, messageID);
   if (!user.find(i => i.senderID == senderID)) { return api.sendMessage('✨--- 🏛 بنك ريم ريمي ---✨\n\n أنت لا تملك حسابا بالبنك 🙄\nللتسجيل اكتب: [.بنك تسجيل]', threadID, messageID)
   }
   else { 
-      //let Datauser = await usersData.get(senderID);
+      let Datauser = await usersData.get(senderID);
       let balance = (await usersData.get(senderID, {money: Datauser.money, data: Datauser.data});
       if(balance < moneyInput) return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nرصيدك أقل من: ${moneyInput} $\n💙-- تحقق من رصيدك بكتابة\n   هذا الامر: [.رصيدي] --💙`, threadID, messageID)
       var userData = user.find(i => i.senderID == senderID);
@@ -67,7 +67,8 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
       await usersData.set(senderID, {money: Datauser.money - parseInt(moneyInput), data: Datauser.data});
       return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 قمت بإيداع مبلغ مالي 💙\n  قدره: ${moneyInput} $ في البنك\n\nالرصيد الجديد: ${userData.money} $`, threadID, messageID)
     }
-  }*/
+  }
+  }
   if(args[0] == 'سحب') { 
     if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 يجب أن يكون المبلغ الذي تسحبه رقما أكبر من 50 $ 💙", threadID, messageID);
     if (!user.find(i => i.senderID == senderID)) { return api.sendMessage('✨--- 🏛 بنك ريم ريمي ---✨\n\n أنت لا تملك حسابا بالبنك 🙄\nللتسجيل اكتب: [.بنك تسجيل]', threadID, messageID)
