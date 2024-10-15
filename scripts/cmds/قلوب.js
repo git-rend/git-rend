@@ -10,9 +10,8 @@ module.exports.config = {
 	                guide: { ar: "وتدخل القلب أو اللون الذي اخترته"},
 };
 module.exports.onStart = async function ({event, api, args, usersData, __GLOBAL }) {
-	             var data = await Currencies.getData(event.senderID);
-  var money = data.money
-  const moneyUser = (await Currencies.getData(event.senderID)).money;
+  var data = await usersData.get(event.senderID);
+  const moneyUser = (await usersData.get(event.senderID, ));
   if (1000 > moneyUser) return api.sendMessage("تحتاج  1000$ للعب لعبة: قلوب 🙄", event.threadID, event.messageID);
 	            var color = args.join("") 
 				var check = (num) => (num == 0) ? '💙' : (num % 2 == 0 && num % 6 != 0 && num % 10 != 0) ? '🧡' : (num % 3 == 0 && num % 6 != 0) ? '💚' : (num % 5 == 0 && num % 10 != 0) ? '💛' : (num % 10 == 0) ? '💜' : '🤍';
