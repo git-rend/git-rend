@@ -3,7 +3,7 @@ module.exports.config = {
 		version: "1.3",
 		author: "NTKhang",
 		countDown: 5,
-		role: 1,
+		role: 0,
 		description: {
 			ar: "لعبة تراهن فيها بمبلغ، إذا فزت يتضاعف المبلغ، وإذا خسرت يخصم منك المبلغ الذي راهنت به"
 		},
