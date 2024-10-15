@@ -67,7 +67,7 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
       await usersData.set(senderID, {money: Datauser.money - parseInt(moneyInput), data: Datauser.data});
       return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 قمت بإيداع مبلغ مالي 💙\n  قدره: ${moneyInput} $ في البنك\n\nالرصيد الجديد: ${userData.money} $`, threadID, messageID)
     }
-  }
+  }*/
   if(args[0] == 'سحب') { 
     if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 يجب أن يكون المبلغ الذي تسحبه رقما أكبر من 50 $ 💙", threadID, messageID);
     if (!user.find(i => i.senderID == senderID)) { return api.sendMessage('✨--- 🏛 بنك ريم ريمي ---✨\n\n أنت لا تملك حسابا بالبنك 🙄\nللتسجيل اكتب: [.بنك تسجيل]', threadID, messageID)
@@ -77,13 +77,13 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
     var money = userData.money;
     if(parseInt(money) < parseInt(moneyInput)) return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nأموالك بالبنك أقل من: ${moneyInput} $\n💙-- تحقق من أموالك بكتابة\n هذا الامر: [.بنك عرض] --💙`, threadID, messageID)
       else {
-        //let Datauser = await usersData.get(senderID);
+        let Datauser = await usersData.get(senderID);
         await usersData.set(senderID, {money: Datauser.money + parseInt(moneyInput), data: Datauser.data});
         userData.money = parseInt(money) - parseInt(moneyInput)
         writeFileSync(pathData, JSON.stringify(user, null, 2));
         return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\n💙 قمت بسحب مبلغ مالي 💙\n  قدره: ${moneyInput} $ من البنك\n\n الرصيد الباقي: ${userData.money} $`, threadID, messageID)
       }
     }
-  }*/
+  }
   else return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n 💙 استخدم هذه الأوامر 💙\n\n-- [بنك تسجيل]: للتسجيل في البنك والاستفادة من خدماته (إيداع الأموال أو سحبها) ✅\n\n-- [بنك عرض]: لعرض أموالك\nالتي أودعتها في البنك 💰\n\n-- [بنك ايداع]: لإيداع الأموال\nفي البنك، والاستفادة منها 💷\n\n-- [بنك سحب]: لسحب الأموال\nمن البنك، وصرفها 💵\n\n   💲 معدل الفائدة الحالي:\n   + ${laisuat} % في ${timeIM/60} دقيقة`, threadID, messageID)
       }
