@@ -1,6 +1,5 @@
 module.exports.config = {
                   name: "بنك",
-                  aliases: [""],
 		  version: "1.3",
 		  author: "محمد تانجيرو",
 		  countDown: 5,
