@@ -72,6 +72,6 @@ module.exports.onStart = async function ({ api, event, args }) {
     fs.writeFileSync(__dirname + "/cache/nami.jpg", Buffer.from(image.data, "binary"));
 
     const attachment = [fs.createReadStream(__dirname + "/cache/nami.jpg")];
-    const message = `✨      صور نامي      💙\n   من أنمي ون بيس ✨\n🌹 عدد الصور : ${link.length} 🌹\n       ---------------------\n            -100 $!`;
+    const message = `✨      صور نامي      💙\n   من أنمي ون بيس ✨\n🌹 عدد الصور : ${pictures.length} 🌹\n       ---------------------\n            -100 $!`;
     api.sendMessage({ body: message, attachment }, event.threadID, event.messageID);
 };
