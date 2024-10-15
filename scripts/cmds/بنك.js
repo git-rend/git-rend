@@ -3,7 +3,7 @@ module.exports.config = {
 		  version: "1.3",
 		  author: "محمد تانجيرو",
 		  countDown: 5,
-		  role: 0,
+		  role: 2,
 		  description: { ar: "تسجل بالبنك، وتودع به أموالك، أو تسحبها، أو تعرضها" },
 		  category: "money",
 		  guide: { ar: "{pn} [تسجيل | عرض | ايداع | سحب]" },
