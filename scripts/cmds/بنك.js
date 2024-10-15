@@ -57,7 +57,7 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
   if (!user.find(i => i.senderID == senderID)) { return api.sendMessage('✨--- 🏛 بنك ريم ريمي ---✨\n\n أنت لا تملك حسابا بالبنك 🙄\nللتسجيل اكتب: [.بنك تسجيل]', threadID, messageID)
   }
   else { 
-      let Datauser = await usersData.get(senderID);
+      //let Datauser = await usersData.get(senderID);
       let balance = (await usersData.get(senderID, {money: Datauser.money, data: Datauser.data});
       if(balance < moneyInput) return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nرصيدك أقل من: ${moneyInput} $\n💙-- تحقق من رصيدك بكتابة\n   هذا الامر: [.رصيدي] --💙`, threadID, messageID)
       var userData = user.find(i => i.senderID == senderID);
@@ -77,7 +77,7 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
     var money = userData.money;
     if(parseInt(money) < parseInt(moneyInput)) return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nأموالك بالبنك أقل من: ${moneyInput} $\n💙-- تحقق من أموالك بكتابة\n هذا الامر: [.بنك عرض] --💙`, threadID, messageID)
       else {
-        let Datauser = await usersData.get(senderID);
+        //let Datauser = await usersData.get(senderID);
         await usersData.set(senderID, {money: Datauser.money + parseInt(moneyInput), data: Datauser.data});
         userData.money = parseInt(money) - parseInt(moneyInput)
         writeFileSync(pathData, JSON.stringify(user, null, 2));
