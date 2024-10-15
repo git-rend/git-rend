@@ -8,6 +8,6 @@ module.exports.config = {
                   category: "تجارب", 
                   guide: { ar : "{pn}"}
                         };
-module.exports.onStart = async fanction ( api ) {
+module.exports.onStart = async function ( api, event ) {
 return api.sendMessage ("بوت أكاني",event.threadID, event.messageID)
   }
