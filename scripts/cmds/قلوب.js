@@ -1,18 +1,18 @@
 module.exports.config = {
-	                name: "قلوب",
+	          name: "قلوب",
                   aliases: ["قلب"],
-	                version: "1.1.5",
-	                countdown: 5,
+	          version: "1.1.5",
+	          countdown: 5,
                   role: 0,
-	                author: "محمد تانجيرو",
-	                description: { ar: "تراهن بأحد الألوان، وتشوف إذا كان اختيارك موافق لاختيار البوت"},
-	                category: "ألعاب _ Games",
-	                guide: { ar: "وتدخل القلب أو اللون الذي اخترته"},
-};
+	          author: "محمد تانجيرو",
+	          description: { ar: "تراهن بأحد الألوان، وتشوف إذا كان اختيارك موافق لاختيار البوت"},
+	          category: "ألعاب _ Games",
+	          guide: { ar: "وتدخل القلب أو اللون الذي اخترته"},
+                        };
 module.exports.onStart = async function ({event, api, args, usersData, __GLOBAL }) {
   var userData = await usersData.get(event.senderID);
-  const moneyUser = (await usersData.get(senderID, {money: userData.money, data: userData.data}));
-  if (100 > moneyUser) return api.sendMessage("تحتاج  1000$ للعب لعبة: قلوب 🙄", event.threadID, event.messageID);
+  const userMoney = (await usersData.get(senderID, {money: userData.money, data: userData.data}));
+  if (500 > userMoney) return api.sendMessage("تحتاج  500$ للعب لعبة: قلوب 🙄", event.threadID, event.messageID);
 	            var color = args.join("") 
 				var check = (num) => (num == 0) ? '💙' : (num % 2 == 0 && num % 6 != 0 && num % 10 != 0) ? '🧡' : (num % 3 == 0 && num % 6 != 0) ? '💚' : (num % 5 == 0 && num % 10 != 0) ? '💛' : (num % 10 == 0) ? '💜' : '🤍';
 					let random = Math.floor(Math.random() * 5);
@@ -23,7 +23,7 @@ module.exports.onStart = async function ({event, api, args, usersData, __GLOBAL 
 				else if (color == "بنفسجي" || color == "💜" || color == "violet") color = 4;
 				else if (color == "ابيض" || color == "🤍" || color == "white") color = 5;
 				else return api.sendMessage("✨ الاختيار يجب أن يكون: ✨\n        ا—-—-—-—-—-—ا\n🧡 / برتقالي / orange\n💜 / بنفسجي / violet\n💛 / اصفر / yellow\n💚 / اخضر / green\n🤍 / ابيض / white\n💙 / ازرق/ blue\n\n  ✨اختر اللون المناسب: ✨\n    سواء بالقلوب أو بالكتابة", event.threadID, event.messageID);
-				let coin = Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
+				let coin = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
 				if (color == 0 && check(random) == '💙') api.sendMessage(`✨ —- مبارك عليك 😍 -— ✨\nاختيارك موافق لاختياري: (💙)\n\n  خذ: ${coin} $ جائزة لفوزك 🤭`, event.threadID,() => await usersData.set(senderID, {money: userData.money + coin, data: userData.data}),event.messageID);
 				else if (color == 1 && check(random) == '🧡') api.sendMessage(`✨ —- مبارك عليك 😍 -— ✨\nاختيارك موافق لاختياري: (🧡)\n\n  خذ: ${coin} $ جائزة لفوزك 🤭`, event.threadID,() => await usersData.set(senderID, {money: userData.money + coin, data: userData.data}),event.messageID);
 				else if (color == 2 && check(random) == '💚') api.sendMessage(`✨ —- مبارك عليك 😍 -— ✨\nاختيارك موافق لاختياري: (💚)\n\n  خذ: ${coin} $ جائزة لفوزك 🤭`, event.threadID,() => await usersData.set(senderID, {money: userData.money + coin, data: userData.data}),event.messageID);
