@@ -10,5 +10,5 @@ module.exports.config = {
                         };
 module.exports.onStart = async function ({ api, event }) {
   return api.sendMessage ("💙 بوت أكاني 🫶", event.threadID, event.messageID),
-  setTimeout(() => { api.editMessage ("أجمل وأكيت بوت 🤭", event.threadID, event.messageID)}, 3000)
+  setTimeout(() => { await api.editMessage ("أجمل وأكيت بوت 🤭", event.threadID, event.messageID)}, 3000)
   }
