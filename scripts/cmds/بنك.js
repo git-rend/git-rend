@@ -24,7 +24,7 @@ module.exports.onLoad = async () => {
     if (!existsSync(pathData)) return writeFileSync(pathData, "[]", "utf-8"); 
 	return;
 }
-module.exports.onStart = async function({ api, event, args, models, usersData, threadsData, role }) {
+module.exports.onStart = async function({ api, event, args, usersData, threadsData }) {
   const { threadID, messageID, senderID } = event;
   const axios = require("axios")
     /*var APIKEY = global.configModule[this.config.name].APIKEY
