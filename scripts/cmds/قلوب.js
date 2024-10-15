@@ -9,7 +9,7 @@ module.exports.config = {
 	          category: "ألعاب _ Games",
 	          guide: { ar: "وتدخل القلب أو اللون الذي اخترته"},
                         };
-module.exports.onStart = async function ({event, api, args, usersData, __GLOBAL }) {
+module.exports.onStart = async function ({event, api, args, usersData }) {
   var userData = await usersData.get(event.senderID);
   const userMoney = (await usersData.get(senderID, {money: userData.money, data: userData.data}));
   if (500 > userMoney) return api.sendMessage("تحتاج  500$ للعب لعبة: قلوب 🙄", event.threadID, event.messageID);
