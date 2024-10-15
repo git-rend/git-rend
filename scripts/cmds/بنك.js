@@ -58,7 +58,7 @@ module.exports.onStart = async function({ api, event, args, usersData, threadsDa
   }
   else { 
       let Datauser = await usersData.get(senderID);
-      let balance = (await usersData.get(senderID, {money: Datauser.money, data: Datauser.data});
+      let balance = (await usersData.get(senderID, {money: Datauser.money, data: Datauser.data}));
       if(balance < moneyInput) return api.sendMessage(`✨--- 🏛 بنك ريم ريمي ---✨\n\nرصيدك أقل من: ${moneyInput} $\n💙-- تحقق من رصيدك بكتابة\n   هذا الامر: [.رصيدي] --💙`, threadID, messageID)
       var userData = user.find(i => i.senderID == senderID);
       var money = userData.money;
