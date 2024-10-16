@@ -92,12 +92,12 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
       }; break;
       }
          default: {
-		//const threadData = await threadsData.get(threadID);
-		//const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	        //const boy = valuesMember.filter(item => item.gender == "MALE").IDs;
+		const threadData = await threadsData.get(threadID);
+		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
+	        const boy = valuesMember.filter(item => item.gender == "MALE");
 		//const ids = boy.get(event.participantIDs);
-		 const listids = event.participantIDs;
-		 const boys = (listids = []) => listids.filter(e => e.gender == "MALE").test(e);
-			 return api.sendMessage(`قائمة الاولاد ${boys}`, event.threadID, event.messageID)}
+		//const listids = event.participantIDs;
+		// const boys = (listids = []) => listids.filter(e => e.gender == "MALE").test(e);
+			 return api.sendMessage(`قائمة الاولاد ${boy}`, event.threadID, event.messageID)}
     }
 }
