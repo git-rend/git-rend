@@ -1,6 +1,6 @@
 module.exports.config = {
                   name: "بوت",
-                  version:"1.0.0", 
+                  version:"3.5.0", 
                   role: 2,
                   countdown: 5,
                   author: "محمد تانجيرو", 
