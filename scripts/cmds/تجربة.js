@@ -97,7 +97,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	        //const boy = valuesMember.filter(item => item.gender == "MALE").IDs;
 		//const ids = boy.get(event.participantIDs);
 		 const listids = event.participantIDs;
-		 const boys = (listids = []) => listids.filter(e => e.gender == "MALE".test(e));
+		 const boys = (listids = []) => listids.filter(e => e.gender == "MALE").test(e);
 			 return api.sendMessage(`قائمة الاولاد ${boys}`, event.threadID, event.messageID)}
     }
 }
