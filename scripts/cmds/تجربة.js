@@ -29,12 +29,12 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //else {
         var tile = Math.floor(Math.random() * 101);
 	const threadData = await threadsData.get(threadID);
-	const listboys = await threadsData.get(threadID, "data.listboys", []);
-		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	const boy = valuesMember.find(item => item.gender == "MALE").length;
+	//const listids = await threadsData.get(threadID, "data.listboys", []);
+	const listids = event.participantIDs	//const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
+	const boys = (listids = []) => listids.filter(e => e.gender == "MALE".test(e));   //valuesMember.find(item => item.gender == "MALE").length;
         //const Boys = Boy.participantIDs;//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
-        var id = boy[Math.floor(Math.random() * boy.length)];
+        var id = boys[Math.floor(Math.random() * boys.length)];
 
         var namee = (await usersData.get(event.senderID)).name;
         var name = (await usersData.get(id)).name;
@@ -92,10 +92,10 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
       }; break;
       }
          default: {
-		const threadData = await threadsData.get(threadID);
-		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	        const boy = valuesMember.filter(item => item.gender == "MALE").IDs;
+		//const threadData = await threadsData.get(threadID);
+		//const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
+	        //const boy = valuesMember.filter(item => item.gender == "MALE").IDs;
 		//const ids = boy.get(event.participantIDs);
-			 return api.sendMessage(`${boy}\n{} زوجيني بنت أو زوجيني ولد`, event.threadID, event.messageID)}
+			 return api.sendMessage(`زوجيني بنت أو زوجيني ولد`, event.threadID, event.messageID)}
     }
 }
