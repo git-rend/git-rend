@@ -9,9 +9,29 @@ module.exports.config = {
                   guide: { ar : "{pn}"}
                         };
 module.exports.onStart = async function ({ api, event }) {
-  const first = "💙 بوت أكاني 🫶"; 
-  const second = "أجمل وأكيت بوت 🤭";
-  { const firstMessage = await api.sendMessage(first, event.threadID);
-                         await new Promise((resolve) => setTimeout(resolve, 3000));
-                         await api.editMessage( second, firstMessage.messageID, event.threadID);
+  const first = `██████╗ 
+██╔══██╗
+██████╔╝
+██╔══██╗
+██████╔╝
+╚═════╝`;
+  const second = `██████╗ 
+██╔═══██╗
+██║        ██║
+██║        ██║
+╚██████╔╝
+ ╚═════╝`;
+  const third = `████████╗
+╚══██╔══╝
+        ██║   
+        ██║   
+        ██║   
+        ╚═╝`;
+  { const Message = await api.sendMessage(first, event.threadID, event.messageID);
+   
+                    await new Promise((resolve) => setTimeout(resolve, 5000));
+                    await api.editMessage( second, Message.messageID, event.threadID);
+
+                    await new Promise((resolve) => setTimeout(resolve, 5000));
+                    await api.editMessage( third, Message.messageID, event.threadID);
   }}
