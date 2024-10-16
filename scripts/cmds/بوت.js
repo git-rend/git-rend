@@ -14,7 +14,4 @@ module.exports.onStart = async function ({ api, event }) {
   { const firstMessage = await api.sendMessage(first, event.threadID);
                          await new Promise((resolve) => setTimeout(resolve, 3000));
                          await api.editMessage( second, firstMessage.messageID, event.threadID);
-  }} 
-/*  return api.sendMessage ("💙 بوت أكاني 🫶", event.threadID, event.messageID);
-  setTimeout(() => { api.editMessage (""/*, event.threadID, event.messageID*)}, 3000)
-  }
+  }}
