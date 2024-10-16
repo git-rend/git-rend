@@ -30,13 +30,13 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         var tile = Math.floor(Math.random() * 101);
 	const threadData = await threadsData.get(threadID);
 	//const listids = await threadsData.get(threadID, "data.listboys", []);
-	const listids = event.participantIDs	//const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
+	const listids = event.participantIDs;	//const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
 	const boys = (listids = []) => listids.filter(e => e.gender == "MALE".test(e));   //valuesMember.find(item => item.gender == "MALE").length;
         //const Boys = Boy.participantIDs;//var sex = await data[id].gender;
         //var boys = sex == 1 /*event.participantIDs*/;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
-        var namee = (await usersData.get(event.senderID)).name;
+        var namee = (await usersData.getName(event.senderID));
         var name = (await usersData.get(id)).name;
 
         var arraytag = [];
