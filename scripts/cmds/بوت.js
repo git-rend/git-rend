@@ -1,7 +1,7 @@
 module.exports.config = {
                   name: "بوت",
                   version:"3.5.0", 
-                  role: 2,
+                  role: 0,
                   countdown: 5,
                   author: "محمد تانجيرو", 
                   description:{ ar : ""},
@@ -27,7 +27,7 @@ module.exports.onStart = async function ({ api, event }) {
         ██║   
         ██║   
         ╚═╝`;
-  { const Message = await api.sendMessage(first, event.threadID, event.messageID);
+  { const Message = await api.sendMessage(first, event.threadID/*, event.messageID*/);
    
                     await new Promise((resolve) => setTimeout(resolve, 5000));
                     await api.editMessage( second, Message.messageID, event.threadID);
