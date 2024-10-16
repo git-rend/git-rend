@@ -2,7 +2,7 @@ module.exports.config = {
 		name: "تجربة",
 		version: "1.4",
 		author: "محمد تانجيرو",
-		countDown: 5,
+		countdown: 5,
 		role: 2,
 		description: {
 			ar: "يزوجك بشخص من الغروب بشكل عشوائي"
