@@ -94,7 +94,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
          default: {
 		const threadData = await threadsData.get(threadID);
 		const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-	        const boy = valuesMember.filter(item => item.gender == "MALE").name;
+	        const boy = valuesMember.filter(item => item.gender == "MALE").Name;
 		//const ids = boy.get(event.participantIDs);
 		//const listids = event.participantIDs;
 		// const boys = (listids = []) => listids.filter(e => e.gender == "MALE").test(e);
