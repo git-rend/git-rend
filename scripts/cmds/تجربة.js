@@ -1,15 +1,17 @@
 module.exports = {
   config: {
-    name: "getMembers",
+    name: "تجربة",
+    role: 2,
     version: "2.0",
     author: "TawsiN",
-    description: "Display the names or IDs of girls and boys in the group",
-    usage: "/getMembers",
-    cooldown: 5,
+    description: { ar: "Display the names or IDs of girls and boys in the group",
+    category: " ",
+    guide: { ar: "/getMembers"},
+    countdown: 5,
   },
 
   langs: {
-    en: {
+    ar: {
       response: "🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n{boys}\n\n👧 **Girls**:\n{girls}",
       noMembers: "⚠️ No members found.",
       boysHeader: "👦 **Boys**:\n",
