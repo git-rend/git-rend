@@ -12,7 +12,7 @@ module.exports = {
 
   langs: {
     ar: {
-      response: "🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n{boys}\n\n👧 **Girls**:\n{girls}",
+      response: "🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n%1\n\n👧 **Girls**:\n%2",
       noMembers: "⚠️ No members found.",
       boysHeader: "👦 **Boys**:\n",
       girlsHeader: "👧 **Girls**:\n"
@@ -44,7 +44,7 @@ module.exports = {
     const girlsList = girls.length > 0 ? girls.join('\n') : getLang("noMembers");
 
     // Final response with emojis and formatted nicely
-    const response = getLang("response", { boys: boysList, girls: girlsList });
+    const response = getLang("response", { boys: boysList}, {girls: girlsList });
     
     // Send the formatted message
     return message.reply(response);
