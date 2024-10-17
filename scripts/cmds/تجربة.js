@@ -4,7 +4,7 @@ module.exports = {
     role: 2,
     version: "2.0",
     author: "TawsiN",
-    description: { ar: "Display the names or IDs of girls and boys in the group",
+    description: { ar: "Display the names or IDs of girls and boys in the group"},
     category: " ",
     guide: { ar: "/getMembers"},
     countdown: 5,
