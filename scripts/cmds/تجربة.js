@@ -20,33 +20,43 @@ module.exports = {
   },
 
   onStart: async function ({ message, api, event, getLang }) {
-    const threadInfo = await api.getThreadInfo(event.threadID);
-    const allMembers = threadInfo.userInfo;
+    try {
+      // Fetching thread (group) info to get the member list
+      const threadInfo = await api.getThreadInfo(event.threadID);
+      const allMembers = threadInfo.participantIDs;
 
-    // Define arrays to hold girls and boys
-    const girls = [];
-    const boys = [];
+      // Initializing arrays to store boy and girl members
+      const boys = [];
+      const girls = [];
 
-    // Process members and categorize based on name or ID pattern
-    for (let member of allMembers) {
-      const name = member.name.toLowerCase();
+      // Looping through all members and fetching individual details
+      for (let memberID of allMembers) {
+        const memberInfo = await api.getUserInfo(memberID);
+        const member = memberInfo[memberID];
 
-      // Custom logic to categorize boys and girls based on name (can be improved)
-      if (name.includes('a') || name.includes('e')) {
-        girls.push(`👧 ${member.name} (ID: ${member.id})`);
-      } else {
-        boys.push(`👦 ${member.name} (ID: ${member.id})`);
+        // Check if gender is defined: 1 = Female, 2 = Male
+        if (member.gender === 2) {
+          boys.push(`👦 ${member.name} (ID: ${memberID})`);
+        } else if (member.gender === 1) {
+          girls.push(`👧 ${member.name} (ID: ${memberID})`);
+        } else {
+          // If gender is not set, log this for debugging
+          console.log(`Gender not set for: ${member.name} (ID: ${memberID})`);
+        }
       }
+
+      // Prepare the response
+      const boysList = boys.length > 0 ? boys.join('\n') : getLang("noMembers");
+      const girlsList = girls.length > 0 ? girls.join('\n') : getLang("noMembers");
+
+      const response = `🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n${boysList}\n\n👧 **Girls**:\n${girlsList}`;
+      
+      // Replying the result back to the group
+      return message.reply(response);
+
+    } catch (error) {
+      console.error("Error fetching group members:", error);
+      return message.reply(getLang("error"));
     }
-
-    // Format the output for boys and girls
-    const boysList = boys.length > 0 ? boys.join('\n') : getLang("noMembers");
-    const girlsList = girls.length > 0 ? girls.join('\n') : getLang("noMembers");
-
-    // Final response with emojis and formatted nicely
-    const response = getLang("response", { boys: boysList}, {girls: girlsList });
-    
-    // Send the formatted message
-    return message.reply(response);
   }
 };
