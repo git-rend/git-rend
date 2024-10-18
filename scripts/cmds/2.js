@@ -31,7 +31,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 for (let memberID of allMembers) {
                      const memberInfo = await api.getUserInfo(memberID);
                      const member = memberInfo[memberID];
-                     if (member.gender === 2) { Boys.push(`${memberID}`) }};
+                     if (member.gender === 2) { Boys.push(`${memberID}`) }}
                 const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
         
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
@@ -92,6 +92,6 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //fs.unlinkSync(__dirname + '/cache/2.png');
       }; break;
       }*/
-         default: { return api.sendMessage("تم تجديث الأمر، يمكنك الآن الزواج من ولد أو بنت على حسب رغبتك", event.threadID, event.messageID) }
+         default: { return api.sendMessage("🌹 تـم تحديـث الأمـࢪ، يمڪنڪ\nالآن الـزواج من ولـد أو بنـت على\nحـسـب ࢪغبـتـڪ، فـقـط اڪـتـب:\n[.زوجيني ولد] أو [.زوجيني بنت]", threadID, messageID) }
     }
 }
