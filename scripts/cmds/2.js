@@ -20,8 +20,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
   if( money < 200) api.sendMessage("انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل", threadID, messageID);
   var LovePercent = Math.floor(Math.random() * 101);
   const threadData = await threadsData.get(threadID);
-  const threadInfo = await api.getThreadInfo(event.threadID);
-  const allMembers = threadInfo.participantIDs;
+  //const threadInfo = await api.getThreadInfo(event.threadID);
+  const allMembers =/*threadInfo*/event.participantIDs;
   const Boys = [];
   const Girls = [];
   for (let memberID of allMembers) {
