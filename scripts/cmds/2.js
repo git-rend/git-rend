@@ -1,5 +1,5 @@
 module.exports.config = {
-		name: "تجربة",
+		name: "2",
 		version: "1.4",
 		author: "محمد تانجيرو",
 		countdown: 5,
@@ -14,21 +14,20 @@ module.exports.config = {
 	},
 
 module.exports.onStart = async function({ api, args, event, usersData, threadsData }) {
-  
   const axios = require("axios");
   const fs = require("fs-extra");
   var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
-	const { senderID, threadID } = event;
-	const pre = global.GoatBot.config.prefix;
+  const { senderID, threadID } = event;
+  const pre = global.GoatBot.config.prefix;
   var data = await usersData.get(senderID);
   var money = data.money
-	if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID)
-	  switch (args[0]) {
-			case "ولد":
-			case "بولد": {
+  if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID)
+    switch (args[0]) {
+	case "ولد":
+	case "بولد": {
         //else {
                 var tile = Math.floor(Math.random() * 101);
-	              const threadData = await threadsData.get(threadID);
+	        const threadData = await threadsData.get(threadID);
                 const threadInfo = await api.getThreadInfo(event.threadID);
                 const allMembers = threadInfo.participantIDs;
                 const Boys = [];
