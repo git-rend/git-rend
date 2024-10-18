@@ -29,7 +29,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
   const member = memberInfo[memberID];
   if (member.gender === 2) { Boys.push(`${memberID}`) }
   else 
-  if (member.gender === 1) { Girls.push(`${memberID}`)}
+  if (member.gender === 1) { Girls.push(`${memberID}`)}}
   const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
   const GirlsList = girls.length > 0 ? Girls.join(',') : "لا يوجد أولاد";
  
