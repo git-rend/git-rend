@@ -49,9 +49,9 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 usersData.set(event.senderID, options = {money: money - 200, data: data.data})
         
                 let Avatargirl = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
-                fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar2, "utf-8") );
+                fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatargirl, "utf-8") );
                 let Avatarboy = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
-                fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar, "utf-8") );
+                fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatarboy, "utf-8"));
         
                 var Image = [];
                 Image.push(fs.createReadStream(__dirname + "/cache/1.png"));
@@ -63,7 +63,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //fs.unlinkSync(__dirname + '/cache/2.png');
        break;
       }
-      case "بنت":
+     /* case "بنت":
 			case "ببنت": {
         if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
@@ -71,7 +71,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	//var gender= 2
 	var boys = event.participantIDs.gender == "MALE";
        // var sex = await data[id].gender;
-      //  var boys = sex == 2 /*event.participantIDs*/;
+      //  var boys = sex == 2 event.participantIDs;
         var id = boys[Math.floor(Math.random() * boys.length)];
 
         var namee = (await usersData.get(event.senderID)).name;
@@ -95,7 +95,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
         //fs.unlinkSync(__dirname + '/cache/1.png');
         //fs.unlinkSync(__dirname + '/cache/2.png');
       }; break;
-      }
+      }*/
          default: { return api.sendMessage("تم تجديث الأمر، يمكنك الآن الزواج من ولد أو بنت على حسب رغبتك", event.threadID, event.messageID) }
     }
 }
