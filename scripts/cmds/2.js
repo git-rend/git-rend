@@ -4,14 +4,10 @@ module.exports.config = {
 		author: "محمد تانجيرو",
 		countdown: 5,
 		role: 2,
-		description: {
-			ar: "يزوجك بشخص من الغروب بشكل عشوائي"
-		},
+		description: { ar: "الزواج عشوائيا ببنت أو ولد على حسب اختيارك" },
 		category: "box chat",
-		guide: {
-			ar: "{pn} [ولد | بنت]"
-		}
-	},
+		guide: { ar: "{pn} [ولد | بنت]" }
+	                 },
 
 module.exports.onStart = async function({ api, args, event, usersData, threadsData }) {
   const axios = require("axios");
