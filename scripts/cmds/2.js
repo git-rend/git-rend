@@ -18,22 +18,24 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
   var data = await usersData.get(senderID);
   var money = data.money
   if( money < 200) api.sendMessage("انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل", threadID, messageID);
+  var LovePercent = Math.floor(Math.random() * 101);
+  const threadData = await threadsData.get(threadID);
+  const threadInfo = await api.getThreadInfo(event.threadID);
+  const allMembers = threadInfo.participantIDs;
+  const Boys = [];
+  const Girls = [];
+  for (let memberID of allMembers) {
+  const memberInfo = await api.getUserInfo(memberID);
+  const member = memberInfo[memberID];
+  if (member.gender === 2) { Boys.push(`${memberID}`) }
+  else 
+  if (member.gender === 1) { Girls.push(`${memberID}`)}
+  const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
+  const GirlsList = girls.length > 0 ? Girls.join(',') : "لا يوجد أولاد";
+ 
      switch (args[0]) {
 	   case "ولد":
 	   case "بولد": {
-        //else {
-                var tile = Math.floor(Math.random() * 101);
-	        const threadData = await threadsData.get(threadID);
-                const threadInfo = await api.getThreadInfo(event.threadID);
-                const allMembers = threadInfo.participantIDs;
-                const Boys = [];
-        
-                for (let memberID of allMembers) {
-                     const memberInfo = await api.getUserInfo(memberID);
-                     const member = memberInfo[memberID];
-                     if (member.gender === 2) { Boys.push(`${memberID}`) }}
-                const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
-        
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
                 var Girlname = (await usersData.getName(event.senderID));
                 var Boyname = (await usersData.getName(id));
@@ -53,45 +55,39 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 Image.push(fs.createReadStream(__dirname + "/cache/1.png"));
                 Image.push(fs.createReadStream(__dirname + "/cache/2.png"));
         
-                var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+Girlname+" "+"💓"+" "+Boyname, mentions: arraytag, attachment: Image}
+                var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${LovePercent} %\n`+Girlname+" "+"💓"+" "+Boyname, mentions: arraytag, attachment: Image}
                 return api.sendMessage(msg, event.threadID, event.messageID);
-        //fs.unlinkSync(__dirname + '/cache/1.png');
-        //fs.unlinkSync(__dirname + '/cache/2.png');
-       break;
-      }
-     /* case "بنت":
-			case "ببنت": {
-        if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
-        else {
-        var tile = Math.floor(Math.random() * 101);
-	//var gender= 2
-	var boys = event.participantIDs.gender == "MALE";
-       // var sex = await data[id].gender;
-      //  var boys = sex == 2 event.participantIDs;
-        var id = boys[Math.floor(Math.random() * boys.length)];
+                //fs.unlinkSync(__dirname + '/cache/1.png');
+                //fs.unlinkSync(__dirname + '/cache/2.png');
+                break}
+		     
+           case "بنت":
+	   case "ببنت": {
+                var id = Girlslist[Math.floor(Math.random() * Girlslist.length)];
+                var Boyname = (await usersData.getName(event.senderID));
+                var Girlname = (await usersData.getName(id));
 
-        var namee = (await usersData.get(event.senderID)).name;
-        var name = (await usersData.get(id)).name;
-
-        var arraytag = [];
-        arraytag.push({id: event.senderID, tag: namee});
-        arraytag.push({id: id, tag: name});
+                var arraytag = [];
+                arraytag.push({id: event.senderID, tag: Boyname});
+                arraytag.push({id: id, tag: Girlname});
       
-        usersData.set(event.senderID, options = {money: money - 200, data: data.data})
-  
-        let Avatar = (await axios.get( https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}, { responseType: "arraybuffer" } )).data; 
-            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
-        let Avatar2 = (await axios.get( https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}, { responseType: "arraybuffer" } )).data;
-            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
-        var imglove = [];
-              imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
-              imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
-        var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
-        return api.sendMessage(msg, event.threadID, event.messageID);
-        //fs.unlinkSync(__dirname + '/cache/1.png');
-        //fs.unlinkSync(__dirname + '/cache/2.png');
-      }; break;
-      }*/
-         default: { return api.sendMessage("🌹 تـم تحديـث الأمـࢪ، يمڪنڪ\nالآن الـزواج من ولـد أو بنـت على\nحـسـب ࢪغبـتـڪ، فـقـط اڪـتـب:\n[.زوجيني ولد] أو [.زوجيني بنت]", threadID, messageID) }
+                usersData.set(event.senderID, options = {money: money - 200, data: data.data})
+        
+                let Avatarboy = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+                fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatarboy, "utf-8") );
+                let Avatargirl = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+                fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatargirl, "utf-8"));
+        
+                var Image = [];
+                Image.push(fs.createReadStream(__dirname + "/cache/1.png"));
+                Image.push(fs.createReadStream(__dirname + "/cache/2.png"));
+        
+                var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${LovePercent} %\n`+Boyname+" "+"💓"+" "+Girlname, mentions: arraytag, attachment: Image}
+                return api.sendMessage(msg, threadID, messageID);
+                //fs.unlinkSync(__dirname + '/cache/1.png');
+                //fs.unlinkSync(__dirname + '/cache/2.png');
+                break}
+		     
+           default: { return api.sendMessage("🌹 تـم تحديـث الأمـࢪ، يمڪنڪ\nالآن الـزواج من ولـد أو بنـت على\nحـسـب ࢪغبـتـڪ، فـقـط اڪـتـب:\n[.زوجيني ولد] أو [.زوجيني بنت]", threadID, messageID) }
     }
 }
