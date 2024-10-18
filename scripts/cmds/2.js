@@ -17,11 +17,11 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
   const axios = require("axios");
   const fs = require("fs-extra");
   var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
-  const { senderID, threadID } = event;
+  const { senderID, threadID, messageID } = event;
   const pre = global.GoatBot.config.prefix;
   var data = await usersData.get(senderID);
   var money = data.money
-  if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID)
+  if( money < 200) api.sendMessage("انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل", threadID, messageID);
      switch (args[0]) {
 	   case "ولد":
 	   case "بولد": {
