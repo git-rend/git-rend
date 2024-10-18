@@ -22,9 +22,9 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
   var data = await usersData.get(senderID);
   var money = data.money
   if( money < 200) api.sendMessage(انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل, event.threadID, event.messageID)
-    switch (args[0]) {
-	case "ولد":
-	case "بولد": {
+     switch (args[0]) {
+	   case "ولد":
+	   case "بولد": {
         //else {
                 var tile = Math.floor(Math.random() * 101);
 	        const threadData = await threadsData.get(threadID);
