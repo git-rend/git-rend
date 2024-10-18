@@ -37,8 +37,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 	   case "ولد":
 	   case "بولد": {
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
-                var Girlname = (await usersData.getName(event.senderID));
-                var Boyname = (await usersData.getName(id));
+                var Girlname = (await usersData.get(event.senderID).name);
+                var Boyname = (await usersData.get(id).name);
 
                 var arraytag = [];
                 arraytag.push({id: event.senderID, tag: Girlname});
