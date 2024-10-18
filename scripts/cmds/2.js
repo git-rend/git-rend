@@ -31,7 +31,7 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 for (let memberID of allMembers) {
                      const memberInfo = await api.getUserInfo(memberID);
                      const member = memberInfo[memberID];
-                     if (member.gender === 2) { boys.push(`${memberID}`) }};
+                     if (member.gender === 2) { Boys.push(`${memberID}`) }};
                 const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
         
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
