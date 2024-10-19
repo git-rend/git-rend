@@ -111,8 +111,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 if (member.gender === 2) { Boys.push(`${memberID}`) }}
                 const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
 		   
-                var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
+                //var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
 		   
-		   return api.sendMessage(`${id}`/*"🌹 تـم تحديـث الأمـࢪ، يمڪنڪ\nالآن الـزواج من ولـد أو بنـت على\nحـسـب ࢪغبـتـڪ، فـقـط اڪـتـب:\n[.زوجيني ولد] أو [.زوجيني بنت]"*/, threadID, messageID) }
+		   return api.sendMessage(`${Boyslist}`/*"🌹 تـم تحديـث الأمـࢪ، يمڪنڪ\nالآن الـزواج من ولـد أو بنـت على\nحـسـب ࢪغبـتـڪ، فـقـط اڪـتـب:\n[.زوجيني ولد] أو [.زوجيني بنت]"*/, threadID, messageID) }
     }
 }
