@@ -27,7 +27,7 @@ module.exports = {
 
         // Check if gender is defined: 1 = Female, 2 = Male
         if (member.gender === 2) {
-          boys.push(`"${memberID}"`);
+          boys.push(`${memberID}`);
         } /*else if (member.gender === 1) {
           girls.push(`👧 ${member.name} (ID: ${memberID})`);
         }*/ else {
