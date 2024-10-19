@@ -35,8 +35,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
 		   
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
-                var Girlname = (await usersData.get(event.senderID)).name;
-                var Boyname = (await usersData.get(id)).name;
+                var Girlname = await usersData.getName(event.senderID);
+                var Boyname = await usersData.getName(id);
 
                 var arraytag = [];
                 arraytag.push({id: event.senderID, tag: Girlname});
@@ -75,8 +75,8 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
                 const Girlslist = Girls.length > 0 ? Girls.join(',') : "لا توجد بنات";
 		   
 		var id = Girlslist[Math.floor(Math.random() * Girlslist.length)];
-                var Boyname = (await usersData.getName(event.senderID));
-                var Girlname = (await usersData.getName(id));
+                var Boyname = await usersData.getName(event.senderID);
+                var Girlname = await usersData.getName(id);
 
                 var arraytag = [];
                 arraytag.push({id: event.senderID, tag: Boyname});
