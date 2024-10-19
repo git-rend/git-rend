@@ -12,33 +12,31 @@ module.exports.config = {
 module.exports.onStart = async function({ api, args, event, usersData, threadsData }) {
   const axios = require("axios");
   const fs = require("fs-extra");
-  var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
   const { senderID, threadID, messageID } = event;
   const pre = global.GoatBot.config.prefix;
   var data = await usersData.get(senderID);
   var money = data.money
   if( money < 200) api.sendMessage("انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل", threadID, messageID);
-  var LovePercent = Math.floor(Math.random() * 101);
-  const threadData = await threadsData.get(threadID);
-  //const threadInfo = await api.getThreadInfo(event.threadID);
-  const allMembers =/*threadInfo*/event.participantIDs;
-  const Boys = [];
-  const Girls = [];
-  for (let memberID of allMembers) {
-  const memberInfo = await api.getUserInfo(memberID);
-  const member = memberInfo[memberID];
-  if (member.gender === 2) { Boys.push(`${memberID}`) }
-  else 
-  if (member.gender === 1) { Girls.push(`${memberID}`)}}
-  const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
-  const Girlslist = Girls.length > 0 ? Girls.join(',') : "لا توجد بنات";
  
      switch (args[0]) {
 	   case "ولد":
 	   case "بولد": {
+		var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
+		var LovePercent = Math.floor(Math.random() * 101);
+		const threadInfo = await api.getThreadInfo(event.threadID);
+                const allMembers = threadInfo.participantIDs;
+		const Boys = [];
+		   
+                for (let memberID of allMembers) {
+                    const memberInfo = await api.getUserInfo(memberID);
+                    const member = memberInfo[memberID];
+			
+                if (member.gender === 2) { Boys.push(`${memberID}`) }}
+                const Boyslist = Boys.length > 0 ? Boys.join(',') : "لا يوجد أولاد";
+		   
                 var id = Boyslist[Math.floor(Math.random() * Boyslist.length)];
-                var Girlname = (await usersData.get(event.senderID).name);
-                var Boyname = (await usersData.get(id).name);
+                var Girlname = (await usersData.get(event.senderID)).name;
+                var Boyname = (await usersData.get(id)).name;
 
                 var arraytag = [];
                 arraytag.push({id: event.senderID, tag: Girlname});
@@ -63,7 +61,20 @@ module.exports.onStart = async function({ api, args, event, usersData, threadsDa
 		     
            case "بنت":
 	   case "ببنت": {
-                var id = Girlslist[Math.floor(Math.random() * Girlslist.length)];
+		var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
+		var LovePercent = Math.floor(Math.random() * 101);
+	        const threadInfo = await api.getThreadInfo(event.threadID);
+                const allMembers = threadInfo.participantIDs;
+                const Girls = [];
+		   
+                for (let memberID of allMembers) {
+                    const memberInfo = await api.getUserInfo(memberID);
+                    const member = memberInfo[memberID]; 
+			
+                if (member.gender === 1) { Girls.push(`${memberID}`)}}
+                const Girlslist = Girls.length > 0 ? Girls.join(',') : "لا توجد بنات";
+		   
+		var id = Girlslist[Math.floor(Math.random() * Girlslist.length)];
                 var Boyname = (await usersData.getName(event.senderID));
                 var Girlname = (await usersData.getName(id));
 
