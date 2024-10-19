@@ -37,7 +37,7 @@ module.exports = {
       }
 
       // Prepare the response
-      const boysList = boys.length > 0 ? boys.join(',') : "لا يوجد أولاد";
+      const boysList = boys.length > 0 ? boys.join('/n') : "لا يوجد أولاد";
      // const girlsList = girls.length > 0 ? girls.join('\n') : getLang("noMembers");
       var id = boysList[Math.floor(Math.random() * boysList.length)];
       const response = `${id}`/*`${boysList}`*/; //🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n${boysList}\n\n👧 **Girls**:\n${girlsList}
