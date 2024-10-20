@@ -11,7 +11,7 @@ module.exports = {
   },
 
   langs: {
-    en: {
+    ar: {
       noGirls: "No girls found in the group!",
       noBoys: "No boys found in the group!",
       married: "💍 Congratulations to %1 and %2 on their marriage! 🎉",
