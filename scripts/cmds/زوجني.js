@@ -65,7 +65,7 @@ module.exports = {
       .replace("%2", `@${partnerName}`);
 
     // Send the congratulatory message
-    await api.sendMessage ("🌹 تم تحديث الأمر، يمكن للولد فقط الزواج من البنات، ويمكن للبنت فقط أن تتزوج من الأولاد 🫶", threadID, messageID);
+    return api.sendMessage ("🌹 تم تحديث الأمر، يمكن للولد فقط الزواج من البنات، ويمكن للبنت فقط أن تتزوج من الأولاد 🫶", threadID, messageID);
     setTimeout(() => { api.sendMessage({
       body: messageText + "\n\n" + langs.loveWords,
       mentions: [
