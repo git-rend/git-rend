@@ -63,7 +63,7 @@ module.exports = {
     // Format marriage message
     const messageText = langs.married
       .replace("%1", `@${senderName}`)
-      .replace("%2", `@${partnerName}`);
+      .replace("%2", `@${partnerName}`)
       .replace("%3", `@${lovePercent}`);
     // Send the congratulatory message
     await api.sendMessage({
