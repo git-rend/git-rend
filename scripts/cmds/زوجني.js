@@ -21,7 +21,7 @@ module.exports = {
 
   onStart: async function ({ api, event, usersData, message }) {
     const { threadID, senderID, messageID } = event;
-    const langs = this.langs.en;
+    const langs = this.langs.ar;
 
     // Fetching user info
     const userInfo = await api.getUserInfo(senderID);
