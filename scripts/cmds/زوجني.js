@@ -13,10 +13,10 @@ module.exports = {
 
   langs: {
     ar: {
-      noGirls: "No girls found in the group!",
-      noBoys: "No boys found in the group!",
-      married: "💍 Congratulations to %1 and %2 on their marriage! 🎉",
-      loveWords: "May your love be everlasting and full of joy! ❤️"
+      noGirls: "🌹 للأسف لا يمڪن تزويجك\nلا يوجـد بنـات في المجموعـة",
+      noBoys: "🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة",
+      married: "❤️‍🔥 مباࢪڪ زواجڪما 💍🎉\n• ا[ %1 ]ا\n          ا[💜🫶💙]ا\n• ا[ %2 ]ا\n    نسبة الرومنسية: %3 %",
+      loveWords: ""
     }
   },
 
@@ -59,12 +59,12 @@ module.exports = {
     const senderName = userInfo[senderID].name || 'User';
     const partnerInfo = await api.getUserInfo(chosenPartner);
     const partnerName = partnerInfo[chosenPartner].name || 'User';
-
+    var lovePercent = Math.floor(Math.random() * 101);
     // Format marriage message
     const messageText = langs.married
       .replace("%1", `@${senderName}`)
       .replace("%2", `@${partnerName}`);
-
+      .replace("%3", `@${lovePercent}`);
     // Send the congratulatory message
     await api.sendMessage({
       body: messageText + "\n\n" + langs.loveWords,
