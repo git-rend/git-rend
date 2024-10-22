@@ -74,8 +74,8 @@ module.exports = { config: {
     return api.sendMessage({
       body: `❤️‍🔥 مباࢪڪ زواجڪما 💍🎉\n• ا[ ${senderName} ]ا\n          ا[💜🫶💙]ا\n• ا[ ${partnerName} ]ا\n    نسبة الࢪومنسية: ${lovePercent} %`,
       mentions: tags, attachment: images
-    }, threadID, (fs.unlinkSync(__dirname + '/cache/1.png');
-        fs.unlinkSync(__dirname + '/cache/2.png')), messageID);
+    }, threadID,/* (fs.unlinkSync(__dirname + '/cache/1.png');
+        fs.unlinkSync(__dirname + '/cache/2.png')),*/messageID);
   }
 };
 
