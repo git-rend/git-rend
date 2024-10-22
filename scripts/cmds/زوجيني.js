@@ -16,7 +16,7 @@ module.exports = { config: {
     const { threadID, senderID, messageID } = event;
     const axios = require ("axios");
     const fs = require ("fs-extra");
-    var TOKEN = "";
+    
     // Fetching user info
     const userInfo = await api.getUserInfo(senderID);
     const senderGender = userInfo[senderID].gender === 2 ? "boy" : "girl"; // Assuming gender 2 is male and 1 is female
@@ -35,13 +35,13 @@ module.exports = { config: {
     }
 
     // Randomly select the appropriate gender
-    let chosenPartner;
+    //let chosenPartner;
     if (senderGender === "boy") {
       if (girls.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا توجـد بنـات في المجموعـة", threadID, messageID);
-      chosenPartner = girls[Math.floor(Math.random() * girls.length)];
+      let chosenPartner = girls[Math.floor(Math.random() * girls.length)];
     } else {
       if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
-      chosenPartner = boys[Math.floor(Math.random() * boys.length)];
+      let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
     }
 
     // Fetch profile pictures using the existing logic
@@ -71,10 +71,9 @@ module.exports = { config: {
         images.push(fs.createReadStream(__dirname + "/cache/2.png")); //Partner's profile picture
     
     // Send the congratulatory message
-    return api.sendMessage({
-      body: `❤️‍🔥 مباࢪڪ زواجڪما 💍🎉\n• ا[ ${senderName} ]ا\n          ا[💜🫶💙]ا\n• ا[ ${partnerName} ]ا\n    نسبة الࢪومنسية: ${lovePercent} %`,
-      mentions: tags, attachment: images
-    }, threadID,/* (fs.unlinkSync(__dirname + '/cache/1.png');
+    var message = { body: `❤️‍🔥 مباࢪڪ زواجڪما 💍🎉\n• ا[ ${senderName} ]ا\n          ا[💜🫶💙]ا\n• ا[ ${partnerName} ]ا\n    نسبة الࢪومنسية: ${lovePercent} %`,
+                    mentions: tags, attachment: images }
+    return api.sendMessage(message, threadID,/* (fs.unlinkSync(__dirname + '/cache/1.png');
         fs.unlinkSync(__dirname + '/cache/2.png')),*/messageID);
   }
 };
