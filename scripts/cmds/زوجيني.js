@@ -11,7 +11,8 @@ module.exports = { config: {
                            },
 
   onStart: async function ({ api, event, usersData, message, role }) {
-    if (event.senderID = role!) return message.reply("الأمر تحت الصيانة، المطور محمد تانجيرو فقط يستطيع استخدامه وتجريبه حاليا");
+    if (role < 2) return message.reply("الأمر تحت الصيانة، المطور محمد تانجيرو فقط يستطيع استخدامه وتجريبه حاليا");
+    
     const { threadID, senderID, messageID } = event;
     
     // Fetching user info
