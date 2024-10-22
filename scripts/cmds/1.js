@@ -1,53 +1,66 @@
-module.exports = {
-  config: {
-    name: "1",
-    role: 2,
-    version: "2.0",
-    author: "TawsiN",
-    description: { ar: "Display the names or IDs of girls and boys in the group"},
-    category: " ",
-    guide: { ar: "{pn}"},
-    countdown: 5,
-  },
+module.exports = { config: {
+                      name: "1",
+                      aliases: ["01"],
+                      version: "1.1.11", 
+                      author: "TawsiN",
+                      role: 2,
+                      description: "الزواج بشكل عشوائي (بنت مع ولد) في المجموعة",
+                      countdown: 5,
+                      category: "fun",
+                      guide: { ar: "{pn}" }
+                           },
 
-   onStart: async function ({ message, api, event, getLang }) {
-    try {
-      // Fetching thread (group) info to get the member list
-      const threadInfo = await api.getThreadInfo(event.threadID);
-      const allMembers = threadInfo.participantIDs;
+  onStart: async function ({ api, event, usersData, message }) {
+    const { threadID, senderID, messageID } = event;
 
-      // Initializing arrays to store boy and girl members
-      const boys = [];
-      //const girls = [];
+    // Fetching user info
+    const userInfo = await api.getUserInfo(senderID);
+    const senderGender = userInfo[senderID].gender === 2 ? "boy" : "girl"; // Assuming gender 2 is male and 1 is female
 
-      // Looping through all members and fetching individual details
-      for (let memberID of allMembers) {
-        const memberInfo = await api.getUserInfo(memberID);
-        const member = memberInfo[memberID];
+    // Fetch all participants
+    const allUsers = await api.getThreadInfo(threadID);
 
-        // Check if gender is defined: 1 = Female, 2 = Male
-        if (member.gender === 2) {
-          boys.push(`${memberID}`);
-        } /*else if (member.gender === 1) {
-          girls.push(`👧 ${member.name} (ID: ${memberID})`);
-        }*/ else {
-          // If gender is not set, log this for debugging
-          console.log(`Gender not set for: ${member.name} (ID: ${memberID})`);
-        }
-      }
-
-      // Prepare the response
-      const boysList = boys.length > 0 ? boys.join() : "لا يوجد أولاد";
-     // const girlsList = girls.length > 0 ? girls.join('\n') : getLang("noMembers");
-      var id = boysList[Math.floor(Math.random() * boysList.length)];
-      const response = `${id}`/*`${boysList}`*/; //🧑‍🤝‍🧑 **Group Members** 🧑‍🤝‍🧑\n\n👦 **Boys**:\n${boysList}\n\n👧 **Girls**:\n${girlsList}
-      
-      // Replying the result back to the group
-      return message.reply(response);
-
-    } catch (error) {
-      console.error("Error fetching group members:", error);
-      return message.reply(getLang("error"));
+    // Separate boys and girls from the group
+    const boys = [];
+    const girls = [];
+    for (let userID of allUsers.participantIDs) {
+      if (userID == senderID) continue; // Skip the sender
+      const user = await api.getUserInfo(userID);
+      if (user[userID].gender === 2) boys.push(userID); // Gender 2 = Male
+      if (user[userID].gender === 1) girls.push(userID); // Gender 1 = Female
     }
+
+    // Randomly select the appropriate gender
+    let chosenPartner;
+    if (senderGender === "boy") {
+      if (girls.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا توجـد بنـات في المجموعـة", threadID, messageID);
+      chosenPartner = girls[Math.floor(Math.random() * girls.length)];
+    } else {
+      if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
+      chosenPartner = boys[Math.floor(Math.random() * boys.length)];
+    }
+
+    // Fetch profile pictures using the existing logic
+    const senderPFP = await usersData.getAvatarUrl(senderID);
+    const partnerPFP = await usersData.getAvatarUrl(chosenPartner);
+
+    // Prepare mention text
+    const senderName = userInfo[senderID].name || 'User';
+    const partnerInfo = await api.getUserInfo(chosenPartner);
+    const partnerName = partnerInfo[chosenPartner].name || 'User';
+    var lovePercent = Math.floor(Math.random() * 101);
+    
+    // Send the congratulatory message
+    await api.sendMessage({
+      body: `❤️‍🔥 مباࢪڪ زواجڪما 💍🎉\n• ا[ ${senderName} ]ا\n          ا[💜🫶💙]ا\n• ا[ ${partnerName} ]ا\n    نسبة الࢪومنسية: ${lovePercent} %`,
+      mentions: [
+        { tag: senderName, id: senderID }, // Mention the sender
+        { tag: partnerName, id: chosenPartner } // Mention the partner
+      ],
+      attachment: [
+        await global.utils.getStreamFromURL(senderPFP), // Sender's profile picture
+        await global.utils.getStreamFromURL(partnerPFP)  // Partner's profile picture
+      ]
+    }, threadID, messageID);
   }
 };
