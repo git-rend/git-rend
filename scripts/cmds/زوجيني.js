@@ -1,18 +1,19 @@
 module.exports = { config: {
-                      name: "1",
-                      aliases: ["01"],
+                      name: "زوجيني",
+                      aliases: ["زوجني"],
                       version: "1.1.11", 
                       author: "TawsiN",
-                      role: 2,
+                      role: 0,
                       description: "الزواج بشكل عشوائي (بنت مع ولد) في المجموعة",
                       countdown: 5,
                       category: "fun",
                       guide: { ar: "{pn}" }
                            },
 
-  onStart: async function ({ api, event, usersData, message }) {
+  onStart: async function ({ api, event, usersData, message, role }) {
+    if (event.senderID = role!) return message.reply("الأمر تحت الصيانة، المطور محمد تانجيرو فقط يستطيع استخدامه وتجريبه حاليا");
     const { threadID, senderID, messageID } = event;
-
+    
     // Fetching user info
     const userInfo = await api.getUserInfo(senderID);
     const senderGender = userInfo[senderID].gender === 2 ? "boy" : "girl"; // Assuming gender 2 is male and 1 is female
