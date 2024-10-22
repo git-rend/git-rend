@@ -1,7 +1,7 @@
 module.exports.config = {
                 name: "ألغاز",
 	        aliases: ["الغاز","لغز"],
-		version: "1.3",
+		version: "1.4.2",
 		author: "محمد تانجيرو",
 		countDown: 5,
 		role: 0,
@@ -10,7 +10,7 @@ module.exports.config = {
 		guide: { ar: "{pn}" }
                          };
 
-const questions = [
+const Puzzles = [
 { question: "ما الذي ينبغي كسره قبل استخدامه؟", answer: "البيض" },
 { question: "أنا طويل حينما أكون صغيرًا، وأكون قصيرًا حينما أصبح كبيرًا في السن، فمن أنا؟", answer: "الشمعة" },
 { question: "أي شهر في السنة يحتوي على 28 يومًا؟", answer: "كل الشهور" },
@@ -44,21 +44,21 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userData = await usersData.get(senderID);
-    const userName = await usersData.getName(event.senderID);
+    const userName = await usersData.getName(senderID);
 
     if (userAnswer === correctAnswer) {
         await usersData.set(senderID, {money: userData.money + 100, data: userData.data});
-        api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
+        api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, threadID);
         api.unsendMessage(Reply.messageID); 
     } else {
-        api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
+        api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, threadID, messageID);
     }
 };
 
 module.exports.onStart = async function ({ api, event, args, commandName }) {
-    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-    const correctAnswer = randomQuestion.answer;
-    const question = randomQuestion.question;
+    const randomPuzzle = Puzzles[Math.floor(Math.random() * Puzzles.length)];
+    const correctAnswer = randomPuzzle.answer;
+    const question = randomPuzzle.question;
 
     const message = `✨ حل اللغز بكلمة واحدة ✨\n ༺ا-🌹-━━♡━━-🌹-ا༻\n\n[ ${question} ]`;
 
