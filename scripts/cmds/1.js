@@ -44,8 +44,14 @@ module.exports.onStart = async function({ api, event, usersData }) {
   var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
         arraytag.push({id: chosenPartner, tag: name});
-	  
-} else {
+	let Avatar = (await axios.get( `https://graph.facebook.com/${chosenPartner}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
+        let Avatar2 = (await axios.get( `https://graph.facebook.com/${senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
+var imglove = [];
+              imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
+              imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
+	} else {
       if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
       let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
       var namee = (await usersData.getName(senderID));
@@ -53,18 +59,18 @@ module.exports.onStart = async function({ api, event, usersData }) {
       var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
         arraytag.push({id: chosenPartner, tag: name});
-	  };
+let Avatar = (await axios.get( `https://graph.facebook.com/${chosenPartner}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
+        let Avatar2 = (await axios.get( `https://graph.facebook.com/${senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
+var imglove = [];
+              imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
+              imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
+	  }
         
       
         usersData.set(senderID, options = {money: money - 200, data: data.data})
   
-        let Avatar = (await axios.get( `https://graph.facebook.com/${chosenPartner}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
-            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
-        let Avatar2 = (await axios.get( `https://graph.facebook.com/${senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
-            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
-        var imglove = [];
-              imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
-              imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
         var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرووومنسية: ${lovePercent} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
         return api.sendMessage(msg, threadID, messageID);
         //fs.unlinkSync(__dirname + '/cache/1.png');
