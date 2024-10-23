@@ -39,19 +39,19 @@ module.exports.onStart = async function({ api, event, usersData }) {
 	  if (senderGender === "boy") {
       if (girls.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا توجـد بنـات في المجموعـة", threadID, messageID);
       let chosenPartner = girls[Math.floor(Math.random() * girls.length)];
+      var namee = (await usersData.getName(senderID));
+      var name = (await usersData.getName(chosenPartner));
     } else {
       if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
       let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
-	  }
-	  
-        var namee = (await usersData.getName(senderID));
-        var name = (await usersData.getName(chosenPartner));
-
+      var namee = (await usersData.getName(senderID));
+      var name = (await usersData.getName(chosenPartner));
+	  } 
         var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
         arraytag.push({id: chosenPartner, tag: name});
       
-        usersData.set(event.senderID, options = {money: money - 200, data: data.data})
+        usersData.set(senderID, options = {money: money - 200, data: data.data})
   
         let Avatar = (await axios.get( `https://graph.facebook.com/${chosenPartner}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
