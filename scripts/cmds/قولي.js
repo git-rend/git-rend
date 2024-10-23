@@ -4,18 +4,14 @@ module.exports.config = {
 	          version: "1.0.1",
 	          author: "محمد تانجيرو",
                   countDown: 5,
-                  role: 1,
+                  role: 0,
                   description: { ar: "تخليها تتكلم بأي شيء تكتبه"},
                   category: "Entertainment",
                   guide: { ar: "{pn} [النص]"}, 
-                  dependencies: {
-		        "path": "",
-		        "fs-extra": ""
-		                }
-};
+                        };
 
 module.exports.onStart = async function({ api, event, args }) {
-	try {
+	//try {
 		const { createReadStream, unlinkSync } = require ("fs-extra");
 		const { resolve } = require ("path");
 		var content = (event.type == "message_reply") ? event.messageReply.body : args.join(" ");
@@ -24,5 +20,4 @@ module.exports.onStart = async function({ api, event, args }) {
 		const path = resolve(__dirname, 'cache', `${event.threadID}_${event.senderID}.mp3`);
 		await global.utils.downloadFile(`https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(msg)}&tl=ar&client=tw-ob`, path);
 		return api.sendMessage({ attachment: createReadStream(path)}, event.threadID, () => unlinkSync(path));
-	} catch (e) { return console.log(e) };
 	}
