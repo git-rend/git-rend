@@ -41,15 +41,20 @@ module.exports.onStart = async function({ api, event, usersData }) {
       let chosenPartner = girls[Math.floor(Math.random() * girls.length)];
       var namee = (await usersData.getName(senderID));
       var name = (await usersData.getName(chosenPartner));
-    } else {
+  var arraytag = [];
+        arraytag.push({id: senderID, tag: namee});
+        arraytag.push({id: chosenPartner, tag: name});
+	  
+} else {
       if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
       let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
       var namee = (await usersData.getName(senderID));
       var name = (await usersData.getName(chosenPartner));
-	  };
-        var arraytag = [];
+      var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
         arraytag.push({id: chosenPartner, tag: name});
+	  };
+        
       
         usersData.set(senderID, options = {money: money - 200, data: data.data})
   
