@@ -24,7 +24,7 @@ module.exports.circle = async (image) => {
 };
 
 module.exports.onStart = async ({ event, api, args }) => {
-try {
+/*try {*/
   const axios = require ('axios');
   const Canvas = require ('canvas');
   const jimp = require ("jimp");
@@ -44,5 +44,5 @@ try {
 	fs.writeFileSync(path_toilet,imageBuffer);
 	 api.sendMessage({attachment: fs.createReadStream(path_toilet, {'highWaterMark': 128 * 1024}), body: `💙✨ تم الشنق 😥 ✨💙`}, event.threadID, () => fs.unlinkSync(path_toilet), event.messageID);
 }
-catch(e) {api.sendMessage(e.stack, event.threadID )}
-}
+/*catch(e) {api.sendMessage(e.stack, event.threadID )}
+}*/
