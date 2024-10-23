@@ -7,19 +7,19 @@ module.exports.config = {
                   description: "يرسل لك صورة: حسابك / الغروب / الي تعمل له تاغ / الي ترد على رسالته",
                   category: "𝔾ℝ𝕆𝕌ℙ",
                   guide: "",
-                  dependencies: {
+                  /*dependencies: {
                         "request": "",
                         "fs": ""
-                        }       };
+                        }       */};
 
 module.exports.onStart = async({api,event,args}) => {
     const fs = require ("fs-extra");
     const request = require ("request");
     const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
     const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.GoatBot.config.PREFIX;
-     if (args.length == 0) return api.sendMessage(`✨ - استخدم هذه الأوامر - ✨\nا----------💙----------💙----------ا\n\n           ${prefix}${this.config.name} الحساب\n✨ ترسل لك صورة حسابك ✨\n\n      ${prefix}${this.config.name} الحساب @[تاغ]\n✨ ترسل لك صورة الشخص المشار إليه ✨\n\n${prefix}${this.config.name} الحساب [رد على رسالة]\n✨ ترسل لك صورة الشخص الي ترد على رسالته ✨\n\n           ${prefix}${this.config.name} الغروب\n✨ ترسل لك صورة الغروب ✨`, event.threadID, event.messageID);
+     if (args.length == 0) return api.sendMessage(`✨ - استخدم هذه الأوامر - ✨\nا----------💙----------💙----------ا\n\n           ${prefix}صورة الحساب\n✨ ترسل لك صورة حسابك ✨\n\n      ${prefix}صورة الحساب @[تاغ]\n✨ ترسل لك صورة الشخص المشار إليه ✨\n\n${prefix}صورة الحساب [رد على رسالة]\n✨ ترسل لك صورة الشخص الي ترد على رسالته ✨\n\n           ${prefix}صورة الغروب\n✨ ترسل لك صورة الغروب ✨`, event.threadID, event.messageID);
     if (args[0] == "الغروب") {
-           if(args[1]){ let threadInfo = await api.getThreadInfo(args[1]);
+           if(args[1]) { let threadInfo = await api.getThreadInfo(args[1]);
            let imgg = threadInfo.imageSrc;
        if(!imgg) api.sendMessage(` ${threadInfo.threadName} `,event.threadID,event.messageID);
         else var callback = () => api.sendMessage({body:` ${threadInfo.threadName} `,attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID); 
