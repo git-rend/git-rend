@@ -60,7 +60,7 @@ module.exports.onStart = async function({ api, event, usersData }) {
         var imglove = [];
               imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
               imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
-        var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${lovePercent} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
+        var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرووومنسية: ${lovePercent} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
         return api.sendMessage(msg, threadID, messageID);
         //fs.unlinkSync(__dirname + '/cache/1.png');
         //fs.unlinkSync(__dirname + '/cache/2.png');
