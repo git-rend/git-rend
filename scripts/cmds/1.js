@@ -24,21 +24,38 @@ module.exports.onStart = async function({ api, event, usersData }) {
         
 
         //let loz = await api.getThreadInfo(event.threadID);
-        var ids = event.participantIDs;
-        var id = ids[Math.floor(Math.random() * ids.length)];
+        //var ids = event.participantIDs;
+        //var id = ids[Math.floor(Math.random() * ids.length)];
 
+        const userInfo = await api.getUserInfo(senderID);
+        const senderGender = userInfo[senderID].gender === 2 ? "boy" : "girl";
+	const boys = [];
+    const girls = [];
+    for (let userID of event.participantIDs) {
+      const user = await api.getUserInfo(userID);
+      if (user[userID].gender === 2) boys.push(userID); // Gender 2 = Male
+      if (user[userID].gender === 1) girls.push(userID); // Gender 1 = Female
+    }
+	  if (senderGender === "boy") {
+      if (girls.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا توجـد بنـات في المجموعـة", threadID, messageID);
+      let chosenPartner = girls[Math.floor(Math.random() * girls.length)];
+    } else {
+      if (boys.length === 0) return api.sendMessage("🌹 للأسف لا يمڪن تزويجك\nلا يوجـد أولاد فـي المجموعـة", threadID, messageID);
+      let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
+	  }
+	  
         var namee = (await usersData.getName(senderID));
-        var name = (await usersData.getName(id));
+        var name = (await usersData.getName(chosenPartner));
 
         var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
-        arraytag.push({id: id, tag: name});
+        arraytag.push({id: chosenPartner, tag: name});
       
         usersData.set(event.senderID, options = {money: money - 200, data: data.data})
   
-        let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+        let Avatar = (await axios.get( `https://graph.facebook.com/${chosenPartner}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
-        let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+        let Avatar2 = (await axios.get( `https://graph.facebook.com/${senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
             fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
         var imglove = [];
               imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
