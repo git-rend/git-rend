@@ -29,7 +29,7 @@ module.exports.onStart = async ({ event, api, args }) => {
   const Canvas = require ('canvas');
   const jimp = require ("jimp");
   const fs = require ("fs-extra");
-  var path_toilet = __dirname+'/cache/damma.jpg'; 
+  var path_toilet = __dirname + '/cache/damma.jpg'; 
   var id = Object.keys(event.mentions)[0] || event.senderID;
   const canvas = Canvas.createCanvas(500, 670);
 	const ctx = canvas.getContext('2d');
