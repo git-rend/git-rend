@@ -15,6 +15,7 @@ module.exports.onStart = async function({ api, event, usersData }) {
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
 	const { senderID } = event;
 	const pre = global.GoatBot.config.prefix;
+	var data = await usersData.get(senderID);
         var money = (await usersData.get(senderID)).money;
 	if (money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         
