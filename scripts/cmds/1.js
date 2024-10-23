@@ -46,7 +46,7 @@ module.exports.onStart = async function({ api, event, usersData }) {
       let chosenPartner = boys[Math.floor(Math.random() * boys.length)];
       var namee = (await usersData.getName(senderID));
       var name = (await usersData.getName(chosenPartner));
-	  } 
+	  };
         var arraytag = [];
         arraytag.push({id: senderID, tag: namee});
         arraytag.push({id: chosenPartner, tag: name});
