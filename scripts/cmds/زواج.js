@@ -15,19 +15,14 @@ module.exports.onStart = async function({ api, event, usersData }) {
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
 	const { senderID } = event;
 	const pre = global.GoatBot.config.prefix;
-        var data = await usersData.get(senderID);
-        var money = data.money
-	
-        if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
-        else {
-        var tile = Math.floor(Math.random() * 101);
+        var data = (await usersData.get(senderID)).money;
+	if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         
-
-        //let loz = await api.getThreadInfo(event.threadID);
+  else {
         var ids = event.participantIDs;
         var id1 = ids[Math.floor(Math.random() * ids.length)];
 	var id2 = ids[Math.floor(Math.random() * ids.length)];
-
+        var tile = Math.floor(Math.random() * 101);
         var name1 = (await usersData.get(id1)).name;
         var name2 = (await usersData.get(id2)).name;
 
@@ -45,8 +40,6 @@ module.exports.onStart = async function({ api, event, usersData }) {
               imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
               imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
         var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+name1+" "+"💓"+" "+name2, mentions: arraytag, attachment: imglove}
-        return api.sendMessage(msg, event.threadID, event.messageID);
-        //fs.unlinkSync(__dirname + '/cache/1.png');
-        //fs.unlinkSync(__dirname + '/cache/2.png');
+        return api.sendMessage(msg, event.threadID, fs.unlinkSync(__dirname + '/cache/1.png'), fs.unlinkSync(__dirname + '/cache/2.png'), event.messageID);
       }
   }
