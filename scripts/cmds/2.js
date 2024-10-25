@@ -14,9 +14,12 @@ module.exports.config = {
 	},
 
 module.exports.onStart = async function({ api, event, usersData }) {
-  const axios = require("axios");
-  const fs = require("fs-extra");
-  var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
+
+    switch (args[0]) {
+	case "بنت": {
+	const axios = require("axios");
+        const fs = require("fs-extra");
+        var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
 	const { senderID } = event;
 	const pre = global.GoatBot.config.prefix;
         var data = await usersData.get(senderID);
@@ -52,5 +55,5 @@ module.exports.onStart = async function({ api, event, usersData }) {
         return api.sendMessage(msg, event.threadID, event.messageID);
         //fs.unlinkSync(__dirname + '/cache/1.png');
         //fs.unlinkSync(__dirname + '/cache/2.png');
-      }
+      }}} 
 }
