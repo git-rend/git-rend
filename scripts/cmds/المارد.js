@@ -23,9 +23,9 @@ module.exports = {
   },
 
   onChat: async function ({ api, event, args, message }) {
-    const userInput = message.body.toLowerCase();
+    const userInput = event.body.toLowerCase();
 
-    if (userInput === "!aki") {
+    if (userInput === "بدأ" | userInput === "بدا") {
       try {
         const response = await axios.get('http://akinator-apis.ohio03.repl.co/api/aki');
         const question = response.data.question;
