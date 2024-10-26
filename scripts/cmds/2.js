@@ -51,9 +51,16 @@ onStart: async function({ api, args, event, message, usersData }) {
         break;
 	           }
 	case "ولد": {
+           const allMembers = event.participantIDs;
+           const boys = [];
+           for (let memberID of allMembers) {
+              const memberInfo = await api.getUserInfo(memberID);
+              const member = memberInfo[memberID];
+           if (member.gender === 2) {
+              boys.push(`${memberID}`)}}
+           const boysList = boys.length > 0 ? boys.join('\n') : ("لا يوجد أولاد في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
            var tile = Math.floor(Math.random() * 101);
-           var emoji = event.participantIDs;
-           var id = emoji[Math.floor(Math.random() * emoji.length)];
+           var id = boys[Math.floor(Math.random() * boys.length)];
            var namee = (await usersData.get(senderID)).name;
            var name = (await usersData.get(id)).name;
            var arraytag = [];
@@ -74,17 +81,6 @@ onStart: async function({ api, args, event, message, usersData }) {
         break;
 	           }
 	default: {
-           //const threadInfo = await api.getThreadInfo(threadID);
-           const allMembers = event.participantIDs;
-	   const girls = [];
-           for (let memberID of allMembers) {
-              const memberInfo = await api.getUserInfo(memberID);
-              const member = memberInfo[memberID];
-           if (member.gender === 1) {
-              girls.push(`${memberID}`)}}
-           const girlsList = girls.length > 0 ? girls.join('\n') : ("لا توجد بنات في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
-           var tile = Math.floor(Math.random() * 101);
-           var id = girls[Math.floor(Math.random() * girls.length)];
 	   return message.reply (`${id} زوجيني بنت أو زوجيني ولد`)} 
    }
   } 
