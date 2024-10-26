@@ -84,7 +84,7 @@ onStart: async function({ api, args, event, message, usersData }) {
               girls.push(`ID: ${memberID}`)}}
            const girlsList = girls.length > 0 ? girls.join('\n') : ("لا توجد بنات في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
            var tile = Math.floor(Math.random() * 101);
-           var id = girlsList[Math.floor(Math.random() * girlsList.length)];
+           var id = girls[Math.floor(Math.random() * girls.length)];
 	   return message.reply (`${id} زوجيني بنت أو زوجيني ولد`)} 
    }
   } 
