@@ -18,10 +18,12 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
   const fs = require("fs-extra");
   const { senderID, messageID, threadID } = event;
   const pre = global.GoatBot.config.prefix;
-    switch (args[0]) {
+  var data = await usersData.get(senderID);
+  var money = data.money
+  if (money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, threadID, messageID)
+  else { 
+     switch (args[0]) {
 	case "بنت": {
-	   if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, threadID, messageID) //thay số tiền cần trừ vào 0, xóa money = 0
-           else {
            var tile = Math.floor(Math.random() * 101);
            var emoji = event.participantIDs;
            var id = emoji[Math.floor(Math.random() * emoji.length)];
@@ -42,11 +44,9 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
            return api.sendMessage(msg, event.threadID, event.messageID);
            //fs.unlinkSync(__dirname + '/cache/1.png');
            //fs.unlinkSync(__dirname + '/cache/2.png');
-                } break;
+                  break;
 	           }
 	case "ولد": {
-	   if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال - ${pre}هدية - ${pre}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
-           else {
            var tile = Math.floor(Math.random() * 101);
            var emoji = event.participantIDs;
            var id = emoji[Math.floor(Math.random() * emoji.length)];
@@ -67,8 +67,9 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
            return api.sendMessage(msg, event.threadID, event.messageID);
            //fs.unlinkSync(__dirname + '/cache/1.png');
            //fs.unlinkSync(__dirname + '/cache/2.png');
-                } break;
+                  break;
 	           }
 	default: { return api.sandMessage ("زوجيني بنت أو زوجيني ولد", threadID, messageID)} 
-    } 
+    }
+  } 
 }
