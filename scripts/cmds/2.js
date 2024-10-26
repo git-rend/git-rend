@@ -20,7 +20,6 @@ onStart: async function({ api, args, event, message, usersData }) {
   else { 
      switch (args[0]) {
 	case "بنت": {
-	   //const threadInfo = await api.getThreadInfo(threadID);
            const allMembers = event.participantIDs;
            const girls = [];
            for (let memberID of allMembers) {
@@ -45,7 +44,7 @@ onStart: async function({ api, args, event, message, usersData }) {
                imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
                imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
            var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
-           return api.sendMessage(msg, threadID, fs.unlinkSync(__dirname + '/cache/1.png'), fs.unlinkSync(__dirname + '/cache/2.png'), messageID);
+           return api.sendMessage(msg, threadID, messageID);
         break;
 	           }
 	case "ولد": {
@@ -73,7 +72,7 @@ onStart: async function({ api, args, event, message, usersData }) {
                imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
                imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
            var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
-           return api.sendMessage(msg, threadID, fs.unlinkSync(__dirname + '/cache/1.png'), fs.unlinkSync(__dirname + '/cache/2.png'), messageID);
+           return api.sendMessage(msg, threadID, messageID);
         break;
 	           }
 	default: {
