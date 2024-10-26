@@ -41,6 +41,6 @@ module.exports.onStart = async function({ api, event, usersData }) {
               imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
               imglove.push(fs.createReadStream(__dirname + "/cache/2.png"));
         var msg = {body: `✨💙 🤭 لدينا زوجان هنا 💙✨\n       نسبة الرومنسية: ${tile} %\n`+name1+" "+"💓"+" "+name2, mentions: arraytag, attachment: imglove}
-        return api.sendMessage(msg, event.threadID, fs.unlinkSync(__dirname + '/cache/1.png'), fs.unlinkSync(__dirname + '/cache/2.png'), event.messageID);
+        return api.sendMessage(msg, event.threadID, event.messageID);
       }
   }
