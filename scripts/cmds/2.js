@@ -1,19 +1,15 @@
-module.exports.config = {
-		name: "2",
-		version: "1.4",
-		author: "محمد تانجيرو",
-		countDown: 5,
-		role: 2,
-		description: {
-			ar: "يزوجك بشخص من الغروب بشكل عشوائي"
-		},
-		category: "box chat",
-		guide: {
-			ar: "{pn}"
-		}
+module.exports = {
+config: { name: "2",
+	  version: "1.4",
+	  author: "محمد تانجيرو",
+	  countDown: 5,
+	  role: 2,
+	  description: { ar: "يزوجك بشخص من الغروب بشكل عشوائي"},
+	  category: "box chat",
+	  guide: { ar: "{pn}"}
 	},
 
-module.exports.onStart = async function({ api, args, event, message, usersData }) {
+onStart: async function({ api, args, event, message, usersData }) {
   const axios = require("axios");
   const fs = require("fs-extra");
   const { senderID, messageID, threadID } = event;
@@ -71,6 +67,7 @@ module.exports.onStart = async function({ api, args, event, message, usersData }
 	           }
 	default: {
 	   return message.reply ("زوجيني بنت أو زوجيني ولد")} 
-    }
+   }
   } 
-}
+ }
+} 
