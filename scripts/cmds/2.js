@@ -81,7 +81,7 @@ onStart: async function({ api, args, event, message, usersData }) {
               const memberInfo = await api.getUserInfo(memberID);
               const member = memberInfo[memberID];
            if (member.gender === 1) {
-              girls.push(`ID: ${memberID}`)}}
+              girls.push(`${memberID}`)}}
            const girlsList = girls.length > 0 ? girls.join('\n') : ("لا توجد بنات في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
            var tile = Math.floor(Math.random() * 101);
            var id = girls[Math.floor(Math.random() * girls.length)];
