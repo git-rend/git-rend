@@ -74,11 +74,11 @@ onStart: async function({ api, args, event, message, usersData }) {
         break;
 	           }
 	default: {
-           const threadInfo = await api.getThreadInfo(threadID);
-           const allMembers = threadInfo.participantIDs;
+           //const threadInfo = await api.getThreadInfo(threadID);
+           const allMembers = event.participantIDs;
 	   const girls = [];
            for (let memberID of allMembers) {
-              const memberInfo = await usersData.get(memberID);
+              const memberInfo = await api.getUserInfo(memberID);
               const member = memberInfo[memberID];
            if (member.gender === 1) {
               girls.push(`ID: ${memberID}`)}}
