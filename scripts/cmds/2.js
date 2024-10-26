@@ -35,7 +35,7 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
            usersData.set(event.senderID, options = {money: money - 200, data: data.data})
            let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data; 
            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
-           let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+           let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data;
            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
            var imglove = [];
                imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
@@ -56,9 +56,9 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
                arraytag.push({id: event.senderID, tag: namee});
                arraytag.push({id: id, tag: name});
            usersData.set(event.senderID, options = {money: money - 200, data: data.data})
-           let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
+           let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data; 
            fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
-           let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data;
+           let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data;
            fs.writeFileSync( __dirname + "/cache/2.png", Buffer.from(Avatar2, "utf-8") );
            var imglove = [];
                imglove.push(fs.createReadStream(__dirname + "/cache/1.png"));
@@ -69,7 +69,8 @@ module.exports.onStart = async function({ api, args, event, usersData }) {
            //fs.unlinkSync(__dirname + '/cache/2.png');
                   break;
 	           }
-	default: { return api.sandMessage ("زوجيني بنت أو زوجيني ولد", threadID, messageID)} 
+	default: 
+	   { api.sandMessage ("زوجيني بنت أو زوجيني ولد", threadID, messageID)} 
     }
   } 
 }
