@@ -69,8 +69,8 @@ module.exports.onStart = async function({ api, args, event, message, usersData }
            //fs.unlinkSync(__dirname + '/cache/2.png');
         break;
 	           }
-	default: 
-	   { return message.reply ("زوجيني بنت أو زوجيني ولد")} 
+	default: {
+	   return message.reply ("زوجيني بنت أو زوجيني ولد")} 
     }
   } 
 }
