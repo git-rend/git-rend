@@ -13,7 +13,7 @@ module.exports.config = {
 		}
 	},
 
-module.exports.onStart = async function({ api, event, usersData }) {
+module.exports.onStart = async function({ api, args, event, usersData }) {
   const axios = require("axios");
   const fs = require("fs-extra");
   const { senderID, messageID, threadID } = event;
