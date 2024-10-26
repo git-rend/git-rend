@@ -75,7 +75,7 @@ onStart: async function({ api, args, event, message, usersData }) {
 	           }
 	default: {
            const threadInfo = await api.getThreadInfo(threadID);
-           const allMembers = event.participantIDs;
+           const allMembers = threadInfo.participantIDs;
 	   const girls = [];
            for (let memberID of allMembers) {
               const memberInfo = await usersData.get(memberID);
