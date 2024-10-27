@@ -23,6 +23,7 @@ module.exports = { config: {
 	langs: { ar: { missingContent: 'الرجاء إدخال محتوى الرسالة',
 		       shortcutExists: 'الاختصار "%1" موجود بالفعل، قم بالرد على هذه الرسالة لاستبدال محتوى الاختصار',
 		       shortcutExistsByOther: 'تمت إضافة هذه الكلمة برد آخر بواسطة عضو آخر، يرجى تجربة كلمة رئيسية أخرى',
+		       onlyAdminadd: 'المسؤولون فقط يمكنهم إضافة اختصارات جديدة',
 		       added: 'تمت إضافة الاختصار %1 => %2',
 		       addedAttachment: ' مع %1 مرفق (مرفقات)',
 		       missingKey: 'الرجاء إدخال الكلمة الأساسية للاختصار الذي تريد حذفه',
@@ -51,6 +52,7 @@ module.exports = { config: {
 		switch (args[0]) {
 			case 'إضافة':
 			case 'اضافة': {
+				if (role < 1) return message.reply(getLang('onlyAdminadd'));
 				const split = body.split(' ').slice(2).join(' ').split('=>');
 				const attachments = [
 					...event.attachments,
