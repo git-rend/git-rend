@@ -1,12 +1,12 @@
 module.exports = {
-config: { name: "2",
+config: { name: "زوجيني",
 	  version: "1.4",
 	  author: "محمد تانجيرو",
 	  countDown: 5,
-	  role: 2,
-	  description: { ar: "يزوجك بشخص من الغروب بشكل عشوائي"},
+	  role: 0,
+	  description: { ar: "الزواج من بنت أولد حسب الطلب بشكل عشوائي"},
 	  category: "box chat",
-	  guide: { ar: "{pn}"}
+	  guide: { ar: "{pn} [ولد | بنت]"}
 	},
 
 onStart: async function({ api, args, event, message, usersData }) {
