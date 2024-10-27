@@ -12,7 +12,7 @@ config: { name: "زوجيني",
 onStart: async function({ api, args, event, message, usersData }) {
   const axios = require("axios");
   const fs = require("fs-extra");
-  const { senderID, messageID, threadID } = event;
+  const { senderID, messageID, threadID, participantIDs } = event;
   const pre = global.GoatBot.config.prefix;
   var data = await usersData.get(senderID);
   var money = data.money
@@ -20,9 +20,9 @@ onStart: async function({ api, args, event, message, usersData }) {
   else { 
      switch (args[0]) {
 	case "بنت": {
-           const allMembers = event.participantIDs;
+           //const allMembers = event.participantIDs;
            const girls = [];
-           for (let memberID of allMembers) {
+           for (let memberID of participantIDs/*allMembers*/) {
               const memberInfo = await api.getUserInfo(memberID);
               const member = memberInfo[memberID];
            if (member.gender === 1) {
@@ -76,7 +76,16 @@ onStart: async function({ api, args, event, message, usersData }) {
         break;
 	           }
 	default: {
-	   return message.reply (`🌹 تم تحديث الأمࢪ الآن 🌹\n         [.زوجيني بنت]\n         [.زوجيني ولد]`)} 
+	   const girls = [];
+	   for (let memberID of participantIDs/*allMembers*/) {
+              const memberInfo = await api.getUserInfo(memberID);
+              const member = memberInfo[memberID][Math.floor(Math.random() * memberInfo[memberID].length)];
+           if (member.gender === 1) {
+              girls.push(`${memberID}`)}}
+           const girlsList = girls.length > 0 ? girls.join('\n') : ("لا توجد بنات في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
+           var tile = Math.floor(Math.random() * 101);
+           var id = girls[Math.floor(Math.random() * girls.length)];
+	   return message.reply (`${girls} 🌹 تم تحديث الأمࢪ الآن 🌹\n         [.زوجيني بنت]\n         [.زوجيني ولد]`)} 
    }
   } 
  }
