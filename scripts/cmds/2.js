@@ -48,9 +48,8 @@ onStart: async function({ api, args, event, message, usersData }) {
         break;
 	           }
 	case "ولد": {
-           const allMembers = event.participantIDs;
            const boys = [];
-           for (let memberID of allMembers) {
+           for (let memberID of participantIDs) {
               const memberInfo = await api.getUserInfo(memberID);
               const member = memberInfo[memberID];
            if (member.gender === 2) {
@@ -79,7 +78,7 @@ onStart: async function({ api, args, event, message, usersData }) {
 	   const girls = [];
 	   for (let memberID of participantIDs/*allMembers*/) {
               const memberInfo = await api.getUserInfo(memberID);
-              const member = memberInfo[memberID][Math.floor(Math.random() * memberInfo[memberID].length)];
+              const member = memberInfo[memberID];
            if (member.gender === 1) {
               girls.push(`${memberID}`)}}
            const girlsList = girls.length > 0 ? girls.join('\n') : ("لا توجد بنات في المجموعة، لذا لا يمكن تزويجك",threadID, messageID);
