@@ -123,7 +123,7 @@ module.exports = { config: {
 				message.reply(getLang("unloaded", infoUnload.name)) :
 				message.reply(getLang("unloadedError", infoUnload.name, infoUnload.error.name, infoUnload.error.message));
 		}
-		else if (args[0] == "install") {
+		else if (args[0] == "تثبيت") {
 			let url = args[1];
 			let fileName = args[2];
 			let rawCode;
