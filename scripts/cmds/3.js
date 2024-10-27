@@ -3,12 +3,11 @@ module.exports = {
     name: "3",
     version: "1.1.12", 
     author: "TawsiN",
-    role: 2,
-    description: "Randomly marry a boy with a girl in the group!",
-    usage: "/marry",
-    cooldown: 5,
+    role: 0,
+    description: { ar: "زواج عشوائي، بنت بولد، وولد ببنت"},
+    countDown: 5,
     category: "fun",
-    guide: "Type /marry and the bot will randomly marry you to someone of the opposite gender.\n\nExample: /marry"
+    guide: { ar: "{pn}"}
   },
 
   langs: {
