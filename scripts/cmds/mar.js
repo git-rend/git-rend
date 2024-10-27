@@ -1,13 +1,11 @@
-const cooldowns = new Map();
-
 module.exports = {
   config: {
     name: "mar",
-    version: "1.1.15",
+    version: "1.1.11", 
     author: "TawsiN",
     description: "Randomly marry a boy with a girl in the group!",
     usage: "/marry",
-    cooldown: 30, // Command cooldown
+    cooldown: 5,
     category: "fun",
     guide: "Type /marry and the bot will randomly marry you to someone of the opposite gender.\n\nExample: /marry"
   },
@@ -17,9 +15,7 @@ module.exports = {
       noGirls: "No girls found in the group!",
       noBoys: "No boys found in the group!",
       married: "💍 Congratulations to %1 and %2 on their marriage! 🎉",
-      loveWords: "May your love be everlasting and full of joy! ❤️",
-      blockedByFacebook: "You've been temporarily blocked by Facebook from using this command. Please try again later.",
-      cooldownMessage: "Please wait a bit before using this command again."
+      loveWords: "May your love be everlasting and full of joy! ❤️"
     }
   },
 
@@ -27,39 +23,63 @@ module.exports = {
     const { threadID, senderID, messageID } = event;
     const langs = this.langs.en;
 
-    // Check command cooldown
-    const lastUsed = cooldowns.get(senderID) || 0;
-    const timeSinceLastUse = Date.now() - lastUsed;
-    const cooldown = this.config.cooldown * 1000;
+    // Fetching user info
+    const userInfo = await api.getUserInfo(senderID);
+    const senderGender = userInfo[senderID].gender === 2 ? "boy" : "girl"; // Assuming gender 2 is male and 1 is female
 
-    if (timeSinceLastUse < cooldown) {
-      const remainingTime = Math.ceil((cooldown - timeSinceLastUse) / 1000);
-      return api.sendMessage(`${langs.cooldownMessage} Try again in ${remainingTime} seconds.`, threadID, messageID);
+    // Fetch all participants
+    const allUsers = await api.getThreadInfo(threadID);
+
+    // Separate boys and girls from the group
+    const boys = [];
+    const girls = [];
+    for (let userID of allUsers.participantIDs) {
+      if (userID == senderID) continue; // Skip the sender
+      const user = await api.getUserInfo(userID);
+      if (user[userID].gender === 2) boys.push(userID); // Gender 2 = Male
+      if (user[userID].gender === 1) girls.push(userID); // Gender 1 = Female
     }
 
-    // Update the cooldown timestamp for the user
-    cooldowns.set(senderID, Date.now());
+    // Randomly select the appropriate gender
+    let chosenPartner;
+    if (senderGender === "boy") {
+      if (girls.length === 0) return api.sendMessage(langs.noGirls, threadID, messageID);
+      chosenPartner = girls[Math.floor(Math.random() * girls.length)];
+    } else {
+      if (boys.length === 0) return api.sendMessage(langs.noBoys, threadID, messageID);
+      chosenPartner = boys[Math.floor(Math.random() * boys.length)];
+    }
 
+    // Fetch profile pictures using the existing logic
+    const senderPFP = await usersData.getAvatarUrl(senderID);
+    const partnerPFP = await usersData.getAvatarUrl(chosenPartner);
+
+    // Prepare mention text
+    const senderName = userInfo[senderID].name || 'User';
+    const partnerInfo = await api.getUserInfo(chosenPartner);
+    const partnerName = partnerInfo[chosenPartner].name || 'User';
+
+    // Format marriage message
+    const messageText = langs.married
+      .replace("%1", `@${senderName}`)
+      .replace("%2", `@${partnerName}`);
+
+    // Send the congratulatory message with profile pictures
     try {
-      // Your command logic here
-      // Example: finding a match, sending the "marriage" message, etc.
-
-      await api.sendMessage({
-        body: langs.married,
-        mentions: [
-          { tag: "User1", id: senderID }, // Replace with real user data
-          { tag: "User2", id: "partnerID" } // Replace with real partner data
-        ]
-      }, threadID, messageID);
-
+        await api.sendMessage({
+            body: messageText + "\n\n" + langs.loveWords,
+            mentions: [
+                { tag: senderName, id: senderID }, // Mention the sender
+                { tag: partnerName, id: chosenPartner } // Mention the partner
+            ],
+            attachment: [
+                await global.utils.getStreamFromURL(senderPFP), // Sender's profile picture
+                await global.utils.getStreamFromURL(partnerPFP)  // Partner's profile picture
+            ]
+        }, threadID, messageID);
     } catch (error) {
-      // Check for Facebook's temporary block error
-      if (error.code === 3252001) {
-        return api.sendMessage(langs.blockedByFacebook, threadID, messageID);
-      }
-      
-      console.error("Unexpected error:", error);
-      return api.sendMessage("An unexpected error occurred. Please try again later.", threadID, messageID);
+        console.error("Error sending message with attachments:", error);
+        await api.sendMessage("An error occurred while attaching profile pictures.", threadID, messageID);
     }
   }
 };
