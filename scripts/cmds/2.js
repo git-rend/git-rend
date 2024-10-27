@@ -1,11 +1,11 @@
 module.exports = {
   config: {
     name: "marry",
-    version: "1.1.12", 
+    version: "1.1.13", 
     author: "TawsiN",
     description: "Randomly marry a boy with a girl in the group!",
     usage: "/marry",
-    cooldown: 5,
+    cooldown: 10, // Increased cooldown to reduce rapid calls
     category: "fun",
     guide: "Type /marry and the bot will randomly marry you to someone of the opposite gender.\n\nExample: /marry"
   },
@@ -23,7 +23,7 @@ module.exports = {
     const { threadID, senderID, messageID } = event;
     const langs = this.langs.en;
 
-    // Fetch all participants and sender info at once to minimize API calls
+    // Fetch all participants and sender info
     const allUsers = await api.getThreadInfo(threadID);
     const senderInfo = await api.getUserInfo(senderID);
     const senderGender = senderInfo[senderID].gender === 2 ? "boy" : "girl"; 
