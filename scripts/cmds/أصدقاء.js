@@ -22,7 +22,7 @@ module.exports.onStart = async function ({ api, event, args }) {
   var Member1 = senderID;
   if (event.type == "message_reply") { var Member2 = event.messageReply.senderID }
   if (Object.keys(event.mentions)[0]) { var Member2 = Object.keys(event.mentions) }
-  if (!Member2) { return api.sendMessage("تاغ لشخص أو رد على رسالته", threadID, messageID)}
+  if (!Member2) { return api.sendMessage("🌹 تاغ لشخص أو رد على رسالته", threadID, messageID)}
   let Avatar1 = ( await axios.get(`https://graph.facebook.com/${Member1}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathprof1, Buffer.from(Avatar1, "utf-8"));
   let Avatar2 = ( await axios.get(`https://graph.facebook.com/${Member2}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
@@ -40,9 +40,5 @@ module.exports.onStart = async function ({ api, event, args }) {
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage( { body: "🌹 أفضل أصدقاء بالوجود 💙", attachment: fs.createReadStream(pathImg) },
-    threadID,
-    () => fs.unlinkSync(pathImg),
-    messageID
-  );
-};
+  return api.sendMessage( { body: "🌹 أفضل أصدقاء بالوجود 💙", attachment: fs.createReadStream(pathImg)}, threadID, () => fs.unlinkSync(pathImg), messageID)
+}
