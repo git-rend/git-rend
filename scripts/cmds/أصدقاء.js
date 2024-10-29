@@ -2,7 +2,7 @@ module.exports.config = {
   name: "اصدقاء",
   aliases: ["أصدقاء"],
   version: "2.9.0",
-  author: "TawsiN",
+  author: "محمد تانجيرو (fixed by TawsiN)",
   countDown: 5,
   role: 0,
   description: { ar: "وضع صورتك مع صورة صديقك مع بعض" },
