@@ -1,7 +1,7 @@
 module.exports = {
 	config: {
-		name: "findgay",
-		aliases: ["fgay", "fg"],
+		name: "106",
+		aliases: [""],
 		author: "TawsiN",
 		version: "2.4",
 		cooldowns: 20,
