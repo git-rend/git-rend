@@ -10,8 +10,8 @@ module.exports.config = {
 	          guide: { ar: "وتدخل القلب أو اللون الذي اخترته"},
                         };
 module.exports.onStart = async function ({event, api, args, usersData, __GLOBAL }) {
-   var userdata = await usersData.get(event.senderID);
-   var money = userdata.money
+   var userData = await usersData.get(event.senderID);
+   var money = userData.money
    //const moneyUser = (await Currencies.getData(event.senderID)).money;
    if (200 > money) return api.sendMessage("تحتاج  200$ للعب لعبة: قلوب 🙄", event.threadID, event.messageID);
    var color = args.join(" ") 
