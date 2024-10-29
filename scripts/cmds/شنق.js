@@ -17,7 +17,7 @@ module.exports.circle = async (image) => {
   	return await image.getBufferAsync("image/png");
 };
 
-module.exports.run = async ({ event, api, args, Users }) => {
+module.exports.onStart = async ({ event, api, args, Users }) => {
 try {
   const Canvas = require ('canvas');
   const request = require ("node-superfetch");
