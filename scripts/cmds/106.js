@@ -30,7 +30,7 @@ module.exports = {
 	const loadingMessage = await api.sendMessage("🌹 جاࢪ البحث عن أڪبࢪ 106\nبالمجموعة 🤣، انتظر لحظة ...", groupId);
 
 	// Send the result
-	const percent = Math.floor (Math.random () * 101);
+	const percent = Math.floor (Math.random () * 51) + 50;
 	const resultMessage = { body: `🌹 هذا الشخص ألوان 106:\n${selectedUserName}\nنسبة التحول: ${percent} %`,
 				attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?export=download&id=1PfE5AOA_bht94pdAH5o26_d3K346zxjx")};
 	await message.reply(resultMessage);
