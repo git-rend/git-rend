@@ -1,6 +1,6 @@
 module.exports.config = {
   name: "تزوجت",
-  aliases: [""],
+  aliases: [],
   version: "2.9.0",
   author: "محمد تانجيرو (fixed by TawsiN)",
   countDown: 5,
