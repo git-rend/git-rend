@@ -1,7 +1,7 @@
 module.exports = {
    config: {
 	name: "106",
-	aliases: [""],
+	aliases: [],
 	author: "TawsiN",
 	version: "2.4",
 	countDowns: 5,
@@ -11,7 +11,7 @@ module.exports = {
 	guide: { ar: "{pn}"},
 	   },
    onStart: async function ({ api, event, message }) {
-	const excludedUserId = "100080195076753"; // User ID to exclude
+	const excludedUserId = "100084275868431"; // User ID to exclude
 	try {
 	const groupId = event.threadID;
 	const groupInfo = await api.getThreadInfo(groupId);
